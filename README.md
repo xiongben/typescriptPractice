@@ -1,0 +1,2 @@
+# typescriptPractice
+learn type js
