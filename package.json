@@ -1,0 +1,26 @@
+{
+  "name": "typescriptpractice",
+  "version": "1.0.0",
+  "description": "learn type js ### test123",
+  "main": "a.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://xiongben:xb19930319123@github.com/xiongben/typescriptPractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiongben/typescriptPractice/issues"
+  },
+  "homepage": "https://github.com/xiongben/typescriptPractice#readme",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}
