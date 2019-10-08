@@ -2,7 +2,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 console.log(CleanWebpackPlugin)
 
@@ -10,11 +10,14 @@ module.exports = {
   mode : 'development',
   entry: './src/index.js',
   plugins: [
-    // new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: '开发环境'
+        inject: false,
+        hash: true,
+        template: './index.html',
+        filename: 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
   ],
   output: {
     filename: 'main.js',
