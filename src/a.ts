@@ -11,8 +11,15 @@ function greeter(person: string) {
 }
 
 let user = "Jane User";
+let userlength = (user as string).length;
 
 let aa: string = greeter(user);
 
-console.log(aa)
-console.log(decLiteral)
+let x: [string, number];
+
+x= ['ddd',10];
+
+enum Color{Red, Green, Blue};
+let c:Color = Color.Blue;
+
+console.log(userlength);

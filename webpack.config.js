@@ -8,7 +8,9 @@ console.log(CleanWebpackPlugin)
 
 module.exports = {
   mode : 'development',
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js'
+  },
   plugins: [
     new HtmlWebpackPlugin({
         inject: false,
@@ -20,7 +22,7 @@ module.exports = {
     new CleanWebpackPlugin(),
   ],
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
