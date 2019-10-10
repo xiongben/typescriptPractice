@@ -22,4 +22,26 @@ x= ['ddd',10];
 enum Color{Red, Green, Blue};
 let c:Color = Color.Blue;
 
-console.log(userlength);
+// console.log(userlength);
+
+//接口
+interface SquareConfig {
+    color?: string;
+    width?: number;
+
+}
+
+function createSquare(config: SquareConfig):{color: string, square: number} {
+   var newsquare = {color: "red", square: 100};
+   if(config.color){
+       newsquare.color = config.color;
+   }
+   if(config.width){
+       newsquare.square = config.width*config.width;
+   }
+   return newsquare;
+}
+
+var newsquare = createSquare({color: "yellow",width:50});
+var mysquare = createSquare({color: "blue",opacity: 0.5} as SquareConfig)
+console.log(mysquare);
