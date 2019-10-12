@@ -125,3 +125,40 @@ class TextBox extends Control {
 
 var mytextbox = new Button();
 mytextbox.select();
+
+// function
+function buildName(firstName: string, lastName?: string){
+    return firstName + " " + lastName;
+}
+
+let mybuildname = buildName("kakaxi","mingren");
+
+// function identity<T>(args: T): T{
+//     return args;
+// }
+// let output = identity<string>("hello");
+// let output2 = identity("hello");
+
+interface GenericIdentityFn<T> {
+    <T>(arg: T): T;
+}
+function identity<T>(args: T) : T {
+    return args;
+}
+
+let myidentity: GenericIdentityFn<number> = identity;
+
+interface Lengthwise {
+    length: number;
+}
+
+function loggingidentity<T extends Lengthwise>(args: T):T{
+    console.log(args.length);
+    return args;
+}
+
+loggingidentity({length: 10, value: 3});
+
+function create<T>(c:{new():T;}):T {
+    return new c();
+}
