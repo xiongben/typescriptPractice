@@ -24,11 +24,11 @@ let c:Color = Color.Blue;
 
 // console.log(userlength);
 
-//接口
+//Interface
 interface SquareConfig {
     color?: string;
     width?: number;
-
+    [propName: string]: any;
 }
 
 function createSquare(config: SquareConfig):{color: string, square: number} {
@@ -42,6 +42,24 @@ function createSquare(config: SquareConfig):{color: string, square: number} {
    return newsquare;
 }
 
-var newsquare = createSquare({color: "yellow",width:50});
+var newsquare = createSquare({color: "yellow",width:50,opacity:0.5});
 var mysquare = createSquare({color: "blue",opacity: 0.5} as SquareConfig)
-console.log(mysquare);
+// console.log(mysquare);
+
+// function type
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+let mySearch : SearchFunc;
+mySearch = function(source:string, subString:string):boolean{
+    let result = source.search(subString);
+    return result > -1;
+}
+
+interface StringArray {
+    [index: number]: string;
+}
+let myarray:StringArray;
+myarray = ["bob", "jack"];
+let mystr = myarray[0];
+
