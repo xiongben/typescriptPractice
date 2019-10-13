@@ -230,3 +230,9 @@ declare enum Enumm {
 //     // runtime error, canot read property 0 of undefined
 //     console.log(x[x.Foo]);
 // }
+// window.onmousedown = function(mouseEvent:any) {
+//     console.log(mouseEvent.button);  //<- Error
+// };
+
+// let s = "foo";
+// s = null;
