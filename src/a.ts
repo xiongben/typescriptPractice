@@ -162,3 +162,71 @@ loggingidentity({length: 10, value: 3});
 function create<T>(c:{new():T;}):T {
     return new c();
 }
+
+//枚举
+enum Direction {
+    Up = 1,
+    Down,
+    Left,
+    Right
+}
+
+enum ShapeKind {
+    Circle,
+    Square,
+}
+
+interface Circle {
+    kind: ShapeKind.Circle;
+    radius: number;
+}
+
+interface Square {
+    kind: ShapeKind.Square;
+    sideLength: number;
+}
+
+let mycircle1: Circle = {
+    kind: ShapeKind.Circle,
+    //    ~~~~~~~~~~~~~~~~ Error!
+    radius: 100,
+}
+
+// enum E {
+//     Foo,
+//     Bar,
+// }
+
+// function f(x: E) {
+//     if (x !== E.Foo) {
+//         //             ~~~~~~~~~~~
+//         // Error! Operator '!==' cannot be applied to types 'E.Foo' and 'E.Bar'.
+//     }
+// }
+// console.log(E.Bar)
+
+declare enum Enumm {
+    A = 1,
+    B,
+    C = 2
+}
+
+
+
+// module MyModule {
+//     // Claiming this enum exists with 'declare', but it doesn't...
+//     export declare enum Lies {
+//         Foo = 0,
+//         Bar = 1     
+//     }
+//     var x = Lies.Foo; // Depend on inlining
+// }
+
+// module SomeOtherCode {
+//     // x ends up as 'undefined' at runtime
+//     import x = MyModule.Lies;
+
+//     // Try to use lookup object, which ought to exist
+//     // runtime error, canot read property 0 of undefined
+//     console.log(x[x.Foo]);
+// }
