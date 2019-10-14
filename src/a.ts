@@ -244,5 +244,5 @@ declare enum Enumm {
 
 
 
-type Easing = "ease-in" | "ease-out" | "ease-in-out";
+// type Easing = "ease-in" | "ease-out" | "ease-in-out";
 
