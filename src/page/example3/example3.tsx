@@ -1,16 +1,30 @@
-import React,{useReducer} from "react";
+import React, {useReducer, useState} from "react";
 import ShowArea from "./showArea";
 import Buttons from "./buttom";
 import {Color} from "./color";
+import UserInfo from "../userInfo";
+
 
 
 function Example3(){
+    const [userInfo, setUserInfo] = useState({name:"xb",num:23})
+    // const params = {name:"xb",num:23}
+
+    function changeUserInfo(){
+       setUserInfo({
+           name: "xiaohong",
+           num: 55
+       })
+    }
+
     return (
        <div>
            <Color>
                <ShowArea></ShowArea>
                <Buttons></Buttons>
            </Color>
+           <UserInfo data={userInfo}/>
+           <button onClick={changeUserInfo}>change user info</button>
        </div>
     )
 }

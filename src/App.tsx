@@ -5,6 +5,7 @@ import Example1 from './page/home'
 import ReducerDemo from "./page/example2";
 import Example3 from "./page/example3/example3";
 import Example4 from "./page/example4";
+import Example5 from "./page/example5";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <ReducerDemo></ReducerDemo>
         <Example3></Example3>
         <Example4></Example4>
+        <Example5></Example5>
     </div>
   );
 }
