@@ -2,12 +2,71 @@ import React from "react";
 
 function TreeDemo(){
     // maxHeapDemo();
-    radixSortDemo()
+    // radixSortDemo()
+    // topKFrequent([1,1,1,2,2,3],2)
+    // splitStringToArr()
+    // insertSort()
+    mergeSort()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//归并排序
+function mergeSort(){
+    let arr1:number[] = [34,66,71,22,35,98,21,27,11,9,3,68,40];
+
+    let res = slicefn(arr1);
+    console.log(res);
+
+    function slicefn(arr:number[]):number[]{
+        if(arr.length <2) return arr;
+        let mid:number = Math.floor(arr.length/2);
+        let leftArr:number[] = arr.slice(0,mid);
+        let rightArr:number[] = arr.slice(mid)
+        return mergeFn(slicefn(leftArr),slicefn(rightArr))
+    }
+
+    function mergeFn(arr1:number[],arr2:number[]):number[]{
+        let res:number[] = [];
+        while(arr1.length > 0 && arr2.length > 0){
+            if(arr1[0] > arr2[0]){
+                res.push(arr2.shift() as number);
+            }else{
+                res.push(arr1.shift() as number);
+            }
+        }
+        while (arr1.length > 0){
+            res.push(arr1.shift() as number);
+        }
+        while (arr2.length > 0){
+            res.push(arr2.shift() as number);
+        }
+
+        return res;
+    }
+}
+
+//插入排序
+function insertSort(){
+    let arr1:number[] = [34,66,71,22,35,98,21,27,11,9,3,68,40];
+    let pre:number = 0;
+    let current: number = 0;
+
+    for(let i:number = 1; i < arr1.length; i++){
+        current = arr1[i];
+        pre = i -1;
+        while (current < arr1[pre] && pre >= 0){
+            arr1[pre+1] = arr1[pre]
+            pre--;
+        }
+        arr1[pre+1] = current;
+    }
+
+    console.log(arr1)
+
 }
 
 //大顶堆demo
@@ -86,6 +145,53 @@ function radixSortDemo(){
         return arr;
     }
 
+}
+
+function topKFrequent(nums: number[], k: number): number[] {
+    let arr1:number[][] = [];
+    let map1 = new Map();
+    for(let i=0;i<nums.length;i++){
+        if(map1.get(nums[i])){
+            map1.set(nums[i],map1.get(nums[i])+1);
+        }else{
+            map1.set(nums[i],1);
+        }
+    }
+
+    map1.forEach((v,k)=>{
+        if(arr1[v]){
+            arr1[v].push(k);
+        }else{
+            arr1[v] = [k];
+        }
+    })
+    let res:number[] = [];
+    for(let i=arr1.length-1;i>=0 && res.length < k;i--){
+        if(arr1){
+            res.push(...arr1[i]);
+        }
+    }
+    return res;
+}
+
+//分割字符串
+function splitStringToArr():void{
+    const str1:string = "11223344";
+    const k:number = 2;
+    const str2:string[] = str1.split("");
+    const res:string[] = [];
+    // console.log(str2);
+    let newstr:string = "";
+    for(let i:number=0;i < str2.length; i++){
+        newstr = "";
+        for(let j:number=i;j<str2.length; j++){
+            newstr += str2[j];
+            if(newstr.length % k == 0){
+                res.push(newstr);
+            }
+        }
+        console.log(res)
+    }
 }
 
 

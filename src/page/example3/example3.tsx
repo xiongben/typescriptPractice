@@ -110,6 +110,27 @@ class Xiaoming implements Man{
 }
 
 const xiaoming1 = new Xiaoming()
-console.log(xiaoming1.say())
+// console.log(xiaoming1.say())
+
+
+interface Girl{
+    name:string;
+}
+
+class SelectGirl<T extends Girl>{
+    constructor(private girls:T[]) {
+    }
+    getGirl(num:number):string{
+        return this.girls[num].name;
+    }
+}
+
+const selectGirls1 = new SelectGirl<Girl>([
+    {name:"aa"},
+    {name:"bb"},
+    {name:"cc"},
+]);
+const res3 = selectGirls1.getGirl(1);
+console.log(res3);
 
 export default Example3
