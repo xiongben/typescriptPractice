@@ -6,12 +6,65 @@ function TreeDemo(){
     // topKFrequent([1,1,1,2,2,3],2)
     // splitStringToArr()
     // insertSort()
-    mergeSort()
+    // mergeSort()
+    // shellSort()
+    // search([4,5,6,7,0,1,2],0);
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+function search(nums: number[], target: number): number {
+
+    let low:number = 0;
+    let high:number = nums.length-1;
+    while(low < high){
+        let mid:number = Math.floor((low + high)/2)
+        if(nums[mid] > nums[high]){
+            low = mid +1
+        }else{
+            high = mid
+        }
+    }
+    let row:number = low;
+    console.log(row)
+    low=0;
+    high=nums.length-1;
+    while(low<=high){
+        let currMid = Math.floor((low+high)/2);
+        let realMid = (row+currMid)%(nums.length);
+        if(target == nums[realMid]){
+            return realMid;
+        }
+        if(target > nums[realMid]){
+            low = currMid+1;
+        }else if(target < nums[realMid]){
+            high = currMid-1;
+
+        }
+    }
+    return -1;
+
+};
+
+//希尔排序
+function shellSort(){
+    let arr1:number[] = [34,66,71,22,35,98,21,27,11,9,3,68,40];
+    let len:number = arr1.length;
+    for(let gap = Math.floor(len/2);gap>0;gap=Math.floor(gap/2)){
+        for(let i=gap;i<len;i++){
+            let j:number = i-gap;
+            let current:number = arr1[i];
+            while (j>= 0 && current < arr1[j]){
+                arr1[j+gap] = arr1[j];
+                j = j-gap;
+            }
+            arr1[j+gap] = current;
+        }
+    }
+    console.log(arr1)
 }
 
 //归并排序
