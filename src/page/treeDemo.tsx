@@ -9,12 +9,49 @@ function TreeDemo(){
     // mergeSort()
     // shellSort()
     // search([4,5,6,7,0,1,2],0);
+    // sumdemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+
+function sumdemo(){
+    let res:number[][] = threeSum([-1,0,1,2,-1,-4,-2,-3,3,0,4]);
+    console.log(res);
+    function threeSum(nums: number[]): number[][] {
+        nums.sort((a,b)=> a-b);
+        console.log(nums)
+        let low:number = 0;
+        let high:number = nums.length-1;
+        let sum:number = 0;
+        let resArr:number[][] = [];
+        for(let i=0;i<nums.length-2;i++){
+            if(i === 0 || (i>0 && nums[i]  !== nums[i-1])){
+                low = i+1;
+                high = nums.length-1;
+                sum = 0 - nums[i];
+                while(low < high){
+                    if(sum === nums[low]+nums[high]){
+                        resArr.push([nums[low],nums[high],nums[i]]);
+                        while(low < high && nums[low]===nums[low+1]) low++;
+                        while(low < high && nums[high] === nums[high-1]) high--;
+                        low++;high--;
+                    }else if(sum > nums[low]+nums[high]){
+                        low++;
+                    }else{
+                        high--;
+                    }
+
+                }
+            }
+        }
+        return resArr;
+    };
+}
+
 
 function search(nums: number[], target: number): number {
 

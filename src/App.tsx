@@ -6,7 +6,7 @@ import './App.css';
 // import Example3 from "./page/example3/example3";
 // import Example4 from "./page/example4";
 // import Example5 from "./page/example5";
-// import TreeDemo from "./page/treeDemo";
+import TreeDemo from "./page/treeDemo";
 import GrapDemo from "./page/grapDemo/grapDemo1";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         {/*<Example3></Example3>*/}
         {/*<Example4></Example4>*/}
         {/*<Example5></Example5>*/}
-        {/*<TreeDemo></TreeDemo>*/}
+        <TreeDemo></TreeDemo>
         <GrapDemo/>
     </div>
   );
