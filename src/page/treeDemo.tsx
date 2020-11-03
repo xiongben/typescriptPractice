@@ -10,11 +10,35 @@ function TreeDemo(){
     // shellSort()
     // search([4,5,6,7,0,1,2],0);
     // sumdemo()
+    strdemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+function strdemo1() {
+    let res = isAnagram("anagram","nagaram");
+    console.log(res);
+   function isAnagram(str1:string,str2:string) {
+       let ailpha:number[] = new Array(26);
+       ailpha.fill(0)
+       for(let i=0;i<str1.length;i++){
+           ailpha[str1.charAt(i).charCodeAt(0)-'a'.charCodeAt(0)]++;
+       }
+       for(let i=0;i<str2.length;i++){
+           ailpha[str2.charAt(i).charCodeAt(0)-'a'.charCodeAt(0)]--;
+       }
+
+       for(let i of ailpha){
+           if(i != 0){
+               return false;
+           }
+       }
+       return true;
+   }
 }
 
 
