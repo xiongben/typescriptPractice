@@ -10,12 +10,46 @@ function TreeDemo(){
     // shellSort()
     // search([4,5,6,7,0,1,2],0);
     // sumdemo()
-    strdemo1()
+    // strdemo1()
+    cobinationDemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+function cobinationDemo1(){
+    combinationSum2([10,1,2,7,6,1,5],8)
+
+    function combinationSum2(candidates: number[], target: number): number[][] {
+        candidates.sort();
+        let res:number[][] = [];
+        let link:number[] = [];
+        helper(candidates,res,link,0,target);
+        console.log(res)
+        return res;
+    };
+
+    function helper(canArr:number[],res:number[][],link:number[],startIndex:number,sum:number){
+        if(sum == 0){
+
+            let newLinkArr:number[] = Array.from(link);
+            console.log(newLinkArr);
+            res.push(newLinkArr);
+            return;
+        }
+        if(sum < 0) return;
+        for(let i = startIndex;i<canArr.length;i++){
+            if(i > startIndex && canArr[i] == canArr[i-1]) continue;
+
+
+            link.push(canArr[i])
+            helper(canArr,res,link,i+1,sum-canArr[i]);
+            link.pop();
+        }
+    }
 }
 
 
