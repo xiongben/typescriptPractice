@@ -4,10 +4,10 @@ import {ColorContext} from "./color";
 
 
 function ShowArea(){
-    const color:any = useContext(ColorContext)
-    console.log(color)
+    const statedata:any = useContext(ColorContext)
+
     return (
-        <div style={{color: color.color}}>the color of font is blue</div>
+        <div style={{color: statedata.state.color}}>the color of font is blue {statedata.state.number}</div>
     )
 }
 

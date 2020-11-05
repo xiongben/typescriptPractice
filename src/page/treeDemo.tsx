@@ -9,6 +9,8 @@ function TreeDemo(){
     // mergeSort()
     // shellSort()
     // search([4,5,6,7,0,1,2],0);
+
+    // strDemo1();
     // sumdemo()
     // strdemo1()
     cobinationDemo1()
@@ -18,6 +20,35 @@ function TreeDemo(){
         </div>
     )
 }
+
+function strDemo1(){
+    let low:number = 0;
+    let reslength:number = 0;
+    longestPalindrome("cbbd");
+    function longestPalindrome(s: string): string {
+        if(s.length < 2) return s;
+        for(let i = 0; i < s.length-1; i++){
+            helper(s,i,i);
+            helper(s,i,i+1);
+        }
+
+        console.log(s.substr(low,reslength))
+        return s.substr(low,reslength)
+    };
+
+    function helper(s:string,i:number,j:number){
+        while(i >=0 && j <= s.length-1 && s.charAt(i) == s.charAt(j)){
+            i--;
+            j++;
+        }
+        if(j-i-1> reslength){
+            low = i+1;
+            reslength = j-i-1;
+        }
+
+    }
+}
+
 
 
 function cobinationDemo1(){
