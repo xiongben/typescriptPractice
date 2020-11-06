@@ -13,12 +13,44 @@ function TreeDemo(){
     // strDemo1();
     // sumdemo()
     // strdemo1()
-    cobinationDemo1()
+    // cobinationDemo1()
+    wordSearch()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+//leecode79
+function wordSearch(){
+    var res = exist([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]],"ABCCED")
+    console.log(res)
+    function exist(board: string[][], word: string): boolean {
+        for(var j=0;j<board.length;j++){
+            for(var i=0;i<board[0].length;i++){
+                if(helper(board,j,i,word,0)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    function helper(board: string[][],j:number,i:number,word:string,len:number):boolean {
+         if(len == word.length) return true;
+         if(j<0 || i<0 || j > board.length-1 || i > board[0].length-1) return false;
+         if(board[j][i] != word.charAt(len)) return false;
+         board[j][i] = "*";
+         let res:boolean =  helper(board,j+1,i,word,len+1)||
+             helper(board,j,i+1,word,len+1)||
+             helper(board,j-1,i,word,len+1)||
+             helper(board,j,i-1,word,len+1);
+         board[j][i] = word.charAt(len);
+         return res;
+    }
+
 }
 
 function strDemo1(){
