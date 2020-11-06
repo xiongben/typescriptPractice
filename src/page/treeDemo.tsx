@@ -14,12 +14,39 @@ function TreeDemo(){
     // sumdemo()
     // strdemo1()
     // cobinationDemo1()
-    wordSearch()
+    // wordSearch()
+    mergeIntervalsDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode56
+function mergeIntervalsDemo(){
+    merge([[1,4],[4,5]])
+    function merge(intervals: number[][]): number[][] {
+        if(intervals.length < 2) return intervals;
+        intervals.sort(function (arr1,arr2) {
+            return arr1[0]-arr2[0];
+        })
+        let res:number[][] = [];
+        let start:number = intervals[0][0]
+        let end:number = intervals[0][1]
+        for(let val of intervals){
+            if(val[0] <= end){
+                end = Math.max(val[1],end);
+            }else {
+                res.push([start,end]);
+                start = val[0];
+                end = val[1];
+            }
+        }
+        res.push([start,end])
+        console.log(res);
+        return res
+    };
 }
 
 
@@ -39,9 +66,9 @@ function wordSearch(){
     };
 
     function helper(board: string[][],j:number,i:number,word:string,len:number):boolean {
-         if(len == word.length) return true;
+         if(len === word.length) return true;
          if(j<0 || i<0 || j > board.length-1 || i > board[0].length-1) return false;
-         if(board[j][i] != word.charAt(len)) return false;
+         if(board[j][i] !==word.charAt(len)) return false;
          board[j][i] = "*";
          let res:boolean =  helper(board,j+1,i,word,len+1)||
              helper(board,j,i+1,word,len+1)||
