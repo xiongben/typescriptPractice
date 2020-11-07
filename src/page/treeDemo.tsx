@@ -15,12 +15,48 @@ function TreeDemo(){
     // strdemo1()
     // cobinationDemo1()
     // wordSearch()
-    mergeIntervalsDemo()
+    // mergeIntervalsDemo()
+    permutationsDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode47
+function permutationsDemo(){
+    permuteUnique([1,1,3]);
+    function permuteUnique(nums: number[]): number[][] {
+        if(nums == null) return [];
+        if(nums.length == 1) return [nums]
+        let list:number[] = [];
+        let res:number[][] = [];
+        let used:boolean[] = new Array(nums.length).fill(false);
+        nums.sort((a,b)=>a-b);
+       helper(nums,list,res,used);
+       console.log(res)
+        return res
+    };
+
+    function helper(nums:number[],list:number[],res:number[][],used:boolean[]) {
+
+        if(list.length == nums.length){
+            let newarr = Array.from(list);
+            res.push(newarr);
+            return;
+        }
+        for(let i=0;i<nums.length;i++){
+            if(used[i]) continue;
+            if(i > 0 && nums[i-1] == nums[i] && !used[i-1]) continue
+            used[i] = true;
+            list.push(nums[i])
+            helper(nums,list,res,used);
+            list.pop()
+            used[i] = false;
+        }
+
+    }
 }
 
 //leecode56
