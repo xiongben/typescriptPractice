@@ -18,7 +18,8 @@ function TreeDemo(){
     // mergeIntervalsDemo()
     // permutationsDemo()
     // longestCommonPrefixDemo()
-    nextPermutationDemo()
+    // nextPermutationDemo()
+    consecutiveCharDemo()
     return(
         <div>
             <h2>tree demo</h2>
@@ -26,7 +27,27 @@ function TreeDemo(){
     )
 }
 
+//leecode
+function consecutiveCharDemo() {
+    maxPower("hooraaaaaaaaaaay");
+    function maxPower(s: string): number {
+        if(s == null || s.length == 0) return 0;
+       let max:number = 0;
+       let j:number = 1;
+       for(let i = 1; i < s.length; i++){
+           if(s.charAt(i-1) == s.charAt(i)){
+               j++;
+               max = Math.max(max,j);
+           }else{
+               j = 1;
+           }
+       }
+       console.log(max)
+       return max;
+    };
+}
 
+//leecode
 function nextPermutationDemo() {
     nextPermutation([3,2,1])
 
