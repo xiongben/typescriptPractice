@@ -16,12 +16,66 @@ function TreeDemo(){
     // cobinationDemo1()
     // wordSearch()
     // mergeIntervalsDemo()
-    permutationsDemo()
+    // permutationsDemo()
+    // longestCommonPrefixDemo()
+    nextPermutationDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+function nextPermutationDemo() {
+    nextPermutation([3,2,1])
+
+    function nextPermutation(nums: number[]): void {
+       if(nums.length <= 1) return;
+       let i = nums.length-2;
+       let j = nums.length-1;
+       let k = nums.length-1;
+       while (i >= 0 && nums[i] >= nums[j]){
+           i--;
+           j--;
+       }
+       if(i >= 0){
+           while (nums[k] <= nums[i]) k--;
+           swap(nums,i,k);
+       }
+
+       reverseArr(nums,j,nums.length-1);
+       console.log(nums)
+    };
+
+    function swap(nums:number[],start:number,end:number):void {
+      let temp:number = nums[start];
+      nums[start] = nums[end];
+      nums[end] = temp;
+    }
+
+    function reverseArr(nums:number[],start:number,end:number) {
+       if(start > end) return;
+       for(let i = start; i < Math.floor(start+end)/2; i++){
+           swap(nums,i,start+end-i);
+       }
+    }
+}
+
+
+function longestCommonPrefixDemo() {
+    var res:string = longestCommonPrefix(["flower","flow","flight"])
+    console.log(res);
+    function longestCommonPrefix(strs: string[]): string {
+        if(strs == null || strs.length == 0) return "";
+       let tempStr:string = strs[0];
+       for(let i=1; i < strs.length; i++){
+           while(strs[i].indexOf(tempStr) !== 0){
+               tempStr = tempStr.slice(0,tempStr.length-1);
+           }
+       }
+       return tempStr;
+    };
 }
 
 //leecode47
