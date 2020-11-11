@@ -8,6 +8,8 @@ import Example3 from "./page/example3/example3";
 // import Example5 from "./page/example5";
 import TreeDemo from "./page/treeDemo";
 import GrapDemo from "./page/grapDemo/grapDemo1";
+import "./../src/page/exampleMode/index";
+import "./page/linkDemo/example1";
 
 function App() {
   return (
