@@ -20,7 +20,8 @@ function TreeDemo(){
     // longestCommonPrefixDemo()
     // nextPermutationDemo()
     // consecutiveCharDemo()
-    uniquePathsDemo()
+    // uniquePathsDemo()
+    numberdemo1()
     return(
         <div>
             <h2>tree demo</h2>
@@ -28,58 +29,71 @@ function TreeDemo(){
     )
 }
 
-//leecode 62
-function uniquePathsDemo(){
-    var num = 0;
-    uniquePaths(3,7);
-    console.log(num)
-    // uniquePaths2(3,7);
-    function uniquePaths2(m: number, n: number): number {
-        let temp:number[][] = new Array();
-        for(var i=0;i<m;i++){
-            temp.push((new Array(n)).fill(0));
-        }
-        for(let i = 0; i < m; i++){
-            temp[i][0] = 1;
-        }
-        for(let i = 0; i < n; i++){
-            temp[0][i] = 1;
-        }
-        for(let i = 1; i < m; i++){
-            for(let j = 1; j < n; j++){
-                temp[i][j] = temp[i-1][j] + temp[i][j-1];
-            }
-        }
+//leecode
+function numberdemo1() {
+    let res:number = titleToNumber("ZY");
+    console.log(res);
 
-        return temp[m-1][n-1];
+    function titleToNumber(s: string): number {
+        let res:number = 0;
+        for(let i = 0; i < s.length; i++){
+            res = res*26 + (s.charAt(i).charCodeAt(0) - "A".charCodeAt(0) + 1);
+        }
+        return res;
     };
-
-    function uniquePaths(m: number, n: number) {
-        let sum:number = 0;
-        let haveUsed: boolean[][] = new Array();
-        for(var i=0;i<m+1;i++){
-            haveUsed.push((new Array(n+1)).fill(false));
-        }
-        helper(3,7,sum,haveUsed);
-        console.log(sum)
-        // console.log(sum);
-        // return res;
-    };
-
-    function helper(m: number, n: number, sum: number, haveUsed: boolean[][]){
-        // console.log(m,n,sum)
-        if(m > 3 || m < 1 || n > 7 || n < 1) return;
-        if(haveUsed[m][n]) return;
-        if(m == 1 && n == 1){
-            num++;
-            // console.log(num);
-        }
-        haveUsed[m][n] = true;
-        helper(m-1,n,sum,haveUsed);
-        helper(m,n-1,sum,haveUsed);
-        haveUsed[m][n] = false;
-    }
 }
+
+// //leecode 62
+// function uniquePathsDemo(){
+//     var num = 0;
+//     uniquePaths(10,7);
+//     console.log(num)
+//     uniquePaths2(10,7);
+//     function uniquePaths2(m: number, n: number): number {
+//         let temp:number[][] = new Array();
+//         for(var i=0;i<m;i++){
+//             temp.push((new Array(n)).fill(0));
+//         }
+//         for(let i = 0; i < m; i++){
+//             temp[i][0] = 1;
+//         }
+//         for(let i = 0; i < n; i++){
+//             temp[0][i] = 1;
+//         }
+//         for(let i = 1; i < m; i++){
+//             for(let j = 1; j < n; j++){
+//                 temp[i][j] = temp[i-1][j] + temp[i][j-1];
+//             }
+//         }
+//         console.log(temp[m-1][n-1])
+//         return temp[m-1][n-1];
+//     };
+//
+//     function uniquePaths(m: number, n: number) {
+//         let sum:number = 0;
+//         let haveUsed: boolean[][] = new Array();
+//         for(var i=0;i<m+1;i++){
+//             haveUsed.push((new Array(n+1)).fill(false));
+//         }
+//         let res = helper(m,n,haveUsed);
+//         console.log(res);
+//
+//     };
+//
+//     function helper(m: number, n: number, haveUsed: boolean[][]){
+//         // console.log(m,n,sum)
+//         if( m < 1 ||  n < 1) return 0;
+//         if(haveUsed[m][n]) return 0;
+//         if(m == 1 && n == 1){
+//             return 1;
+//         }
+//         haveUsed[m][n] = true;
+//         let l1:number = helper(m-1,n,haveUsed);
+//         let l2:number = helper(m,n-1,haveUsed);
+//         haveUsed[m][n] = false;
+//         return l1+l2;
+//     }
+// }
 
 // //leecode
 // function consecutiveCharDemo() {

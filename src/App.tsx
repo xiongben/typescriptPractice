@@ -10,6 +10,7 @@ import TreeDemo from "./page/treeDemo";
 import GrapDemo from "./page/grapDemo/grapDemo1";
 import "./../src/page/exampleMode/index";
 import "./page/linkDemo/example1";
+import "./page/treeDemo/example";
 
 function App() {
   return (
