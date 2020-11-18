@@ -15,26 +15,79 @@ class TreeNode {
  rundemo();
 
  function rundemo() {
-    let numArr:(number|null)[] = [1,2,3,null,null,4,5];
+    // let numArr:(number|null)[] = [1,2,3,null,null,4,5];
     // let root: TreeNode | null = buildTree(numArr,1);
     // printTree(root);
-     let root: TreeNode | null =buildTree2(numArr);
-     printTree(root);
+    //  let root: TreeNode | null =buildTree2(numArr);
+     // printTree(root);
+     designDemo()
  }
 
- function buildTree(numArr:(number|null)[],index:number):TreeNode | null {
-     if(index > numArr.length) return null;
-    let val:number | null = numArr[index-1];
-    // console.log(numArr)
-    if(val === null){
-        return null;
-    }else{
-        let node: TreeNode = new TreeNode(val);
-        node.left = buildTree(numArr,index*2);
-        node.right = buildTree(numArr,index*2+1);
-        return node;
-    }
+ //leecode
+ function designDemo(){
+     let numArr:(number|null)[] = [1,2,3,null,null,4,5];
+     let root: TreeNode | null =buildTree2(numArr);
+     var res = serialize(root);
+     console.log(res);
+     /*
+     * Encodes a tree to a single string.
+     */
+     function serialize(root: TreeNode | null): string {
+        var sb:string = "";
+        serializeHelp(root, sb);
+        return sb;
+     };
+
+     function serializeHelp(node: TreeNode | null, sb: string){
+         console.log(node);
+         if(node == null){
+             sb = sb + "NN" + ",";
+             console.log(sb);
+         }else{
+             sb = sb + String(node.val) + ",";
+             console.log(sb);
+             serializeHelp(node.left, sb);
+             serializeHelp(node.right, sb);
+         }
+     }
+
+     /*
+      * Decodes your encoded data to tree.
+      */
+     function deserialize(data: string): TreeNode | null {
+         var arrs:string[] = [];
+         arrs = data.split(",");
+         return deserializeHelp(arrs);
+     };
+
+     function deserializeHelp(arrs: string[]){
+         if(arrs.length == 0) return null;
+         var str:string = arrs.shift() as any;
+         if(str == "NN") {
+             return null;
+         }else {
+             var node:TreeNode = new TreeNode(parseInt(str));
+             node.left = deserializeHelp(arrs);
+             node.right = deserializeHelp(arrs);
+             return node;
+         }
+
+     }
  }
+
+ // function buildTree(numArr:(number|null)[],index:number):TreeNode | null {
+ //     if(index > numArr.length) return null;
+ //    let val:number | null = numArr[index-1];
+ //    // console.log(numArr)
+ //    if(val === null){
+ //        return null;
+ //    }else{
+ //        let node: TreeNode = new TreeNode(val);
+ //        node.left = buildTree(numArr,index*2);
+ //        node.right = buildTree(numArr,index*2+1);
+ //        return node;
+ //    }
+ // }
 
  function buildTree2(numArr:(number|null)[]){
      var list:TreeNode[] = [];
