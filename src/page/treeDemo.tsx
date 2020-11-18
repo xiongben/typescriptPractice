@@ -21,7 +21,9 @@ function TreeDemo(){
     // nextPermutationDemo()
     // consecutiveCharDemo()
     // uniquePathsDemo()
-    numberdemo1()
+
+    // uniquePathsDemo()
+
     return(
         <div>
             <h2>tree demo</h2>
@@ -29,19 +31,42 @@ function TreeDemo(){
     )
 }
 
-//leecode
-function numberdemo1() {
-    let res:number = titleToNumber("ZY");
-    console.log(res);
-
-    function titleToNumber(s: string): number {
-        let res:number = 0;
-        for(let i = 0; i < s.length; i++){
-            res = res*26 + (s.charAt(i).charCodeAt(0) - "A".charCodeAt(0) + 1);
-        }
-        return res;
-    };
-}
+// function demo1():number{
+//     var num1 = 123456;
+//     var reverseNum1 = reverseNum(num1);
+//
+//     if(reverseNum1 < num1) return 0;
+//     for(var i=1; i < 10; i++){
+//         if(num1 * i == reverseNum1){
+//             return i;
+//         }
+//     }
+//     return 0;
+//
+//     function reverseNum(a:number){
+//         var temp=0;
+//         while(a/10 != 0){
+//             temp = temp*10 + Math.floor(a%10)
+//             a= Math.floor(a/10);
+//         }
+//         return temp;
+//     }
+// }
+//
+//
+// //leecode
+// function numberdemo1() {
+//     let res:number = titleToNumber("ZY");
+//     console.log(res);
+//
+//     function titleToNumber(s: string): number {
+//         let res:number = 0;
+//         for(let i = 0; i < s.length; i++){
+//             res = res*26 + (s.charAt(i).charCodeAt(0) - "A".charCodeAt(0) + 1);
+//         }
+//         return res;
+//     };
+// }
 
 // //leecode 62
 // function uniquePathsDemo(){

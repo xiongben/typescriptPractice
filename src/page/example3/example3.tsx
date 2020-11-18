@@ -4,7 +4,7 @@ import Buttons from "./buttom";
 import {Color} from "./color";
 import UserInfo from "../userInfo";
 
-
+import "./example.css"
 
 function Example3(){
     const [userInfo, setUserInfo] = useState({name:"xb",num:23})
@@ -25,6 +25,12 @@ function Example3(){
            </Color>
            <UserInfo data={userInfo}/>
            <button onClick={changeUserInfo}>change user info</button>
+           <div>
+               <div className="box">
+                   <div className="l-box"></div>
+                   <div className="r-box"></div>
+               </div>
+           </div>
        </div>
     )
 }

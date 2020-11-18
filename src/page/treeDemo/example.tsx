@@ -16,8 +16,10 @@ class TreeNode {
 
  function rundemo() {
     let numArr:(number|null)[] = [1,2,3,null,null,4,5];
-    let root: TreeNode | null = buildTree(numArr,1);
-    printTree(root);
+    // let root: TreeNode | null = buildTree(numArr,1);
+    // printTree(root);
+     let root: TreeNode | null =buildTree2(numArr);
+     printTree(root);
  }
 
  function buildTree(numArr:(number|null)[],index:number):TreeNode | null {
@@ -32,6 +34,30 @@ class TreeNode {
         node.right = buildTree(numArr,index*2+1);
         return node;
     }
+ }
+
+ function buildTree2(numArr:(number|null)[]){
+     var list:TreeNode[] = [];
+     for(var i = 0; i < numArr.length; i++){
+         var node: TreeNode = new TreeNode(numArr[i] as any,null,null);
+         list.push(node);
+     }
+     if(list.length > 0){
+         for(var i = 0; i < Math.floor(numArr.length/2)-1; i++){
+             if(list[2*i+1].val != null){
+                 list[i].left = list[2*i+1];
+             }
+             if(list[2*i+2].val != null){
+                 list[i].right = list[2*i+2];
+             }
+         }
+         var lastIndex:number = Math.floor(numArr.length/2)-1;
+         list[lastIndex].left = list[2*lastIndex+1];
+         if(numArr.length % 2 === 1){
+             list[lastIndex].right = list[2*lastIndex+2];
+         }
+     }
+     return list[0];
  }
 
 
