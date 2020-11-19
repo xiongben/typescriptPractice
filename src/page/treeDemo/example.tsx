@@ -27,29 +27,32 @@ class TreeNode {
  function designDemo(){
      let numArr:(number|null)[] = [1,2,3,null,null,4,5];
      let root: TreeNode | null =buildTree2(numArr);
-     var res = serialize(root);
-     console.log(res);
+     var str = serialize(root);
+     let rootres: TreeNode | null =deserialize(str);
+     console.log(rootres)
+     printTree(rootres)
      /*
      * Encodes a tree to a single string.
      */
-     function serialize(root: TreeNode | null): string {
+     function serialize(root: TreeNode | null) {
         var sb:string = "";
-        serializeHelp(root, sb);
+        var nodeArr = [];
+        nodeArr.push(root);
+        while (nodeArr.length > 0){
+            var node = nodeArr.shift();
+            if(node){
+                sb = sb + String(node.val) + ",";
+                nodeArr.push(node.left);
+                nodeArr.push(node.right);
+            }else{
+                sb = sb + "NN" + ",";
+            }
+        }
+        console.log(sb);
         return sb;
      };
 
-     function serializeHelp(node: TreeNode | null, sb: string){
-         console.log(node);
-         if(node == null){
-             sb = sb + "NN" + ",";
-             console.log(sb);
-         }else{
-             sb = sb + String(node.val) + ",";
-             console.log(sb);
-             serializeHelp(node.left, sb);
-             serializeHelp(node.right, sb);
-         }
-     }
+
 
      /*
       * Decodes your encoded data to tree.
