@@ -31,6 +31,8 @@ class TreeNode {
      let rootres: TreeNode | null =deserialize(str);
      console.log(rootres)
      printTree(rootres)
+     var res2 = inOrderFn(root);
+     console.log(res2)
      /*
      * Encodes a tree to a single string.
      */
@@ -114,6 +116,24 @@ class TreeNode {
          }
      }
      return list[0];
+ }
+
+
+ function inOrderFn(root:TreeNode | null):number[] {
+      var res:number[] = [];
+      var stackArr:(TreeNode|null)[] = [];
+      if(root == null) return res;
+      var node: TreeNode|null = root;
+      while (stackArr.length > 0 || node != null){
+          while (node != null){
+              stackArr.push(node);
+              node = node.left;
+          }
+          node = stackArr.pop() as TreeNode;
+          res.push(node.val)
+          node = node.right;
+      }
+      return res;
  }
 
 
