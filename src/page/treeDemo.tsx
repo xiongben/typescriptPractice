@@ -23,12 +23,46 @@ function TreeDemo(){
     // uniquePathsDemo()
 
     // uniquePathsDemo()
-
+    quickSortDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+function quickSortDemo(){
+    var arr1 = [45,32,11,2,67,12,49,90,17,19];
+    quickSort(arr1,0,arr1.length-1);
+    console.log(arr1);
+
+    function quickSort(arrs:number[],start:number,end:number) {
+
+        if(start > end) return;
+       var i:number = start;
+       var j:number = end;
+       var pivot:number = arrs[start];
+       while(i != j){
+           while(arrs[j] >= pivot && j > i) j--;
+           while(arrs[i] <= pivot && i < j) i++;
+           if(i < j){
+               swaper(i,j,arrs);
+           }
+
+       }
+       arrs[start] = arrs[i];
+       arrs[i] = pivot;
+       quickSort(arrs,start,i-1);
+       quickSort(arrs,i+1,end);
+       return;
+    }
+
+    function swaper(i:number,j:number,arr:number[]) {
+        var temp:number = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 }
 
 // function demo1():number{
