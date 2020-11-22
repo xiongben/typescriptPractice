@@ -27,6 +27,7 @@ function TreeDemo(){
     // console.log(findPeakElementDemo())
     // searchDemo2()
     // generateDemo()
+    // letterDemo()
 
     return(
         <div>
@@ -34,6 +35,52 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode
+// function letterDemo() {
+//     var digits:string = "23";
+//     var res = letterCombinations2(digits);
+//     console.log(res);
+//
+//
+//     function letterCombinations2(digits: string): string[] {
+//         var mapArr:string[] = ["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"];
+//         var res:string[] = [];
+//         if(digits.length == 0) return res;
+//         res.push("");
+//         for(var i=0;i<digits.length;i++){
+//             var strArr:string[] = mapArr[parseInt(digits.charAt(i))].split("");
+//             while(res[0].length == i){
+//                 var tempStr:string = res.shift() as string;
+//                 for(var value of strArr){
+//                     res.push(tempStr+value);
+//                 }
+//             }
+//         }
+//         return res;
+//     };
+//
+//
+//     function letterCombinations(digits: string): string[] {
+//         var mapArr:string[] = ["","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"];
+//         var res:string[] = [];
+//         if(digits.length == 0) return res;
+//         helper(digits,res,"",0,mapArr);
+//         return res;
+//     };
+//
+//     function helper(digits: string,res:string[],str:string,num:number,mapArr:string[]) {
+//          if(num > digits.length) return;
+//          if(str.length == digits.length){
+//              res.push(str);
+//              return;
+//          }
+//          var strArr:string[] = mapArr[parseInt(digits.charAt(num))].split("");
+//          for(var i=0;i<strArr.length;i++){
+//             helper(digits,res,str+strArr[i],num+1,mapArr);
+//           }
+//     }
+// }
 
 
 // //leecode
