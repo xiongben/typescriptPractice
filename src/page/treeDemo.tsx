@@ -23,7 +23,11 @@ function TreeDemo(){
     // uniquePathsDemo()
 
     // uniquePathsDemo()
-    quickSortDemo()
+    // quickSortDemo()
+    // console.log(findPeakElementDemo())
+    // searchDemo2()
+    // generateDemo()
+
     return(
         <div>
             <h2>tree demo</h2>
@@ -32,38 +36,118 @@ function TreeDemo(){
 }
 
 
-function quickSortDemo(){
-    var arr1 = [45,32,11,2,67,12,49,90,17,19];
-    quickSort(arr1,0,arr1.length-1);
-    console.log(arr1);
+// //leecode
+// function generateDemo() {
+//
+//     generateParenthesis(3);
+//
+//     function generateParenthesis(n: number): string[] {
+//         var res:string[] = [];
+//         var str:string = "";
+//         helper(n,res,str,0,0);
+//         console.log(res);
+//         return res;
+//     };
+//
+//     function helper(n:number,res:string[],str:string,l_number:number,r_number:number) {
+//         if(str.length == n*2){
+//             res.push(str);
+//             return;
+//         }
+//         if(l_number < n){
+//             helper(n,res,str+"(",l_number+1,r_number);
+//         }
+//         if(r_number < l_number){
+//             helper(n,res,str+")",l_number,r_number+1);
+//         }
+//     }
+// }
 
-    function quickSort(arrs:number[],start:number,end:number) {
 
-        if(start > end) return;
-       var i:number = start;
-       var j:number = end;
-       var pivot:number = arrs[start];
-       while(i != j){
-           while(arrs[j] >= pivot && j > i) j--;
-           while(arrs[i] <= pivot && i < j) i++;
-           if(i < j){
-               swaper(i,j,arrs);
-           }
+// //leecode
+// function searchDemo2() {
+//     var matrix:number[][] = [
+//         [1,   4,  7, 11, 15],
+//         [2,   5,  8, 12, 19],
+//         [3,   6,  9, 16, 22],
+//         [10, 13, 14, 17, 24],
+//         [18, 21, 23, 26, 30]
+//     ];
+//
+//     console.log(searchMatrix(matrix,20));
+//
+//     function searchMatrix(matrix: number[][], target: number): boolean {
+//         if(matrix.length == 0 || matrix[0].length == 0) return false;
+//         var row:number = 0;
+//         var column:number = matrix[0].length-1;
+//         while(row <= matrix.length-1 && column >= 0){
+//             if(target == matrix[row][column]) return true;
+//             if(target > matrix[row][column]){
+//                 row++;
+//             }else{
+//                 column--;
+//             }
+//         }
+//         return false;
+//     };
+// }
 
-       }
-       arrs[start] = arrs[i];
-       arrs[i] = pivot;
-       quickSort(arrs,start,i-1);
-       quickSort(arrs,i+1,end);
-       return;
-    }
+// //leecode
+// function findPeakElementDemo(){
+//     var nums = [1,2,3,1];
+//
+//     return helper(nums,0,nums.length-1)
+//
+//     function helper(nums: number[],start:number,end:number){
+//
+//         while(start < end){
+//             var mid1:number = Math.floor((start+end)/2);
+//             var mid2:number = mid1+1;
+//             console.log(mid1,mid2)
+//             if(nums[mid1] < nums[mid2]){
+//                 start = mid2;
+//             }else{
+//                 end = mid1;
+//             }
+//         }
+//         return start;
+//     }
+//
+// }
 
-    function swaper(i:number,j:number,arr:number[]) {
-        var temp:number = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-}
+
+// function quickSortDemo(){
+//     var arr1 = [45,32,11,2,67,12,49,90,17,19];
+//     quickSort(arr1,0,arr1.length-1);
+//     console.log(arr1);
+//
+//     function quickSort(arrs:number[],start:number,end:number) {
+//
+//         if(start > end) return;
+//        var i:number = start;
+//        var j:number = end;
+//        var pivot:number = arrs[start];
+//        while(i != j){
+//            while(arrs[j] >= pivot && j > i) j--;
+//            while(arrs[i] <= pivot && i < j) i++;
+//            if(i < j){
+//                swaper(i,j,arrs);
+//            }
+//
+//        }
+//        arrs[start] = arrs[i];
+//        arrs[i] = pivot;
+//        quickSort(arrs,start,i-1);
+//        quickSort(arrs,i+1,end);
+//        return;
+//     }
+//
+//     function swaper(i:number,j:number,arr:number[]) {
+//         var temp:number = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//     }
+// }
 
 // function demo1():number{
 //     var num1 = 123456;
