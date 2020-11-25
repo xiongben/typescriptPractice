@@ -31,13 +31,29 @@ function TreeDemo(){
     // coinsDemo();
     // uniquePathDemo()
     // smallPathDemo1()
-
+    // getNumsDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode 96
+// function getNumsDemo(){
+//     console.log(numTrees(3));
+//     function numTrees(n: number): number {
+//         var resArr:number[] = new Array(n+1).fill(0);
+//         resArr[0] = 1;
+//         resArr[1] = 1;
+//         for(var i=2;i<=n;i++){
+//             for(var j=1;j<=i;j++){
+//                 resArr[i] += resArr[j-1]*resArr[i-j];
+//             }
+//         }
+//         return resArr[n];
+//     };
+// }
 
 // //leecode 64
 // function smallPathDemo1(){
