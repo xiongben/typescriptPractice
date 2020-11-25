@@ -20,7 +20,34 @@ class TreeNode {
     // printTree(root);
     //  let root: TreeNode | null =buildTree2(numArr);
      // printTree(root);
-     designDemo()
+     // designDemo()
+     // constructDemo()
+ }
+
+
+ //leecode
+ function constructDemo(){
+     var preorder = [3,9,20,15,7];
+     var inorder = [9,3,15,20,7] ;
+     var root = buildTree(preorder,inorder);
+     printTree(root);
+     function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+         var node = helper(0,0,inorder.length-1,preorder,inorder);
+         return node;
+     };
+     function helper(preStart:number,start:number,end:number,preorder: number[], inorder: number[]):TreeNode | null{
+         if(preStart > preorder.length-1 || start > end) return null;
+         var node:TreeNode = new TreeNode(preorder[preStart]);
+         var cur:number = 0;
+         for(var i = 0; i < inorder.length; i++){
+             if(inorder[i] == preorder[preStart]){
+                 cur = i;
+             }
+         }
+         node.left = helper(preStart+1,start,cur-1,preorder,inorder);
+         node.right = helper(preStart+cur-start+1,cur+1,end,preorder,inorder);
+         return node;
+     }
  }
 
  //leecode
@@ -50,7 +77,6 @@ class TreeNode {
                 sb = sb + "NN" + ",";
             }
         }
-        console.log(sb);
         return sb;
      };
 
@@ -76,7 +102,6 @@ class TreeNode {
              node.right = deserializeHelp(arrs);
              return node;
          }
-
      }
  }
 

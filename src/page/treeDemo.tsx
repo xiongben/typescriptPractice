@@ -28,6 +28,9 @@ function TreeDemo(){
     // searchDemo2()
     // generateDemo()
     // letterDemo()
+    // coinsDemo();
+    // uniquePathDemo()
+    // smallPathDemo1()
 
     return(
         <div>
@@ -35,6 +38,102 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode 64
+// function smallPathDemo1(){
+//     var grid = [[1,2,3],[4,5,6]];
+//     var res = minPathSum(grid);
+//     console.log(res);
+//     function minPathSum(grid: number[][]): number {
+//        var m:number = grid.length;
+//        var n:number = grid[0].length;
+//        for(var i=1;i<m;i++){
+//            grid[i][0] += grid[i-1][0];
+//        }
+//         for(var i=1;i<n;i++){
+//             grid[0][i] += grid[0][i-1];
+//         }
+//         for(var i=1;i<m;i++){
+//             for(var j=1;j<n;j++){
+//                 grid[i][j] += Math.min(grid[i-1][j],grid[i][j-1]);
+//             }
+//         }
+//         return grid[m-1][n-1];
+//     };
+// }
+
+
+// //leecode
+// function uniquePathDemo(){
+//     var obstacleGrid = [[0,0,0,0],[0,1,0,0],[0,0,0,0],[0,0,1,0],[0,0,0,0]]
+//     var res = uniquePathsWithObstacles2(obstacleGrid);
+//     console.log(res);
+//
+//     function uniquePathsWithObstacles2(obstacleGrid: number[][]): number {
+//         if(obstacleGrid.length == 0 ) return 0;
+//         var len:number = obstacleGrid[0].length;
+//         var tempArr:number[] = new Array(len).fill(0);
+//         tempArr[0] = 1;
+//         for(var item of obstacleGrid){
+//             for(var j=0;j<len;j++){
+//                 if(item[j] == 1){
+//                     tempArr[j] = 0;
+//                 }else if(j > 0){
+//                     tempArr[j] += tempArr[j-1];
+//                 }
+//             }
+//         }
+//         return tempArr[len-1];
+//     };
+//
+//     function uniquePathsWithObstacles(obstacleGrid: number[][]): number {
+//         if(obstacleGrid.length == 0 ) return 0;
+//         if(obstacleGrid[obstacleGrid.length-1][obstacleGrid[0].length-1] == 1) return 0;
+//         var res = helper(obstacleGrid,0,0);
+//         console.log(res)
+//         return res;
+//     };
+//
+//     function helper(obstacleGrid: number[][],i:number,j:number):number{
+//         if(i>obstacleGrid.length-1 || j>obstacleGrid[0].length-1 || i < 0 || j < 0) return 0;
+//         if(i == obstacleGrid.length-1 && j == obstacleGrid[0].length-1){
+//             return 1;
+//         }
+//         if(obstacleGrid[i][j] == 0){
+//             obstacleGrid[i][j] = 1;
+//             var l1 = helper(obstacleGrid,i+1,j);
+//             var l2 = helper(obstacleGrid,i,j+1);
+//             obstacleGrid[i][j] = 0;
+//             return l1+l2;
+//         }
+//         return 0;
+//     }
+// }
+
+// //leecode
+// function coinsDemo(){
+//     var coins = [186,419,83,408], amount = 6249;
+//     console.log(coinChange(coins,amount));
+//     function coinChange(coins: number[], amount: number): number {
+//         if(coins.length == 0) return -1;
+//         var memo:number[] = new Array(amount+1);
+//         memo[0] = 0;
+//         for(var i=1;i<=amount;i++){
+//             var min = Number.MAX_SAFE_INTEGER;
+//             for(var j=0;j<coins.length;j++){
+//                 if(i-coins[j] >= 0 && memo[i-coins[j]] < min){
+//                     min = memo[i-coins[j]] + 1;
+//                 }
+//             }
+//             memo[i] = min
+//         }
+//         return memo[amount] == Number.MAX_SAFE_INTEGER? -1:memo[amount];
+//     };
+//
+//
+// }
+
+
 
 // //leecode
 // function letterDemo() {
