@@ -32,12 +32,128 @@ function TreeDemo(){
     // uniquePathDemo()
     // smallPathDemo1()
     // getNumsDemo()
+    // addDemo1();
+    // evalDemo1()
+    // majorDemo()
+    // LongestIncreasingSubsequenceDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Longest Increasing Subsequence
+// function LongestIncreasingSubsequenceDemo(){
+//     var arr1 = [10,9,2,5,3,7,101,18];
+//
+//     console.log(lengthOfLIS2(arr1));
+//     function lengthOfLIS1(nums: number[]): number {
+//         var tempArr:number[] = new Array(nums.length).fill(1);
+//         for(var i=0;i<nums.length;i++){
+//             for(var j=0;j<i;j++){
+//                 if(nums[j] < nums[i]){
+//                     tempArr[i] = Math.max(tempArr[i],tempArr[j]+1);
+//                 }
+//             }
+//         }
+//
+//         tempArr.sort((a,b)=>a-b);
+//         // console.log(tempArr);
+//         return tempArr[nums.length-1];
+//     };
+//
+//     function lengthOfLIS2(nums: number[]): number {
+//         var resArr:number[] = [];
+//         var count:number = 0;
+//         for(var num of nums){
+//             var i = 0;
+//             var j = count;
+//             while(i < j){
+//                 var m = Math.floor((i+j)/2);
+//                 if(resArr[m] < num){
+//                     i = m + 1;
+//                 }else{
+//                     j = m;
+//                 }
+//             }
+//             resArr[i] = num;
+//             if(j === count) count++;
+//         }
+//         return count;
+//     };
+// }
+
+// //leecode: Majority Element
+// function majorDemo(){
+//     var arr1 = [2,2,1,1,1,2,2];
+//     console.log(majorityElement(arr1));
+//
+//     function majorityElement(nums: number[]): number {
+//         var temp:number = nums[0];
+//         var count:number = 1;
+//         for(var i = 1; i < nums.length; i++){
+//             if(nums[i] === temp){
+//                 count++;
+//             }else if(count === 0){
+//                 temp = nums[i];
+//                 count++;
+//             }else{
+//                 count--;
+//             }
+//         }
+//         return temp;
+//     };
+// }
+
+// //leecode: Evaluate Reverse Polish Notation
+// function evalDemo1(){
+//     var arr1 = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"];
+//     evalRPN(arr1);
+//
+//     function evalRPN(tokens: string[]): number {
+//         var stockArr:string[] = [];
+//         var a,b:number;
+//         for(var v of tokens){
+//             if(v === "+"){
+//                 a = parseInt(stockArr.shift() as string);
+//                 b = parseInt(stockArr.shift() as string);
+//                 stockArr.unshift(String(a+b));
+//             }else if(v === "-"){
+//                 a = parseInt(stockArr.shift() as string);
+//                 b = parseInt(stockArr.shift() as string);
+//                 stockArr.unshift(String(b-a));
+//             }else if(v === "*"){
+//                 a = parseInt(stockArr.shift() as string);
+//                 b = parseInt(stockArr.shift() as string);
+//                 stockArr.unshift(String(b*a));
+//             }else if(v === "/"){
+//                 a = parseInt(stockArr.shift() as string);
+//                 b = parseInt(stockArr.shift() as string);
+//                 stockArr.unshift(String(b/a));
+//             }else{
+//                 stockArr.unshift(v);
+//             }
+//         }
+//         console.log(stockArr);
+//         return parseInt(stockArr[0]);
+//     };
+// }
+
+// //leecode
+// function addDemo1(){
+//     console.log(getSum(-2,9));
+//     function getSum(a: number, b: number): number {
+//         var c:number;
+//         while (b != 0){
+//             c = (a&b);
+//             a = a^b;
+//             b= (c)<<1;
+//         }
+//         return a;
+//     };
+// }
+
 
 // //leecode 96
 // function getNumsDemo(){
