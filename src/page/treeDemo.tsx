@@ -36,12 +36,34 @@ function TreeDemo(){
     // evalDemo1()
     // majorDemo()
     // LongestIncreasingSubsequenceDemo()
+    // gasDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode: Gas Station
+// function gasDemo(){
+//     var gas  = [3,3,4]
+//     var cost = [3,4,4]
+//     console.log(canCompleteCircuit(gas,cost));
+//     function canCompleteCircuit(gas: number[], cost: number[]): number {
+//         var minSpare = Number.MAX_SAFE_INTEGER;
+//         var spare = 0;
+//         var index = 0;
+//         for(var i = 0; i < gas.length; i++){
+//             spare += (gas[i]-cost[i]);
+//             if(spare < minSpare){
+//                 minSpare = spare;
+//                 index = i;
+//             }
+//         }
+//         console.log(spare,index)
+//         return spare < 0? -1: (index+1)%gas.length
+//     };
+// }
 
 // //leecode:Longest Increasing Subsequence
 // function LongestIncreasingSubsequenceDemo(){
