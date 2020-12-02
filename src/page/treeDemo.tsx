@@ -37,12 +37,103 @@ function TreeDemo(){
     // majorDemo()
     // LongestIncreasingSubsequenceDemo()
     // gasDemo()
+    // powDemo()
+    // sqrtDemo()
+    // setZeroDemo()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Set Matrix Zeroes
+// function setZeroDemo(){
+//     var matrix = [[1,1,1],[1,0,1],[1,1,1]];
+//     setZeroes(matrix);
+//     console.log(matrix);
+//
+//     function setZeroes(matrix: number[][]): void {
+//         var firstRowHaveZero = false;
+//         var firstColumnHaveZero = false;
+//         var rowLength = matrix.length;
+//         var columnLength = matrix[0].length;
+//
+//         for(var i = 0; i < rowLength; i++){
+//             if(matrix[i][0] === 0){
+//                 firstColumnHaveZero = true;
+//             }
+//         }
+//
+//         for(var i = 0; i < columnLength; i++){
+//             if(matrix[0][i] === 0){
+//                 firstRowHaveZero = true;
+//             }
+//         }
+//
+//         for(var i = 1; i < rowLength; i++){
+//            for(var j = 1; j < columnLength; j++){
+//                if(matrix[i][j] === 0){
+//                    matrix[i][0] = 0;
+//                    matrix[0][j] = 0;
+//                }
+//            }
+//         }
+//
+//         for(var i = 1; i < rowLength; i++){
+//             for(var j = 1; j < columnLength; j++){
+//                 if(matrix[i][0] === 0 || matrix[0][j] === 0){
+//                     matrix[i][j] = 0;
+//                 }
+//             }
+//         }
+//
+//         if(firstColumnHaveZero){
+//             for(var i = 0; i < rowLength; i++){
+//                 matrix[i][0] = 0;
+//             }
+//         }
+//
+//         if(firstRowHaveZero){
+//             for(var i = 0; i < columnLength; i++){
+//                 matrix[0][i] = 0;
+//             }
+//         }
+//     };
+// }
+
+
+
+// //leecode:Sqrt(x)
+// function sqrtDemo(){
+//     console.log(mySqrt(8));
+//     function mySqrt(x: number): number {
+//         var start:number = 0
+//         var end:number = Math.floor(x/2)+1;
+//         while(start < end){
+//             var mid = start + Math.floor((end-start+1)/2);
+//             if(mid*mid > x){
+//                 end = mid -1;
+//             }else{
+//                 start = mid;
+//             }
+//         }
+//         return start;
+//     };
+// }
+
+// //leecode:Pow(x, n)
+// function powDemo(){
+//     console.log(myPow(2.00000,10));
+//     function myPow(x: number, n: number): number {
+//         if(n === 0 ) return 1;
+//         if(n < 0){
+//             n = -n;
+//             x = 1/x;
+//         }
+//         return n%2 === 0?myPow(x*x,Math.floor(n/2)):x*myPow(x*x,Math.floor(n/2));
+//     };
+// }
 
 // //leecode: Gas Station
 // function gasDemo(){
