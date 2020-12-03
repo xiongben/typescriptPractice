@@ -40,12 +40,90 @@ function TreeDemo(){
     // powDemo()
     // sqrtDemo()
     // setZeroDemo()
+    // jumpdemo2()
+    // getRandomDemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Insert Delete GetRandom O(1)
+// function getRandomDemo1(){
+//     class RandomizedSet {
+//         list:number[];
+//         map:any;
+//         constructor() {
+//            this.list = [];
+//            this.map = {};
+//         }
+//
+//         insert(val: number): boolean {
+//            if(this.map.hasOwnProperty(val)) return false;
+//            this.map[val] = this.list.length;
+//            this.list.push(val);
+//            return true;
+//         }
+//
+//         remove(val: number): boolean {
+//            if(!this.map.hasOwnProperty(val)) return false;
+//            var lastElement:number = this.list[this.list.length-1];
+//            var idx:number = this.map[val];
+//            this.list[idx] = lastElement;
+//            this.list.slice(this.list.length-1,1);
+//            delete this.map[val];
+//            return true;
+//         }
+//
+//         getRandom(): number {
+//             var randomIndex:number = Math.floor(Math.floor(this.list.length-1) * Math.random())
+//             return this.list[randomIndex];
+//         }
+//     }
+//
+//     var obj = new RandomizedSet();
+//
+//     var param1 = obj.insert(1);
+//     var param3 = obj.insert(2);
+//     var param2 = obj.remove(2);
+//     var param4 = obj.getRandom();
+//     console.log(param1,param2,param4);
+// }
+
+// //leecode:jump game 2
+// function jumpdemo2(){
+//     var nums = [2,3,1,1,4];
+//     console.log(jump2(nums));
+//     function jump(nums: number[]): number {
+//         var end:number = 0;
+//         var maxPosition:number = 0;
+//         var resCount:number = 0;
+//         for(var  i = 0; i < nums.length-1; i++){
+//             maxPosition = Math.max(maxPosition, i + nums[i]);
+//             if(i === end){
+//                 end = maxPosition;
+//                 resCount++;
+//             }
+//         }
+//         return resCount;
+//     };
+//
+//     function jump2(nums: number[]): number {
+//         var position:number = nums.length - 1;
+//         var resCount:number = 0;
+//         while(position > 0){
+//             for(var i = 0; i < position; i++){
+//                 if((nums[i] + i) >= position){
+//                     position = i;
+//                     resCount++;
+//                     break;
+//                 }
+//             }
+//         }
+//         return resCount;
+//     };
+// }
 
 // //leecode:Set Matrix Zeroes
 // function setZeroDemo(){
