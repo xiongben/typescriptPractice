@@ -58,27 +58,26 @@ class TreeNode {
      let rootres: TreeNode | null =deserialize(str);
      console.log(rootres)
      printTree(rootres)
-     var res2 = inOrderFn(root);
-     console.log(res2)
+     // var res2 = inOrderFn(root);
+     // console.log(res2)
      /*
      * Encodes a tree to a single string.
      */
      function serialize(root: TreeNode | null) {
-        var sb:string = "";
-        var nodeArr = [];
-        nodeArr.push(root);
-        while (nodeArr.length > 0){
-            var node = nodeArr.shift();
-            if(node){
-                sb = sb + String(node.val) + ",";
-                nodeArr.push(node.left);
-                nodeArr.push(node.right);
-            }else{
-                sb = sb + "NN" + ",";
-            }
-        }
-        return sb;
+          var str:string = "";
+          return serializeHelp(root,str);
      };
+
+     function serializeHelp(root: TreeNode | null, str: string):string{
+         if(root === null){
+             str += "None,";
+         }else{
+             str += (root.val + ",");
+             str = serializeHelp(root.left, str);
+             str = serializeHelp(root.right,str);
+         }
+         return str;
+     }
 
 
 
@@ -86,22 +85,20 @@ class TreeNode {
       * Decodes your encoded data to tree.
       */
      function deserialize(data: string): TreeNode | null {
-         var arrs:string[] = [];
-         arrs = data.split(",");
-         return deserializeHelp(arrs);
+        var strArr:string[] = data.split(",");
+        return deserializeHelp(strArr);
      };
 
-     function deserializeHelp(arrs: string[]){
-         if(arrs.length == 0) return null;
-         var str:string = arrs.shift() as any;
-         if(str == "NN") {
-             return null;
-         }else {
-             var node:TreeNode = new TreeNode(parseInt(str));
-             node.left = deserializeHelp(arrs);
-             node.right = deserializeHelp(arrs);
-             return node;
-         }
+     function deserializeHelp(arrs: string[]):TreeNode | null{
+        if(arrs[0] === "None"){
+            arrs.shift();
+            return null;
+        }
+        var root: TreeNode = new TreeNode(parseInt(arrs[0]));
+        arrs.shift();
+        root.left = deserializeHelp(arrs);
+        root.right = deserializeHelp(arrs);
+        return root;
      }
  }
 
