@@ -42,12 +42,115 @@ function TreeDemo(){
     // setZeroDemo()
     // jumpdemo2()
     // getRandomDemo1()
+    // productDemo1()
+    // spiralDemo1()
+    // fourSumDemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:4Sum II
+// function fourSumDemo1() {
+//     var A = [ 1, 2],
+//     B = [-2,-1],
+//     C = [-1, 2],
+//     D = [ 0, 2];
+//     console.log(fourSumCount(A,B,C,D));
+//
+//     function fourSumCount(A: number[], B: number[], C: number[], D: number[]): number {
+//         var numMap:any = {};
+//         var res:number = 0;
+//         for(var i = 0; i < C.length; i++){
+//             for(var j = 0; j < D.length; j++){
+//                 var temp:number = C[i] + D[j];
+//                 if(numMap.hasOwnProperty(temp)){
+//                     numMap[temp]++;
+//                 }else{
+//                     numMap[temp] = 1;
+//                 }
+//             }
+//         }
+//
+//         for(var i = 0; i < A.length; i++){
+//             for(var j = 0; j < B.length; j++){
+//                 var temp2:number = -(A[i] + B[j]);
+//                 if(numMap.hasOwnProperty(temp2)){
+//                     res += numMap[temp2];
+//                 }
+//             }
+//         }
+//         return res;
+//     };
+// }
+
+// //leecode:Spiral Matrix
+// function spiralDemo1() {
+//     var matrix = [[1,2,3],[4,5,6],[7,8,9]];
+//     spiralOrder(matrix);
+//
+//     function spiralOrder(matrix: number[][]): number[] {
+//         var resArr:number[] = [];
+//         if(matrix.length < 1 ) return resArr;
+//         var top:number = 0;
+//         var left:number = 0;
+//         var bottom:number = matrix.length-1;
+//         var right:number = matrix[0].length-1;
+//         var totalNum:number = matrix.length * matrix[0].length;
+//         while (totalNum > 0){
+//             for(var i = left; i <= right && top<=bottom; i++){
+//                 resArr.push(matrix[top][i]);
+//                 totalNum--;
+//             }
+//             top++;
+//
+//             for(var i = top; i <= bottom && left<=right; i++){
+//                 resArr.push(matrix[i][right]);
+//                 totalNum--;
+//             }
+//             right--;
+//
+//             for(var i = right; i >= left && top<=bottom; i--){
+//                 resArr.push(matrix[bottom][i]);
+//                 totalNum--;
+//             }
+//             bottom--;
+//
+//             for(var i = bottom; i >= top && left<=right; i--){
+//                 resArr.push(matrix[i][left]);
+//                 totalNum--;
+//             }
+//             left++;
+//         }
+//         // console.log(resArr);
+//         return resArr;
+//
+//     };
+// }
+
+// //leecode:Product of Array Except Self
+// function productDemo1() {
+//     var arr1 = [1,2,3,4];
+//     console.log(productExceptSelf(arr1))
+//
+//     function productExceptSelf(nums: number[]): number[] {
+//         var resArr:number[] = [];
+//         var leftArr:number[] = [];
+//         leftArr[0] = 1;
+//         for(var i = 1; i < nums.length; i++){
+//             leftArr[i] = leftArr[i-1] * nums[i-1];
+//         }
+//         var rightTotal:number = 1;
+//         for(var i = nums.length-1; i >= 0; i--){
+//             resArr[i] = leftArr[i]*rightTotal;
+//             rightTotal *= nums[i];
+//         }
+//         return resArr;
+//     };
+//
+// }
 
 // //leecode:Insert Delete GetRandom O(1)
 // function getRandomDemo1(){
