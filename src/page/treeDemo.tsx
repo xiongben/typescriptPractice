@@ -45,12 +45,83 @@ function TreeDemo(){
     // productDemo1()
     // spiralDemo1()
     // fourSumDemo1()
+    // waterDemo1()
+    // firstMissionDemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:First Missing Positive
+// function firstMissionDemo1() {
+//     var nums = [7,8,9,11,12];
+//     console.log(firstMissingPositive2(nums));
+//
+//     function firstMissingPositive(nums: number[]): number {
+//         var n:number = nums.length;
+//         for(var i = 0; i < n; i++){
+//             while(nums[i] > 0 && nums[i] <= n && nums[i] !== nums[nums[i]-1]){
+//                 var temp:number = nums[i];
+//                 nums[i] = nums[nums[i]-1];
+//                 nums[nums[i]-1] = temp;
+//             }
+//         }
+//         for(var i = 0; i < n; i++){
+//             if(nums[i] !== i+1){
+//                 return i+1;
+//             }
+//         }
+//         return n + 1;
+//     };
+//
+//     function firstMissingPositive2(nums: number[]): number {
+//         if(nums === null || nums.length === 0) return 0;
+//         var n:number = nums.length;
+//         for(var i = 0; i < n; i++){
+//             if(nums[i] <= 0){
+//                 nums[i] = n + 1;
+//             }
+//         }
+//         for(var i = 0; i < n; i++){
+//             var temp:number = Math.abs(nums[i]);
+//             if(temp <= n){
+//                 nums[temp-1] = -Math.abs(nums[temp-1])
+//             }
+//         }
+//         for(var i = 0; i < n; i++){
+//             if(nums[i] > 0){
+//                 return i+1;
+//             }
+//         }
+//         return n + 1;
+//     };
+//
+// }
+
+// //leecode:  Container With Most Water
+//
+// function waterDemo1() {
+//     var height = [1,8,6,2,5,4,8,3,7];
+//     console.log(maxArea(height));
+//
+//     function maxArea(height: number[]): number {
+//         var res:number = 0;
+//         var left:number = 0;
+//         var right:number = height.length - 1;
+//         while(left < right){
+//             var temp = Math.min(height[left],height[right]) * (right - left);
+//             res = Math.max(res,temp);
+//             if(height[left] < height[right]){
+//                 left++;
+//             }else{
+//                 right--;
+//             }
+//         }
+//         return res;
+//     };
+// }
 
 // //leecode:4Sum II
 // function fourSumDemo1() {
