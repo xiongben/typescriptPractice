@@ -47,12 +47,47 @@ function TreeDemo(){
     // fourSumDemo1()
     // waterDemo1()
     // firstMissionDemo1()
+    // rotateImage()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Rotate Image
+// function rotateImage(){
+//     var matrix = [[1,2,3],[4,5,6],[7,8,9]]
+//     rotate(matrix);
+//     console.log(matrix);
+//     function rotate(matrix: number[][]): void {
+//         if(matrix == null || matrix.length < 1) return;
+//         for(var i = 0; i < Math.floor(matrix.length/2); i++){
+//             var temp:number[] = matrix[i];
+//             matrix[i] = matrix[matrix.length-1-i];
+//             matrix[matrix.length-1-i] = temp;
+//         }
+//         for(var i = 0; i < matrix.length; i++){
+//            for(var j = 0; j < i; j++){
+//                var tempNum:number = matrix[i][j];
+//                matrix[i][j] = matrix[j][i];
+//                matrix[j][i] = tempNum;
+//            }
+//         }
+//     };
+// }
+
+// //leecode: Longest Consecutive Sequence
+// function longestSeq1(){
+//     var nums = [0,3,7,2,5,8,4,6,0,1];
+//
+//     console.log(longestConsecutive(nums));
+//
+//     function longestConsecutive(nums: number[]): number {
+//
+//     };
+//
+// }
 
 // //leecode:First Missing Positive
 // function firstMissionDemo1() {
