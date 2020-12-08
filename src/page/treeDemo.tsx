@@ -48,12 +48,126 @@ function TreeDemo(){
     // waterDemo1()
     // firstMissionDemo1()
     // rotateImage()
+   // sudoDemo1()
+   //  rotateArrayDemo()
+   //  plusOneDemo()
+   //  interDemo1()
+
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Intersection of Two Arrays II
+// function interDemo1(){
+//     var nums1 = [4,9,5], nums2 = [9,4,9,8,4];
+//
+//     console.log(intersect(nums1,nums2));
+//
+//     function intersect(nums1: number[], nums2: number[]): number[] {
+//         if(nums1.length > nums2.length){
+//             intersect(nums2, nums1);
+//         }
+//         var resArr:number[] = [];
+//         var numMap:any = {};
+//         for(var v of nums1){
+//             if(numMap.hasOwnProperty(v)){
+//                 numMap[v]++;
+//             }else{
+//                 numMap[v] = 1;
+//             }
+//         }
+//         for(var v of nums2){
+//             if(numMap.hasOwnProperty(v) && numMap[v] > 0){
+//                 resArr.push(v);
+//                 numMap[v]--;
+//             }
+//         }
+//         return resArr
+//     };
+//
+// }
+
+// //leecode: plus one
+// function plusOneDemo(){
+//     var digits = [9,9,9,9,9];
+//     console.log(plusOne(digits));
+//
+//     function plusOne(digits: number[]): number[] {
+//         for(var i = digits.length-1; i >= 0; i--){
+//             if(digits[i] < 9){
+//                 digits[i]++;
+//                 return digits;
+//             }
+//             digits[i] = 0;
+//         }
+//         if(digits[0] === 0){
+//             digits.unshift(1);
+//         }
+//         return digits
+//     };
+// }
+
+// //leecode:Rotate Array
+// function rotateArrayDemo(){
+//     var nums = [1,2,3,4,5,6,7];
+//     rotate(nums,3);
+//     console.log(nums);
+//     function rotate(nums: number[], k: number): void {
+//         k = k % nums.length;
+//        reverse(nums,0,nums.length-1);
+//        reverse(nums,0,k-1);
+//        reverse(nums,k,nums.length-1);
+//     };
+//
+//     function reverse(arr:number[],start:number,end:number){
+//         var temp:number = 0;
+//         while(start < end){
+//             temp = arr[start];
+//             arr[start] = arr[end];
+//             arr[end] = temp;
+//             start++
+//             end--
+//         }
+//     }
+// }
+
+// //leecode: Valid Sudoku
+// function sudoDemo1(){
+//     var board =
+//             [["8","3",".",".","7",".",".",".","."]
+//             ,["6",".",".","1","9","5",".",".","."]
+//             ,[".","9","8",".",".",".",".","6","."]
+//             ,["8",".",".",".","6",".",".",".","3"]
+//             ,["4",".",".","8",".","3",".",".","1"]
+//             ,["7",".",".",".","2",".",".",".","6"]
+//             ,[".","6",".",".",".",".","2","8","."]
+//             ,[".",".",".","4","1","9",".",".","5"]
+//             ,[".",".",".",".","8",".",".","7","9"]]
+//     console.log(isValidSudoku(board));
+//     function isValidSudoku(board: string[][]): boolean {
+//          var tempSet = new Set();
+//          for(var i = 0; i < 9; i++){
+//              for(var j = 0; j < 9; j++){
+//                  if(board[i][j] !== "."){
+//                      var tempStr = "(" + board[i][j] + ")";
+//                      if(tempSet.has(i+tempStr) ||
+//                          tempSet.has(tempStr+j) ||
+//                          tempSet.has(Math.floor(i/3) + tempStr + Math.floor(j/3))){
+//                          return false;
+//                      }else{
+//                          tempSet.add(i+tempStr)
+//                          tempSet.add(tempStr+j)
+//                          tempSet.add(Math.floor(i/3) + tempStr + Math.floor(j/3))
+//                      }
+//                  }
+//              }
+//          }
+//          return true;
+//     };
+// }
 
 // //leecode:Rotate Image
 // function rotateImage(){
