@@ -52,6 +52,8 @@ function TreeDemo(){
    //  rotateArrayDemo()
    //  plusOneDemo()
    //  interDemo1()
+   //  strDemo2()
+   // validPalindromeDemo()
 
     return(
         <div>
@@ -59,6 +61,54 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Valid Palindrome
+// function validPalindromeDemo(){
+//     var str:string = "A man, a plan, a canal: Panama";
+//     console.log(isPalindrome(str));
+//
+//     function isPalindrome(s: string): boolean {
+//        var start:number = 0;
+//        var end:number = s.length - 1;
+//         var reg = /[a-zA-Z0-9]/;
+//        while (start < end){
+//            while(!reg.test(s.charAt(start))){
+//                start++;
+//            }
+//            while(!reg.test(s.charAt(end))){
+//                end--;
+//            }
+//            if(s.charAt(start).toLocaleLowerCase() != s.charAt(end).toLocaleLowerCase()){
+//                return false;
+//            }else{
+//                start++;
+//                end--;
+//            }
+//        }
+//        return true;
+//     };
+// }
+
+// //leecode:First Unique Character in a String
+// function strDemo2(){
+//     var s = "loveleetcode";
+//     console.log(firstUniqChar(s));
+//
+//     function firstUniqChar(s: string): number {
+//        var alpaArr:number[] = new Array(26).fill(0);
+//        for(var i = 0; i < s.length; i++){
+//            var temp:number = s.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+//            alpaArr[temp]++;
+//        }
+//         for(var i = 0; i < s.length; i++){
+//             var temp2:number = s.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+//             if(alpaArr[temp2] === 1){
+//                 return i;
+//             }
+//         }
+//         return -1;
+//     };
+// }
 
 // //leecode:Intersection of Two Arrays II
 // function interDemo1(){
