@@ -64,6 +64,42 @@ function TreeDemo(){
     )
 }
 
+// //leecode:Shuffle an Array
+// function shuffleArrayDemo(){
+//
+//
+//     class Solution {
+//         nums:number[];
+//         original: number[];
+//         constructor(nums: number[]) {
+//            this.nums = nums;
+//            this.original = nums;
+//         }
+//
+//         reset(): number[] {
+//             return this.original;
+//         }
+//
+//         shuffle(): number[] {
+//              for(var i = 0; i < this.nums.length; i++){
+//                  this.swap(i,this.randRang(i,this.nums.length));
+//              }
+//              return this.nums;
+//         }
+//
+//         swap(i:number,j:number):void{
+//             var temp:number = this.nums[i];
+//             this.nums[i] = this.nums[j];
+//             this.nums[j] = temp;
+//         }
+//
+//         randRang(min:number,max:number):number{
+//             var temp:number = Math.floor((max-min)*Math.random()) + min;
+//             return temp;
+//         }
+//     }
+// }
+
 // //leecode:Best Time to Buy and Sell Stock
 // function stockDemo(){
 //     var arr = [7,1,5,3,6,4];
