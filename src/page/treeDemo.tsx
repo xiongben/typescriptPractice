@@ -54,6 +54,8 @@ function TreeDemo(){
    //  interDemo1()
    //  strDemo2()
    // validPalindromeDemo()
+   //  countsayDemo()
+   //  maxsubDemo1()
 
     return(
         <div>
@@ -61,6 +63,68 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Best Time to Buy and Sell Stock
+// function stockDemo(){
+//     var arr = [7,1,5,3,6,4];
+//
+//     function maxProfit(prices: number[]): number {
+//         var res:number = 0;
+//         var maxProfit:number = 0;
+//         for(var i = 1; i < prices.length; i++){
+//             maxProfit = Math.max(0,maxProfit += prices[i]-prices[i-1])
+//             res = Math.max(res,maxProfit);
+//         }
+//         return res;
+//     };
+// }
+
+// //leecode:Maximum Subarray
+// function maxsubDemo1(){
+//     var nums = [-2,1,-3,4,-1,2,1,-5,4];
+//     maxSubArray(nums);
+//
+//     function maxSubArray(nums: number[]): number {
+//         if(nums.length === 0) return 0;
+//         if(nums.length === 1) return nums[0];
+//         var len = nums.length;
+//         var tempArr:number[] = new Array(len).fill(0);
+//         tempArr[0] = nums[0];
+//         var maxNum:number = nums[0];
+//         for (var i = 1; i < len; i++){
+//             tempArr[i] = Math.max(tempArr[i-1] + nums[i],nums[i]);
+//             maxNum = Math.max(maxNum,tempArr[i]);
+//         }
+//         return maxNum;
+//     };
+// }
+
+// //leecode:Count and Say
+// function countsayDemo(){
+//     var n = 4;
+//     console.log(countAndSay(n));
+//
+//     function countAndSay(n: number): string {
+//         var res:string = "1";
+//         var pre:string = "1";
+//         for (var i = 1; i < n; i++){
+//             pre = res;
+//             res = "";
+//             var start:number = 0;
+//             var end:number = 0;
+//             while (end < pre.length){
+//                 while (pre.charAt(start) === pre.charAt(end) && end < pre.length){
+//                     end++
+//                 }
+//                 res += (String(end-start)+pre.charAt(start));
+//                 start = end;
+//             }
+//         }
+//         return res;
+//     };
+//
+// }
+
 
 // //leecode:Valid Palindrome
 // function validPalindromeDemo(){

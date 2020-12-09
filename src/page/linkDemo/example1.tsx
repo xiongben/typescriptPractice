@@ -13,11 +13,34 @@ import React from "react";
 
   function testDemo() {
      let node4 = new ListNode(1,null);
-      let node3 = new ListNode(2,node4);
-     let node2 = new ListNode(2,node3);
-     let node1 = new ListNode(1,node2);
-     var res = isPalindrome(node1);
+     //  let node3 = new ListNode(2,node4);
+     // let node2 = new ListNode(2,node3);
+     // let node1 = new ListNode(1,node2);
+     // var res = isPalindrome(node1);
+
+      // console.log(removeNthFromEnd(node4,1));
   }
+
+
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+      var start:any = head;
+      var end:any = head;
+      var dummy = new ListNode(-1);
+      dummy.next = head;
+      var pre:any = dummy;
+
+    for(var i = 0; i < n; i++){
+        end = end.next;
+    }
+    while (end != null){
+        pre = pre.next;
+        start = (start as ListNode).next;
+        end = end.next;
+    }
+    pre.next = start.next;
+    return dummy.next;
+};
+
 
 
 function isPalindrome(head: ListNode | null): boolean {

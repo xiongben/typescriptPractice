@@ -3,7 +3,7 @@ import React,{useEffect} from "react";
 
 function GrapDemo(){
     useEffect(()=>{
-        grapTestDemo1();
+        // grapTestDemo1();
     },[])
 
     return(

@@ -7,7 +7,7 @@ import Example3 from "./page/example3/example3";
 // import Example4 from "./page/example4";
 // import Example5 from "./page/example5";
 import TreeDemo from "./page/treeDemo";
-import GrapDemo from "./page/grapDemo/grapDemo1";
+// import GrapDemo from "./page/grapDemo/grapDemo1";
 import "./../src/page/exampleMode/index";
 import "./page/linkDemo/example1";
 import "./page/treeDemo/example";
@@ -22,7 +22,7 @@ function App() {
         {/*<Example4></Example4>*/}
         {/*<Example5></Example5>*/}
         <TreeDemo></TreeDemo>
-        <GrapDemo/>
+        {/*<GrapDemo/>*/}
     </div>
   );
 }
