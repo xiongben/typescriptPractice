@@ -56,6 +56,8 @@ function TreeDemo(){
    // validPalindromeDemo()
    //  countsayDemo()
    //  maxsubDemo1()
+   //  hammingDemo1()
+
 
     return(
         <div>
@@ -63,6 +65,56 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Reverse Bits
+// function reverseBitDemo(){
+//     var n = 5;
+//
+//     console.log(reverseBits(n));
+//
+//     function reverseBits(n: number): number {
+//         var res:number = 0;
+//         var point:number = 31;
+//         while (n != 0){
+//             res += (n&1) << point;
+//             point--;
+//             n = n >> 1;
+//         }
+//         return res;
+//     };
+// }
+
+// //leecode:Number of 1 Bits
+// function bitsDemo(){
+//     var n = 5;
+//     hammingWeight(5);
+//     function hammingWeight(n: number): number {
+//        var res:number = 0;
+//        while (n != 0){
+//            res += n&1;
+//            n = n >>> 1;
+//        }
+//        return res
+//     };
+// }
+
+// //leecode: Hamming Distance
+// function hammingDemo1(){
+//     var x=1,y=4;
+//     hammingDistance(x,y);
+//
+//     function hammingDistance(x: number, y: number): number {
+//         var temp = x ^ y;
+//         var res:number = 0;
+//         while (temp != 0){
+//             if(temp & 1){
+//                 res++
+//             }
+//             temp = temp >> 1;
+//         }
+//         return res;
+//     };
+// }
 
 // //leecode:Shuffle an Array
 // function shuffleArrayDemo(){
