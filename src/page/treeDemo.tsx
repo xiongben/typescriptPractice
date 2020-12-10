@@ -57,7 +57,7 @@ function TreeDemo(){
    //  countsayDemo()
    //  maxsubDemo1()
    //  hammingDemo1()
-
+   // pasDemo1()
 
     return(
         <div>
@@ -65,6 +65,25 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Pascal's Triangle
+// function  pasDemo1(){
+//     var n:number = 5
+//     console.log(generate(n));
+//
+//     function generate(numRows: number): number[][] {
+//         var res:number[][] = [];
+//         var temp:number[] = []
+//         for(var i = 0; i < numRows; i++){
+//             temp.unshift(1);
+//             for(var j = 1; j < temp.length-1; j++){
+//                 temp[j] = temp[j] + temp[j+1];
+//             }
+//             res.push([...temp]);
+//         }
+//         return res;
+//     };
+// }
 
 // //leecode:Reverse Bits
 // function reverseBitDemo(){
