@@ -58,6 +58,7 @@ function TreeDemo(){
    //  maxsubDemo1()
    //  hammingDemo1()
    // pasDemo1()
+   //  validParenthessDemo()
 
     return(
         <div>
@@ -65,6 +66,28 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode：Valid Parentheses
+// function validParenthessDemo() {
+//     var s = "()[]{}(";
+//     console.log(isValid(s))
+//     function isValid(s: string): boolean {
+//         var stack1:string[] = [];
+//         for(var i = 0; i < s.length; i++){
+//             console.log(stack1)
+//             if(s.charAt(i) === "("){
+//                 stack1.push(")")
+//             }else if(s.charAt(i) === "["){
+//                 stack1.push("]")
+//             }else if(s.charAt(i) === "{"){
+//                 stack1.push("}")
+//             }else if(stack1.length === 0 || stack1.pop() !== s.charAt(i)){
+//                 return false;
+//             }
+//         }
+//         return stack1.length === 0;
+//     };
+// }
 
 // //leecode:Pascal's Triangle
 // function  pasDemo1(){
@@ -231,6 +254,7 @@ function TreeDemo(){
 //     };
 //
 // }
+
 
 
 // //leecode:Valid Palindrome
