@@ -22,7 +22,50 @@ class TreeNode {
      // printTree(root);
      // designDemo()
      // constructDemo()
+     //  smallestDemo1()
  }
+
+ //leecode:Smallest Subtree with all the Deepest Nodes
+function smallestDemo1() {
+      var arr1 = [0,1,null,3,2];
+    let root: TreeNode | null =buildTree2(arr1);
+
+    // printTree(root);
+    console.log(subtreeWithAllDeepest(root))
+
+
+
+    function subtreeWithAllDeepest(root: TreeNode | null): TreeNode | null {
+        var depthMap:any = {};
+        return sub(root);
+        function sub(root: TreeNode | null): TreeNode | null{
+            if(root === null) return null;
+            var ld = getDepth(root.left);
+            var rd = getDepth(root.right);
+            if(ld == rd){
+                return root;
+            }else if(ld > rd){
+                return subtreeWithAllDeepest(root.left);
+            }else{
+                return subtreeWithAllDeepest(root.right);
+            }
+        }
+
+        function getDepth(root:TreeNode | null) {
+            if(root === null){
+                return 0;
+            }
+            if(depthMap.hasOwnProperty(root.val)){
+                return depthMap[root.val]
+            }
+            var ld = getDepth(root.left);
+            var rd = getDepth(root.right);
+            depthMap[root.val] = Math.max(ld,rd)+1;
+            return depthMap[root.val];
+        }
+
+    };
+}
 
 
  //leecode

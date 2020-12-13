@@ -59,6 +59,7 @@ function TreeDemo(){
    //  hammingDemo1()
    // pasDemo1()
    //  validParenthessDemo()
+   //  missNumberDemo()
 
     return(
         <div>
@@ -66,6 +67,19 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Missing Number
+// function missNumberDemo() {
+//     var arr1 = [9,6,4,2,3,5,7,0,1]
+//     console.log(missingNumber(arr1));
+//     function missingNumber(nums: number[]): number {
+//         var len:number = nums.length;
+//         for(var i = 0; i < nums.length; i++){
+//             len = len^(i^nums[i]);
+//         }
+//         return len;
+//     };
+// }
 
 // //leecode：Valid Parentheses
 // function validParenthessDemo() {
