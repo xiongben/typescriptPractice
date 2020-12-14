@@ -60,6 +60,7 @@ function TreeDemo(){
    // pasDemo1()
    //  validParenthessDemo()
    //  missNumberDemo()
+   //  sumdemo2()
 
     return(
         <div>
@@ -67,6 +68,51 @@ function TreeDemo(){
         </div>
     )
 }
+
+//leecode: Palindrome Partitioning
+function palindromeDemo1(){
+    var s = "aab";
+
+    function partition(s: string): string[][] {
+
+    };
+}
+
+// //leecode: 4Sum
+// function sumdemo2(){
+//     var nums = [0,0,0,0], target = 0;
+//     console.log(fourSum(nums,0));
+//
+//     function fourSum(nums: number[], target: number): number[][] {
+//         nums.sort((a,b)=>a-b)
+//         var res:number[][] = [];
+//        if(nums.length < 4) return res;
+//        var len:number = nums.length;
+//        for(var i = 0; i <= len-4; i++){
+//            if(i > 0 && nums[i] === nums[i-1]) continue;
+//            for(var j = i+1; j <= len-3; j++){
+//                if(j > i+1 && nums[j] === nums[j-1]) continue;
+//                var left = j + 1;
+//                var right = len - 1;
+//                while(left < right){
+//                    if(nums[i]+nums[j]+nums[left]+nums[right] > target){
+//                        right--;
+//                    }else if(nums[i]+nums[j]+nums[left]+nums[right] < target){
+//                        left++;
+//                    }else {
+//                        var tempArr:number[] = [nums[i],nums[j],nums[left],nums[right]];
+//                        res.push(tempArr);
+//                        while(nums[left] == nums[left+1] && left < right) left++;
+//                        while(nums[right] == nums[right-1] && left < right) right--;
+//                        left++;
+//                        right--;
+//                    }
+//                }
+//            }
+//        }
+//        return res;
+//     };
+// }
 
 // //leecode:Missing Number
 // function missNumberDemo() {
