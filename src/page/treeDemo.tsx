@@ -61,6 +61,8 @@ function TreeDemo(){
    //  validParenthessDemo()
    //  missNumberDemo()
    //  sumdemo2()
+   //  palindromeDemo1()
+   //  sortArrayDemo2()
 
     return(
         <div>
@@ -69,14 +71,68 @@ function TreeDemo(){
     )
 }
 
-//leecode: Palindrome Partitioning
-function palindromeDemo1(){
-    var s = "aab";
+// //leecode:Squares of a Sorted Array
+// function sortArrayDemo2(){
+//     var nums = [-4,-1,0,3,10];
+//     console.log(sortedSquares(nums));
+//     function sortedSquares(nums: number[]): number[] {
+//         var res:number[] = [];
+//         var len:number = nums.length;
+//         for(var i=0,j=len-1,temp=len-1;i <= j;){
+//             if(nums[i] * nums[i] < nums[j] * nums[j]){
+//                 res[temp] = nums[j] * nums[j];
+//                 j--;
+//             }else{
+//                 res[temp] = nums[i] * nums[i];
+//                 i++;
+//             }
+//             temp--;
+//         }
+//         return res
+//     };
+//
+// }
 
-    function partition(s: string): string[][] {
-
-    };
-}
+// //leecode: Palindrome Partitioning
+// function palindromeDemo1(){
+//     var s = "aab";
+//     console.log(partition(s));
+//
+//     function partition(s: string): string[][] {
+//         var res:string[][] = [];
+//         var len:number = s.length;
+//         if(len === 0) return res;
+//         var dp:boolean[][] = new Array(len);
+//         for (var i = 0; i < dp.length; i++){
+//             var temp:boolean[] = new Array(len).fill(false)
+//             dp[i] = temp;
+//         }
+//         for(var right = 0; right < len; right++){
+//             for(var left = 0; left <= right; left++){
+//                 if(s.charAt(left) === s.charAt(right) && (right-left <= 2 || dp[left+1][right-1])){
+//                     console.log(left,right)
+//                     dp[left][right] = true;
+//                 }
+//             }
+//         }
+//         var path:string[] = [];
+//         helper(s,0,len,dp,path,res);
+//         return res;
+//     };
+//
+//     function helper(s:string,start:number,len:number,dp:boolean[][],path:string[],res:string[][]){
+//         if(start === len){
+//             res.push([...path]);
+//             return
+//         }
+//         for(var i = start; i < len; i++){
+//             if(!dp[start][i]) continue;
+//             path.push(s.slice(start,i+1));
+//             helper(s,i+1,len,dp,path,res);
+//             path.pop();
+//         }
+//     }
+// }
 
 // //leecode: 4Sum
 // function sumdemo2(){
