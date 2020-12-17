@@ -64,7 +64,7 @@ function TreeDemo(){
    //  palindromeDemo1()
    //  sortArrayDemo2()
    //  romanDemo1()
-    wordDemo3()
+   //  wordDemo3()
 
     return(
         <div>
@@ -72,69 +72,149 @@ function TreeDemo(){
         </div>
     )
 }
-//leecode:Word Ladder
-function wordDemo3(){
-    var beginWord = "hit",
-        endWord = "cog",
-        wordList = ["hot","dot","dog","lot","log","cog"];
 
-    console.log(ladderLength(beginWord,endWord,wordList));
 
-    function ladderLength(beginWord: string, endWord: string, wordList: string[]): number {
-        var wordId:any = {};
-        var edge:number[][] = [];
-        var nodeNum:number = 0;
 
-        for (var v of wordList){
-            addEdge(v);
-        }
-        addEdge(beginWord)
-        if(!wordId.hasOwnProperty(endWord)) return 0;
-        var dis:number[] = new Array(nodeNum).fill(Number.MAX_SAFE_INTEGER);
-        var beginId:number = wordId[beginWord],
-            endId:number = wordId[endWord];
-        dis[beginId] = 0;
-        var que:number[] = [];
-        que.push(beginId);
-        while (que.length > 0){
-            var x:number = que.shift() as number;
-            if(x == endId){
-                return dis[endId]/2 + 1;
-            }
-            for(var value of edge[x]){
-                if(dis[value] == Number.MAX_SAFE_INTEGER){
-                    dis[value] = dis[x]+1;
-                    que.push(value);
-                }
-            }
-        }
-
-        function addEdge(word:string){
-            addWord(word);
-            var id1:number = wordId[word];
-            var wordArray:string[] = word.split("");
-            for(var i = 0; i < wordArray.length; i++){
-                var temp:string = wordArray[i];
-                wordArray[i] = "*";
-                var newWord:string = wordArray.join("");
-                addWord(newWord);
-                var id2:number = wordId[newWord];
-                edge[id1].push(id2);
-                edge[id2].push(id1);
-                wordArray[i] = temp;
-            }
-        }
-
-        function addWord(word:string){
-            if(!wordId.hasOwnProperty(word)){
-                wordId[word] = nodeNum;
-                nodeNum++;
-                edge.push([]);
-            }
-        }
-        return 0;
-    };
-}
+// //leecode:Word Ladder
+// function wordDemo3(){
+//     var beginWord = "hit",
+//         endWord = "cog",
+//         wordList = ["hot","dot","dog","lot","log","cog"];
+//
+//     console.log(ladderLength2(beginWord,endWord,wordList));
+//
+//     function ladderLength(beginWord: string, endWord: string, wordList: string[]): number {
+//         var wordId:any = {};
+//         var edge:number[][] = [];
+//         var nodeNum:number = 0;
+//
+//         for (var v of wordList){
+//             addEdge(v);
+//         }
+//         addEdge(beginWord)
+//         if(!wordId.hasOwnProperty(endWord)) return 0;
+//         var dis:number[] = new Array(nodeNum).fill(Number.MAX_SAFE_INTEGER);
+//         var beginId:number = wordId[beginWord],
+//             endId:number = wordId[endWord];
+//         dis[beginId] = 0;
+//         var que:number[] = [];
+//         que.push(beginId);
+//         while (que.length > 0){
+//             var x:number = que.shift() as number;
+//             if(x == endId){
+//                 return dis[endId]/2 + 1;
+//             }
+//             for(var value of edge[x]){
+//                 if(dis[value] == Number.MAX_SAFE_INTEGER){
+//                     dis[value] = dis[x]+1;
+//                     que.push(value);
+//                 }
+//             }
+//         }
+//
+//         function addEdge(word:string){
+//             addWord(word);
+//             var id1:number = wordId[word];
+//             var wordArray:string[] = word.split("");
+//             for(var i = 0; i < wordArray.length; i++){
+//                 var temp:string = wordArray[i];
+//                 wordArray[i] = "*";
+//                 var newWord:string = wordArray.join("");
+//                 addWord(newWord);
+//                 var id2:number = wordId[newWord];
+//                 edge[id1].push(id2);
+//                 edge[id2].push(id1);
+//                 wordArray[i] = temp;
+//             }
+//         }
+//
+//         function addWord(word:string){
+//             if(!wordId.hasOwnProperty(word)){
+//                 wordId[word] = nodeNum;
+//                 nodeNum++;
+//                 edge.push([]);
+//             }
+//         }
+//         return 0;
+//     };
+//
+//     function ladderLength2(beginWord: string, endWord: string, wordList: string[]): number {
+//         var ids:any = {};
+//         var edge:number[][] = [];
+//         var nodeNum:number = 0;
+//
+//         for(var v of wordList){
+//             addEdge(v);
+//         }
+//         addEdge(beginWord);
+//         if(!ids.hasOwnProperty(endWord)) return 0;
+//
+//         //从起点开始广度优先遍历的初始化
+//         var disStart:number[] = new Array(nodeNum).fill(Number.MAX_SAFE_INTEGER);
+//         var beginId:number = ids[beginWord];
+//         disStart[beginId] = 0;
+//         var queueStart:number[] = [];
+//         queueStart.push(beginId)
+//         //从终点开始广度优先遍历的初始化
+//         var disEnd:number[] = new Array(nodeNum).fill(Number.MAX_SAFE_INTEGER);
+//         var endId:number = ids[endWord];
+//         disEnd[endId] = 0;
+//         var queueEnd:number[] = [];
+//         queueEnd.push(endId)
+//         while(queueStart.length > 0 && queueEnd.length > 0){
+//             for(let i = 0; i < queueStart.length; i++){
+//                 var nodeBegin:number = queueStart.shift() as number;
+//                 if(disEnd[nodeBegin] != Number.MAX_SAFE_INTEGER){
+//                     return (disStart[nodeBegin]+disEnd[nodeBegin])/2 +1;
+//                 }
+//                 for(var value of edge[nodeBegin]){
+//                     if(disStart[value] == Number.MAX_SAFE_INTEGER){
+//                         disStart[value] = disStart[nodeBegin]+1;
+//                         queueStart.push(value);
+//                     }
+//                 }
+//             }
+//
+//             for(let i = 0; i < queueEnd.length; i++){
+//                 var nodeEnd:number = queueEnd.shift() as number;
+//                 if(disStart[nodeEnd] != Number.MAX_SAFE_INTEGER){
+//                     return (disStart[nodeEnd]+disEnd[nodeEnd])/2 +1;
+//                 }
+//                 for(var value of edge[nodeEnd]){
+//                     if(disEnd[value] == Number.MAX_SAFE_INTEGER){
+//                         disEnd[value] = disEnd[nodeEnd]+1;
+//                         queueEnd.push(value);
+//                     }
+//                 }
+//             }
+//         }
+//
+//         function addEdge(str:string){
+//             addWord(str);
+//             var id1:number = ids[str];
+//             var strArr:string[] = str.split("");
+//             for(var i =0; i < strArr.length; i++){
+//                 var temp:string = strArr[i];
+//                 strArr[i] = "*";
+//                 var newStr = strArr.join("");
+//                 addWord(newStr);
+//                 var id2:number = ids[newStr];
+//                 edge[id1].push(id2);
+//                 edge[id2].push(id1);
+//                 strArr[i] = temp;
+//             }
+//         }
+//
+//         function addWord(str:string){
+//             if(!ids.hasOwnProperty(str)){
+//                 ids[str] = nodeNum;
+//                 nodeNum++;
+//                 edge.push([]);
+//             }
+//         }
+//         return 0;
+//     };
+// }
 
 // //leecode:Roman to Integer
 // function romanDemo1(){
