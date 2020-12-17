@@ -65,6 +65,7 @@ function TreeDemo(){
    //  sortArrayDemo2()
    //  romanDemo1()
    //  wordDemo3()
+   //  wiggleSortDemo1()
 
     return(
         <div>
@@ -73,6 +74,34 @@ function TreeDemo(){
     )
 }
 
+// //leecode:Wiggle Sort
+// function wiggleSortDemo1(){
+//     var nums = [3,5,2,1,6,4];
+//     wiggleSort2(nums);
+//     console.log(nums);
+//     function wiggleSort(nums:number[]){
+//         nums.sort((a,b)=>a-b)
+//         if(nums.length < 2) return;
+//         for(var i = 2; i < nums.length; i+=2){
+//             swaper(i,i-1,nums);
+//         }
+//     }
+//
+//     function swaper(i:number,j:number,arr:number[]) {
+//         var temp:number = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//     }
+//
+//     function wiggleSort2(nums:number[]){
+//         if (nums.length < 2) return;
+//         for(var i = 0; i < nums.length; i++){
+//             if((i%2 === 1 && nums[i] < nums[i-1]) || (i%2 === 0 && nums[i] > nums[i-1])){
+//                 swaper(i,i-1,nums);
+//             }
+//         }
+//     }
+// }
 
 
 // //leecode:Word Ladder
