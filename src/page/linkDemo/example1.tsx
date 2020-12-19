@@ -21,6 +21,55 @@ function testDemo() {
 
     // console.log(removeNthFromEnd(node4,1));
     // mergeLinkDemo1()
+    // sortLinkDemo1()
+}
+
+function sortLinkDemo1() {
+    var lists = [4,2,1,3];
+    var node1:ListNode = buildLink(lists);
+
+    var node2 = sortList(node1);
+    printLink(node2);
+
+    function sortList(head: ListNode | null): ListNode | null {
+        var nodelists:ListNode[] = [];
+        var temp: ListNode;
+        while (head != null){
+            temp = new ListNode(head.val);
+            nodelists.push(temp);
+            head = head.next;
+        }
+        return merge(nodelists,0,nodelists.length-1);
+    };
+
+    function merge(lists: Array<ListNode | null>, l : number, r: number):ListNode|null {
+        if(l > r) return null;
+        if(l == r) return lists[l];
+        var mid:number = (l + r) >> 1;
+        return mergeTwoLink(merge(lists,l,mid),merge(lists,mid+1,r));
+    }
+
+
+    function mergeTwoLink(a:ListNode|null, b:ListNode|null):ListNode|null {
+        if(a === null || b === null) return a === null? b : a;
+        var head: ListNode = new ListNode();
+        var temp: ListNode | null = head;
+        var aptr: ListNode | null = a;
+        var bptr: ListNode | null = b;
+        while(aptr != null && bptr != null){
+            if(aptr.val < bptr.val){
+                temp.next = aptr;
+                aptr = aptr.next;
+            }else{
+                temp.next = bptr;
+                bptr = bptr.next;
+            }
+            temp = temp.next;
+        }
+        temp.next = (aptr !== null? aptr : bptr);
+        return head.next;
+    }
+
 }
 
 function mergeLinkDemo1() {
