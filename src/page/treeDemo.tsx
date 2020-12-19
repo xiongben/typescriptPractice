@@ -66,7 +66,9 @@ function TreeDemo(){
    //  romanDemo1()
    //  wordDemo3()
    //  wiggleSortDemo1()
-    wiggleSortDemo2()
+   //  wiggleSortDemo2()
+
+    console.log(8 >> 1)
 
     return(
         <div>
@@ -75,74 +77,74 @@ function TreeDemo(){
     )
 }
 
-//leecode:Wiggle Sort II
-function wiggleSortDemo2(){
-    var nums = [6,13,5,4,5,2];
-    wiggleSort(nums);
-    console.log(nums);
-
-    function wiggleSort(nums: number[]): void {
-         var mid:number = findKthLargest(nums,Math.floor((nums.length+1)/2));
-         var len:number = nums.length;
-         var left:number = 0;
-         var right:number = len-1;
-         var i = 0;
-         while (i <= right){
-             if(nums[getNewIndex(i,len)] < mid){
-                 swaper(getNewIndex(right,len),getNewIndex(i,len),nums);
-                 right--;
-             }else if(nums[getNewIndex(i,len)] > mid){
-                 swaper(getNewIndex(left,len),getNewIndex(i,len),nums);
-                 left++;
-                 i++;
-             }else {
-                 i++;
-             }
-         }
-    };
-
-    function getNewIndex(index:number,n:number){
-        return (1 + 2 * index)%(n|1);
-    }
-
-    function findKthLargest(nums: number[], k: number): number {
-        quickSort(nums,0,nums.length-1);
-        for(var i=0; i < nums.length;i++){
-            k--;
-            if(k == 0) {
-                return nums[i];
-            }
-        }
-        return 0;
-    };
-
-    function quickSort(arrs:number[],start:number,end:number) {
-
-        if(start > end) return;
-        var i:number = start;
-        var j:number = end;
-        var pivot:number = arrs[start];
-        while(i != j){
-            while(arrs[j] <= pivot && j > i) j--;
-            while(arrs[i] >= pivot && i < j) i++;
-            if(i < j){
-                swaper(i,j,arrs);
-            }
-
-        }
-        arrs[start] = arrs[i];
-        arrs[i] = pivot;
-        quickSort(arrs,start,i-1);
-        quickSort(arrs,i+1,end);
-        return;
-    }
-
-    function swaper(i:number,j:number,arr:number[]) {
-        var temp:number = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-}
+// //leecode:Wiggle Sort II
+// function wiggleSortDemo2(){
+//     var nums = [6,13,5,4,5,2];
+//     wiggleSort(nums);
+//     console.log(nums);
+//
+//     function wiggleSort(nums: number[]): void {
+//          var mid:number = findKthLargest(nums,Math.floor((nums.length+1)/2));
+//          var len:number = nums.length;
+//          var left:number = 0;
+//          var right:number = len-1;
+//          var i = 0;
+//          while (i <= right){
+//              if(nums[getNewIndex(i,len)] < mid){
+//                  swaper(getNewIndex(right,len),getNewIndex(i,len),nums);
+//                  right--;
+//              }else if(nums[getNewIndex(i,len)] > mid){
+//                  swaper(getNewIndex(left,len),getNewIndex(i,len),nums);
+//                  left++;
+//                  i++;
+//              }else {
+//                  i++;
+//              }
+//          }
+//     };
+//
+//     function getNewIndex(index:number,n:number){
+//         return (1 + 2 * index)%(n|1);
+//     }
+//
+//     function findKthLargest(nums: number[], k: number): number {
+//         quickSort(nums,0,nums.length-1);
+//         for(var i=0; i < nums.length;i++){
+//             k--;
+//             if(k == 0) {
+//                 return nums[i];
+//             }
+//         }
+//         return 0;
+//     };
+//
+//     function quickSort(arrs:number[],start:number,end:number) {
+//
+//         if(start > end) return;
+//         var i:number = start;
+//         var j:number = end;
+//         var pivot:number = arrs[start];
+//         while(i != j){
+//             while(arrs[j] <= pivot && j > i) j--;
+//             while(arrs[i] >= pivot && i < j) i++;
+//             if(i < j){
+//                 swaper(i,j,arrs);
+//             }
+//
+//         }
+//         arrs[start] = arrs[i];
+//         arrs[i] = pivot;
+//         quickSort(arrs,start,i-1);
+//         quickSort(arrs,i+1,end);
+//         return;
+//     }
+//
+//     function swaper(i:number,j:number,arr:number[]) {
+//         var temp:number = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//     }
+// }
 
 // //leecode:Wiggle Sort
 // function wiggleSortDemo1(){
