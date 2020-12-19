@@ -1,4 +1,6 @@
 import React from "react";
+import {Simulate} from "react-dom/test-utils";
+
 
 function TreeDemo(){
     // maxHeapDemo();
@@ -67,8 +69,8 @@ function TreeDemo(){
    //  wordDemo3()
    //  wiggleSortDemo1()
    //  wiggleSortDemo2()
+   // sortDemo2()
 
-    console.log(8 >> 1)
 
     return(
         <div>
@@ -76,6 +78,42 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //sortDemo
+// function sortDemo2() {
+//    var arr1:number[] = [55,23,12,5,1,35,98,122,41,3,9,66,20];
+//
+//    var res = mergeSort(arr1);
+//    console.log(res);
+//
+//    function mergeSort(arr:number[]):number[] {
+//       if(arr.length < 2) return arr;
+//       var mid:number = arr.length >> 1;
+//       var left:number[] = arr.slice(0,mid);
+//       var right:number[] = arr.slice(mid);
+//
+//       return merge(mergeSort(left),mergeSort(right));
+//    }
+//
+//    function merge(a:number[],b:number[]):number[] {
+//        var res:number[] = [];
+//        while (a.length > 0 && b.length > 0){
+//            if(a[0] > b[0]){
+//                res.push(b.shift() as number)
+//            }else {
+//                res.push(a.shift() as number)
+//            }
+//        }
+//        while(a.length > 0){
+//            res.push(a.shift() as number)
+//        }
+//        while(b.length > 0){
+//            res.push(b.shift() as number)
+//        }
+//        return res;
+//    }
+//
+// }
 
 // //leecode:Wiggle Sort II
 // function wiggleSortDemo2(){
