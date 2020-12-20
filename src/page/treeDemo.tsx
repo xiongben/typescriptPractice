@@ -80,6 +80,58 @@ function TreeDemo(){
     )
 }
 
+// //leecode:Implement Trie (Prefix Tree)
+// function trieTreeDemo1() {
+//     class TrieNode {
+//         next: TrieNode[];
+//         word: string | null;
+//         constructor() {
+//             this.next = [];
+//             this.word = null;
+//         }
+//     }
+//
+//     class Trie {
+//         root:TrieNode;
+//         constructor() {
+//            this.root = new TrieNode();
+//         }
+//
+//         insert(word: string): void {
+//             var p:TrieNode = this.root;
+//             for(var i = 0; i < word.length; i++){
+//                 var pIndex:number = word.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+//                 if(p.next[pIndex] == null) p.next[pIndex] = new TrieNode();
+//                 p = p.next[pIndex];
+//             }
+//             p.word = word;
+//         }
+//
+//         search(word: string): boolean {
+//              var ws:TrieNode = this.root;
+//              for(var i = 0; i < word.length; i++){
+//                  var c:string = word.charAt(i);
+//                  var pIndex:number = word.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+//                  if(ws.next[pIndex] == null) return false;
+//                  ws = ws.next[pIndex];
+//              }
+//              if(ws.word == null) return false;
+//              return true;
+//         }
+//
+//         startsWith(prefix: string): boolean {
+//             var ws:TrieNode = this.root;
+//             for(var i = 0; i < prefix.length; i++){
+//                 var c:string = prefix.charAt(i);
+//                 var pIndex:number = prefix.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+//                 if(ws.next[pIndex] == null) return false;
+//                 ws = ws.next[pIndex];
+//             }
+//             return true;
+//         }
+//     }
+// }
+
 // //leecode: Word Search II
 // function wordSearchDemo3(){
 //     class TrieNode {
