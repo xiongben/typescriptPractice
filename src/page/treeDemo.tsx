@@ -70,7 +70,8 @@ function TreeDemo(){
    //  wiggleSortDemo1()
    //  wiggleSortDemo2()
    // sortDemo2()
-
+   //  wordSearchDemo2()
+   //  wordSearchDemo3()
 
     return(
         <div>
@@ -78,6 +79,113 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode: Word Search II
+// function wordSearchDemo3(){
+//     class TrieNode {
+//         next: TrieNode[];
+//         word: string | null;
+//         constructor() {
+//             this.next = [];
+//             this.word = null;
+//         }
+//     }
+//     var board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],
+//         words = ["oath","pea","eat","rain"];
+//
+//     var res = findWords(board,words);
+//     console.log(res);
+//
+//
+//     function findWords(board: string[][], words: string[]): string[] {
+//         var res:string[] = [];
+//         var root:TrieNode = buildTrie(words);
+//         for(var i = 0; i < board.length; i++){
+//             for(var j = 0; j < board[0].length; j++){
+//                 dfs(board,i,j,root,res);
+//             }
+//         }
+//         return res;
+//     };
+//
+//     function dfs(board:string[][], i:number, j:number, trieTreeP:TrieNode, res:string[]) {
+//         var c:string = board[i][j];
+//         var pIndex:number = c.charCodeAt(0) - "a".charCodeAt(0);
+//         if(c == "#" || trieTreeP.next[pIndex] == null) return;
+//         trieTreeP = trieTreeP.next[pIndex];
+//         if(trieTreeP.word != null){
+//             res.push(trieTreeP.word);
+//             trieTreeP.word = null;
+//         }
+//         board[i][j] = "#";
+//         if(i > 0) dfs(board,i-1,j,trieTreeP,res);
+//         if(j > 0) dfs(board,i,j-1,trieTreeP,res);
+//         if(i < board.length-1) dfs(board,i+1,j,trieTreeP,res);
+//         if(j < board[0].length-1) dfs(board,i,j+1,trieTreeP,res);
+//         board[i][j] = c;
+//     }
+//
+//     function buildTrie(words:string[]):TrieNode {
+//        var root:TrieNode = new TrieNode();
+//        for(var strVal of words){
+//            var p:TrieNode = root;
+//            for(var val of strVal.split("")){
+//                var i:number = val.charCodeAt(0) - "a".charCodeAt(0);
+//                if(p.next[i] == null) p.next[i] = new TrieNode();
+//                p = p.next[i];
+//            }
+//            p.word = strVal;
+//        }
+//        return root;
+//     }
+//
+//
+// }
+
+// //leecode: Word Search II
+// function wordSearchDemo2(){
+//     var board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],
+//         words = ["oath","pea","eat","rain"];
+//
+//     var res = findWords(board,words);
+//     console.log(res);
+//
+//
+//     function findWords(board: string[][], words: string[]): string[] {
+//         var res:string[] = [];
+//         for(var i = 0; i < words.length; i++){
+//             if(exist(board,words[i])){
+//                 res.push(words[i]);
+//             }
+//         }
+//         return res;
+//     };
+//
+//     function exist(board: string[][], word: string): boolean {
+//         for(var j=0;j<board.length;j++){
+//             for(var i=0;i<board[0].length;i++){
+//                 if(helper(board,j,i,word,0)){
+//                     return true;
+//                 }
+//             }
+//         }
+//         return false;
+//     };
+//
+//     function helper(board: string[][],j:number,i:number,word:string,len:number):boolean {
+//          if(len === word.length) return true;
+//          if(j<0 || i<0 || j > board.length-1 || i > board[0].length-1) return false;
+//          if(board[j][i] !==word.charAt(len)) return false;
+//          board[j][i] = "*";
+//          let res:boolean =  helper(board,j+1,i,word,len+1)||
+//              helper(board,j,i+1,word,len+1)||
+//              helper(board,j-1,i,word,len+1)||
+//              helper(board,j,i-1,word,len+1);
+//          board[j][i] = word.charAt(len);
+//          return res;
+//     }
+//
+// }
 
 // //sortDemo
 // function sortDemo2() {
