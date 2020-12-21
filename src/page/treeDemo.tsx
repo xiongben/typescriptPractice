@@ -72,6 +72,7 @@ function TreeDemo(){
    // sortDemo2()
    //  wordSearchDemo2()
    //  wordSearchDemo3()
+   //  maxSubarrayDemo1()
 
     return(
         <div>
@@ -79,6 +80,33 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Maximum Product Subarray
+// function maxSubarrayDemo1() {
+//     var arr1 = [2,3,-2,4];
+//     console.log(maxProduct(arr1))
+//
+//     function maxProduct(nums: number[]): number {
+//         var res:number = nums[0];
+//         var imax:number = res;
+//         var imin:number = res;
+//         for(var i = 1; i < nums.length; i++){
+//             console.log("max: " + imax + ";min: " + imin);
+//             if(nums[i] < 0){
+//                 var temp = imin;
+//                 imin = imax;
+//                 imax = temp;
+//             }
+//
+//             imax = Math.max(nums[i],nums[i] * imax);
+//             imin = Math.min(nums[i],nums[i] * imin);
+//             res = Math.max(res, imax)
+//         }
+//         return res;
+//     };
+//
+//
+// }
 
 // //leecode:Implement Trie (Prefix Tree)
 // function trieTreeDemo1() {
