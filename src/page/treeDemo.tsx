@@ -74,13 +74,40 @@ function TreeDemo(){
    //  wordSearchDemo3()
    //  maxSubarrayDemo1()
    //  findMinNumDemo1()
-
+   //  findDuplicateNumberDemo1()
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Find the Duplicate Number
+// function findDuplicateNumberDemo1(){
+//     var nums = [3,1,3,4,2];
+//     var res = findDuplicate(nums);
+//     console.log(res);
+//
+//     function findDuplicate(nums: number[]): number {
+//         var left:number = 0;
+//         var right:number = nums.length - 1;
+//         while (left < right){
+//             console.log(left,right)
+//             var mid:number = (left+right) >> 1;
+//             var count:number = 0;
+//             for(var v of nums){
+//                 if(v <= mid) count++;
+//             }
+//             console.log("count: "+count)
+//             if(count <= mid){
+//                 left = mid + 1;
+//             } else{
+//                 right = mid
+//             }
+//         }
+//         return left;
+//     };
+// }
 
 // //leecode:Find Minimum in Rotated Sorted Array
 // function findMinNumDemo1(){
