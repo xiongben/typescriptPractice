@@ -73,6 +73,7 @@ function TreeDemo(){
    //  wordSearchDemo2()
    //  wordSearchDemo3()
    //  maxSubarrayDemo1()
+   //  findMinNumDemo1()
 
     return(
         <div>
@@ -80,6 +81,36 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Find Minimum in Rotated Sorted Array
+// function findMinNumDemo1(){
+//     var nums = [5,1,2,3,4];
+//     console.log(findMin(nums));
+//
+//     function findMin(nums: number[]): number {
+//         if(nums.length  == 1) return nums[0];
+//         var left:number = 0;
+//         var right:number = nums.length - 1;
+//         if(nums[right] > nums[left]) return nums[0];
+//         while (left <= right){
+//
+//             var mid:number = (left + right) >> 1;
+//             console.log(left,right,mid)
+//             if(nums[mid] > nums[mid+1]){
+//                 return nums[mid+1];
+//             }
+//             if(nums[mid-1] > nums[mid]){
+//                 return nums[mid];
+//             }
+//             if(nums[left] > nums[mid]){
+//                 right = mid - 1;
+//             }else{
+//                 left = mid + 1;
+//             }
+//         }
+//         return -1;
+//     };
+// }
 
 // //leecode:Maximum Product Subarray
 // function maxSubarrayDemo1() {
