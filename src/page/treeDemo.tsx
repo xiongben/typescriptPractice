@@ -75,12 +75,36 @@ function TreeDemo(){
    //  maxSubarrayDemo1()
    //  findMinNumDemo1()
    //  findDuplicateNumberDemo1()
+   //  longestDemo2()
+
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
 }
+
+// //leecode:Longest Consecutive Sequence
+// function longestDemo2(){
+//     var nums = [0,3,7,2,5,8,4,6,0,1];
+//     console.log(longestConsecutive(nums))
+//
+//     function longestConsecutive(nums: number[]): number {
+//        var res:number = 0;
+//        if(nums.length < 1) return res;
+//        var numsSet = new Set(nums);
+//        for(var i = 0; i < nums.length; i++){
+//            if(!numsSet.has(nums[i]-1)){
+//                var y:number = nums[i] + 1;
+//                while (numsSet.has(y)){
+//                    y++;
+//                }
+//                res = Math.max(res,y-nums[i]);
+//            }
+//        }
+//        return res;
+//     };
+// }
 
 // //leecode:Find the Duplicate Number
 // function findDuplicateNumberDemo1(){
