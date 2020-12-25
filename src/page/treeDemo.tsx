@@ -76,6 +76,8 @@ function TreeDemo(){
    //  findMinNumDemo1()
    //  findDuplicateNumberDemo1()
    //  longestDemo2()
+   //  calculatorDemo1()
+
 
     return(
         <div>
@@ -83,6 +85,55 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Basic Calculator II
+// function calculatorDemo1() {
+//     var s = "14-3/2";
+//     console.log(calculate(s))
+//
+//     function calculate(s: string): number {
+//         var res:number = 0;
+//         var num:number = 0;
+//         var calChar:string = "";
+//         var stack:Array<number> = [];
+//         var sign:string = "+";
+//         if(s.length == 0) return res;
+//         for (var i = 0; i < s.length; i++){
+//             if(isNumber(s.charAt(i))){
+//                 num = num * 10 + parseInt(s.charAt(i));
+//             }
+//             if((!isNumber(s.charAt(i)) && s.charAt(i) != " ") || i == s.length - 1 ){
+//                 if(sign == "-"){
+//                     stack.push(-num);
+//                 }
+//                 if(sign == "+"){
+//                     stack.push(num);
+//                 }
+//                 if(sign == "*"){
+//                     stack.push((stack.pop() as number)*num)
+//                 }
+//                 if(sign == "/"){
+//                     var temp:number = stack.pop() as number;
+//                     temp = temp < 0? -Math.floor(-temp/num):Math.floor(temp/num);
+//                     stack.push(temp)
+//                 }
+//                 sign = s.charAt(i);
+//                 num = 0;
+//             }
+//         }
+//         for(var v of stack){
+//             res += v;
+//         }
+//         return res;
+//     };
+//
+//     function isNumber(s:string):boolean {
+//        if(s.charCodeAt(0) >= "0".charCodeAt(0) && s.charCodeAt(0) <= "9".charCodeAt(0)){
+//            return true;
+//        }
+//        return false;
+//     }
+// }
 
 // //leecode:Longest Consecutive Sequence
 // function longestDemo2(){
