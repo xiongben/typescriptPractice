@@ -77,7 +77,7 @@ function TreeDemo(){
    //  findDuplicateNumberDemo1()
    //  longestDemo2()
    //  calculatorDemo1()
-
+   //  miniWindowDemo1()
 
     return(
         <div>
@@ -85,6 +85,60 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode: Minimum Window Substring
+// function miniWindowDemo1() {
+//    var s = "AD", t = "A"
+//     console.log(minWindow(s,t));
+//
+//     function minWindow(s: string, t: string): string {
+//         var tStringMap:any = {},
+//             tempStringMap:any = {};
+//         for(var i = 0; i < t.length; i++){
+//             if(!tStringMap.hasOwnProperty(t.charAt(i))){
+//                 tStringMap[t.charAt(i)] = 0
+//             }
+//             tStringMap[t.charAt(i)]++;
+//         }
+//         var left:number = 0,
+//             right:number = -1;
+//         var lTemper:number = -1,rTemper:number = -1;
+//         var resLen:number = Number.MAX_SAFE_INTEGER;
+//         while (right < s.length){
+//             right++;
+//             if(right < s.length && tStringMap.hasOwnProperty(s.charAt(right))){
+//                 if(!tempStringMap.hasOwnProperty(s.charAt(right))){
+//                     tempStringMap[s.charAt(right)] = 0;
+//                 }
+//                 tempStringMap[s.charAt(right)]++;
+//             }
+//             while(check() && left <= right){
+//                if(right-left+1 < resLen){
+//                    resLen = right-left+1;
+//                    lTemper = left;
+//                    rTemper = right+1;
+//                }
+//                if(tStringMap.hasOwnProperty(s.charAt(left))){
+//                    tempStringMap[s.charAt(left)]--;
+//                }
+//                left++;
+//             }
+//
+//         }
+//
+//         function check():boolean {
+//             for(var key in tStringMap){
+//                 var val = tempStringMap.hasOwnProperty(key)?tempStringMap[key]:0;
+//                 if(val < tStringMap[key]){
+//                     return false;
+//                 }
+//             }
+//             return true;
+//         }
+//
+//         return lTemper == -1? "": s.slice(lTemper,rTemper);
+//     };
+// }
 
 // //leecode:Basic Calculator II
 // function calculatorDemo1() {
