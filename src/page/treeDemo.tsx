@@ -78,6 +78,7 @@ function TreeDemo(){
    //  longestDemo2()
    //  calculatorDemo1()
    //  miniWindowDemo1()
+   //  slidingWindowDemo1()
 
     return(
         <div>
@@ -85,6 +86,33 @@ function TreeDemo(){
         </div>
     )
 }
+
+// //leecode:Sliding Window Maximum
+// function slidingWindowDemo1() {
+//    var nums = [7,2,4], k = 2;
+//    console.log(maxSlidingWindow(nums,k));
+//
+//     function maxSlidingWindow(nums: number[], k: number): number[] {
+//         var res:number[] = [];
+//         if(nums.length == 0 || k < 0) return res;
+//         var tempArr:number[] = [];
+//         var resIndex:number = 0;
+//         for(var i = 0; i < nums.length; i++){
+//             while(tempArr.length > 0 && tempArr[0] < i-k+1){
+//                 tempArr.shift();
+//             }
+//             while (tempArr.length > 0 && nums[tempArr[tempArr.length-1]] < nums[i]){
+//                 tempArr.pop();
+//             }
+//             tempArr.push(i);
+//             if(i >= k-1){
+//                 res[resIndex] = nums[tempArr[0]];
+//                 resIndex++;
+//             }
+//         }
+//         return res;
+//     };
+// }
 
 // //leecode: Minimum Window Substring
 // function miniWindowDemo1() {
