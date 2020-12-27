@@ -79,6 +79,7 @@ function TreeDemo(){
    //  calculatorDemo1()
    //  miniWindowDemo1()
    //  slidingWindowDemo1()
+   //  kthSmallestElementDemo2()
 
     return(
         <div>
@@ -86,6 +87,59 @@ function TreeDemo(){
         </div>
     )
 }
+
+//leecode:Median of Two Sorted Arrays
+function medianDemo1() {
+
+}
+
+
+// //leecode: Kth Smallest Element in a Sorted Matrix
+// function kthSmallestElementDemo2() {
+//    var matrix = [
+//            [ 1,  5,  9],
+//            [10, 11, 13],
+//            [12, 13, 15]
+//        ],
+//        k = 8;
+//
+//    console.log(kthSmallest(matrix,k));
+//
+//
+//     function kthSmallest(matrix: number[][], k: number): number {
+//         var res:number = 0;
+//         if(matrix.length == 0) return res;
+//         var left:number = matrix[0][0];
+//         var right:number = matrix[matrix.length-1][matrix[0].length-1];
+//
+//         while (left < right){
+//             var mid:number = left + ((right - left) >> 1);
+//             console.log(mid);
+//             if(checkNum(matrix,k,mid)){
+//                 right = mid;
+//             }else{
+//                 left = mid + 1;
+//             }
+//         }
+//         return left;
+//     };
+//
+//     function checkNum(matrix: number[][],k:number,mid:number) {
+//          var len:number = matrix.length;
+//          var j:number = 0;
+//          var i:number = len - 1;
+//          var num:number = 0;
+//          while (j < len && i >= 0){
+//              if(matrix[i][j] <= mid){
+//                  num = num + i + 1;
+//                  j++;
+//              }else{
+//                  i--;
+//              }
+//          }
+//          return num >= k;
+//     }
+// }
 
 // //leecode:Sliding Window Maximum
 // function slidingWindowDemo1() {
