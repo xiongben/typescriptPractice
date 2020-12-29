@@ -80,7 +80,7 @@ function TreeDemo(){
    //  miniWindowDemo1()
    //  slidingWindowDemo1()
    //  kthSmallestElementDemo2()
-    medianDemo1()
+   //  medianDemo1()
 
     return(
         <div>
@@ -89,53 +89,53 @@ function TreeDemo(){
     )
 }
 
-//leecode:Median of Two Sorted Arrays
-function medianDemo1() {
-   var nums1 = [1,2], nums2 = [3,4];
-   console.log(findMedianSortedArrays(nums1,nums2));
-
-    function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
-       var len1:number = nums1.length;
-       var len2:number = nums2.length;
-       if((len1 + len2) % 2 == 1){
-           var midIndex = (len1 + len2) >> 1;
-           return getKthElement(nums1,nums2,midIndex+1);
-       }else{
-           var midIndex1 = ((len1 + len2) >> 1) -1;
-           var midIndex2 = ((len1 + len2) >> 1);
-           return  (getKthElement(nums1,nums2,midIndex1+1) + getKthElement(nums1,nums2,midIndex2+1))/2;
-       }
-    };
-
-    function getKthElement(nums1: number[], nums2: number[], k:number):number{
-        var len1:number = nums1.length;
-        var len2:number = nums2.length;
-        var index1:number = 0;
-        var index2:number = 0;
-        var kthElement:number = 0
-        while (true){
-            if(index1 == len1){
-                return nums2[index2+k-1];
-            }
-            if(index2 == len2){
-                return nums1[index1+k-1];
-            }
-            if(k == 1){
-                return Math.min(nums1[index1],nums2[index2]);
-            }
-            var half:number = k >> 1;
-            var newIndex1:number = Math.min(len1,index1+half)-1;
-            var newIndex2:number = Math.min(len2,index2+half)-1;
-            if(nums1[newIndex1] <= nums2[newIndex2]){
-                k-=(newIndex1-index1+1);
-                index1 = newIndex1 + 1;
-            }else {
-                k -= (newIndex2-index2+1);
-                index2 = newIndex2 + 1;
-            }
-        }
-    }
-}
+// //leecode:Median of Two Sorted Arrays
+// function medianDemo1() {
+//    var nums1 = [1,2], nums2 = [3,4];
+//    console.log(findMedianSortedArrays(nums1,nums2));
+//
+//     function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
+//        var len1:number = nums1.length;
+//        var len2:number = nums2.length;
+//        if((len1 + len2) % 2 == 1){
+//            var midIndex = (len1 + len2) >> 1;
+//            return getKthElement(nums1,nums2,midIndex+1);
+//        }else{
+//            var midIndex1 = ((len1 + len2) >> 1) -1;
+//            var midIndex2 = ((len1 + len2) >> 1);
+//            return  (getKthElement(nums1,nums2,midIndex1+1) + getKthElement(nums1,nums2,midIndex2+1))/2;
+//        }
+//     };
+//
+//     function getKthElement(nums1: number[], nums2: number[], k:number):number{
+//         var len1:number = nums1.length;
+//         var len2:number = nums2.length;
+//         var index1:number = 0;
+//         var index2:number = 0;
+//         var kthElement:number = 0
+//         while (true){
+//             if(index1 == len1){
+//                 return nums2[index2+k-1];
+//             }
+//             if(index2 == len2){
+//                 return nums1[index1+k-1];
+//             }
+//             if(k == 1){
+//                 return Math.min(nums1[index1],nums2[index2]);
+//             }
+//             var half:number = k >> 1;
+//             var newIndex1:number = Math.min(len1,index1+half)-1;
+//             var newIndex2:number = Math.min(len2,index2+half)-1;
+//             if(nums1[newIndex1] <= nums2[newIndex2]){
+//                 k-=(newIndex1-index1+1);
+//                 index1 = newIndex1 + 1;
+//             }else {
+//                 k -= (newIndex2-index2+1);
+//                 index2 = newIndex2 + 1;
+//             }
+//         }
+//     }
+// }
 
 
 // //leecode: Kth Smallest Element in a Sorted Matrix

@@ -23,6 +23,24 @@ class TreeNode {
      // designDemo()
      // constructDemo()
      //  smallestDemo1()
+     testDemo1()
+ }
+
+ function testDemo1() {
+    var arr1 = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1;
+    var root:TreeNode = buildTree2(arr1);
+    var pNode:TreeNode = new TreeNode(p);
+    var qNode:TreeNode = new TreeNode(q);
+
+    console.log(lowestCommonAncestor(root,pNode,qNode))
+
+     function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+         if(root == null || root == p || root == q) return root;
+         let lNode:TreeNode | null = lowestCommonAncestor(root.left,p,q);
+         let rNode:TreeNode | null = lowestCommonAncestor(root.right,p,q);
+         if(lNode != null && rNode != null) return root;
+         return  lNode != null? lNode : rNode;
+     };
  }
 
  //leecode:Smallest Subtree with all the Deepest Nodes
