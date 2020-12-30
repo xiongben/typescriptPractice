@@ -81,6 +81,7 @@ function TreeDemo(){
    //  slidingWindowDemo1()
    //  kthSmallestElementDemo2()
    //  medianDemo1()
+   //  friendCircleDemo()
 
     return(
         <div>
@@ -88,6 +89,36 @@ function TreeDemo(){
         </div>
     )
 }
+
+
+
+// //leecode:Friend Circles
+// function friendCircleDemo(){
+//     var isConnected = [[1,1,0],[1,1,0],[0,0,1]];
+//     console.log(findCircleNum(isConnected));
+//
+//     function findCircleNum(isConnected: number[][]): number {
+//        var markArr:number[] = new Array(isConnected.length).fill(0);
+//        var res:number = 0;
+//        for(var i = 0; i < isConnected.length; i++){
+//            if(markArr[i] == 0){
+//                helper(isConnected,markArr,i);
+//                res++;
+//            }
+//        }
+//        return res;
+//     };
+//
+//     function helper(isConnected: number[][],markArr:number[],i:number){
+//         for(var j = 0; j < isConnected.length; j++){
+//             if(isConnected[i][j] == 1 && markArr[j] == 0){
+//                 markArr[j] = 1;
+//                 helper(isConnected,markArr,j);
+//             }
+//         }
+//     }
+// }
+
 
 // //leecode:Median of Two Sorted Arrays
 // function medianDemo1() {

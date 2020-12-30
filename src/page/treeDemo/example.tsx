@@ -23,8 +23,32 @@ class TreeNode {
      // designDemo()
      // constructDemo()
      //  smallestDemo1()
-     testDemo1()
+     // testDemo1()
+     // maxmumDemo1()
  }
+
+
+
+ //leecode:Binary Tree Maximum Path Sum
+function maxmumDemo1(){
+    var arr1 = [-10,9,20,null,null,15,7]
+    var root:TreeNode = buildTree2(arr1);
+    console.log(maxPathSum(root));
+
+    function maxPathSum(root: TreeNode | null): number {
+        var res:number = Number.MIN_SAFE_INTEGER;
+        helper(root);
+
+        function helper(root: TreeNode | null):number{
+            if(root == null) return 0;
+            var leftNum:number = Math.max(0,helper(root.left));
+            var rightNum:number = Math.max(0,helper(root.right));
+            res = Math.max(res,root.val+leftNum+rightNum);
+            return root.val + Math.max(leftNum,rightNum);
+        }
+        return res;
+    };
+}
 
  function testDemo1() {
     var arr1 = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1;
@@ -42,6 +66,22 @@ class TreeNode {
          return  lNode != null? lNode : rNode;
      };
  }
+
+ //leecode:Lowest Common Ancestor of a Binary Tree
+function lowestCommonDemo1(){
+     var arr1 = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1;
+    let root: TreeNode | null =buildTree2(arr1);
+    let pNode: TreeNode = new TreeNode(p);
+    let qNode: TreeNode = new TreeNode(q);
+
+
+
+    // console.log(lowestCommonAncestor(root,pNode,qNode));
+    //
+    // function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    //
+    // };
+}
 
  //leecode:Smallest Subtree with all the Deepest Nodes
 function smallestDemo1() {
