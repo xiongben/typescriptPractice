@@ -83,6 +83,7 @@ function TreeDemo(){
    //  medianDemo1()
    //  friendCircleDemo()
    //  scheduleDemo1()
+   //  scheduleDemo2()
 
     return(
         <div>
@@ -91,36 +92,74 @@ function TreeDemo(){
     )
 }
 
-//leecode:Course Schedule
-function scheduleDemo1() {
-   let numCourses = 2, prerequisites = [[1,0]];
-    console.log(canFinish(numCourses,prerequisites));
 
-    function canFinish(numCourses: number, prerequisites: number[][]): boolean {
-        let adjacencyList:number[][] = [];
-        let indegrees:number[] = new Array(numCourses).fill(0); //入度表
-        let tempArr:number[] = [];  //放置所有入度为0的节点
-        for(let i = 0; i < numCourses; i++){
-            adjacencyList.push(new Array());
-        }
-        for(let val of prerequisites){
-            indegrees[val[0]] ++;
-            adjacencyList[val[1]].push(val[0]);
-        }
-        for(let i = 0; i < numCourses; i++){
-            if(indegrees[i] == 0) tempArr.push(i);
-        }
-        while (tempArr.length > 0){
-            let firstNode:number = tempArr.shift() as number;
-            numCourses--;
-            for(let val of adjacencyList[firstNode]){
-                indegrees[val]--;
-                if(indegrees[val] == 0) tempArr.push(val);
-            }
-        }
-        return numCourses == 0;
-    };
-}
+//leecode:Longest Increasing Path in a Matrix
+
+
+// //leecode:Course Schedule II
+// function scheduleDemo2() {
+//     let numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+//     console.log(findOrder(numCourses,prerequisites));
+//
+//     function findOrder(numCourses: number, prerequisites: number[][]): number[] {
+//         let adjacencyList:number[][] = [];
+//         let indegrees:number[] = new Array(numCourses).fill(0);
+//         let tempArr:number[] = [];
+//         let res:number[] = [];
+//         for(var i = 0; i < numCourses; i++){
+//             adjacencyList.push(new Array());
+//         }
+//         for(let val of prerequisites){
+//             adjacencyList[val[1]].push(val[0]);
+//             indegrees[val[0]]++;
+//         }
+//         for(let i = 0; i < numCourses; i++){
+//             if(indegrees[i] == 0) tempArr.push(i);
+//         }
+//         while (tempArr.length > 0){
+//             let firstNode:number = tempArr.shift() as number;
+//             numCourses--;
+//             res.push(firstNode);
+//             for(let val of adjacencyList[firstNode]){
+//                 indegrees[val]--;
+//                 if(indegrees[val] == 0) tempArr.push(val);
+//             }
+//         }
+//
+//         return numCourses == 0?res:[];
+//     };
+// }
+
+// //leecode:Course Schedule
+// function scheduleDemo1() {
+//    let numCourses = 2, prerequisites = [[1,0]];
+//     console.log(canFinish(numCourses,prerequisites));
+//
+//     function canFinish(numCourses: number, prerequisites: number[][]): boolean {
+//         let adjacencyList:number[][] = [];
+//         let indegrees:number[] = new Array(numCourses).fill(0); //入度表
+//         let tempArr:number[] = [];  //放置所有入度为0的节点
+//         for(let i = 0; i < numCourses; i++){
+//             adjacencyList.push(new Array());
+//         }
+//         for(let val of prerequisites){
+//             indegrees[val[0]] ++;
+//             adjacencyList[val[1]].push(val[0]);
+//         }
+//         for(let i = 0; i < numCourses; i++){
+//             if(indegrees[i] == 0) tempArr.push(i);
+//         }
+//         while (tempArr.length > 0){
+//             let firstNode:number = tempArr.shift() as number;
+//             numCourses--;
+//             for(let val of adjacencyList[firstNode]){
+//                 indegrees[val]--;
+//                 if(indegrees[val] == 0) tempArr.push(val);
+//             }
+//         }
+//         return numCourses == 0;
+//     };
+// }
 
 // //leecode:Friend Circles
 // function friendCircleDemo(){
