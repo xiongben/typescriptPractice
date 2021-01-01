@@ -84,6 +84,7 @@ function TreeDemo(){
    //  friendCircleDemo()
    //  scheduleDemo1()
    //  scheduleDemo2()
+    longestPathDemo1()
 
     return(
         <div>
@@ -94,6 +95,107 @@ function TreeDemo(){
 
 
 //leecode:Longest Increasing Path in a Matrix
+function longestPathDemo1() {
+   let nums =
+       [
+           [9,9,4],
+           [6,6,8],
+           [2,1,1]
+       ];
+
+    console.log(longestIncreasingPath2(nums));
+
+    function longestIncreasingPath(matrix: number[][]): number {
+        let res:number = 0;
+        let dirs:number[][] = [[-1,0],[1,0],[0,-1],[0,1]];
+        let tempArr:number[] = [];
+        let memo:number[][] = [];
+        for(let i = 0; i < matrix.length; i++){
+            let a:number[] = new Array(matrix[0].length as number).fill(0);
+            memo.push(a);
+        }
+        if(matrix.length == 0) return res;
+        for(let i = 0; i < matrix.length; i++){
+            for(let j = 0; j < matrix[0].length; j++){
+                res = Math.max(res,helper(matrix,i,j,memo));
+            }
+        }
+
+        function helper(matrix: number[][],i:number,j:number,memo:number[][]):number {
+            if(memo[i][j] != 0) return memo[i][j];
+            memo[i][j]++;
+            for(let dir of dirs){
+                let new_i:number = i + dir[0];
+                let new_j:number = j + dir[1];
+                if(new_i >= 0 && new_i < matrix.length && new_j >= 0 && new_j < matrix[0].length && matrix[i][j] < matrix[new_i][new_j]){
+                    memo[i][j] = Math.max(memo[i][j], helper(matrix,new_i,new_j,memo)+1);
+                }
+            }
+            return memo[i][j];
+        }
+        return res;
+    };
+
+    function longestIncreasingPath2(matrix: number[][]): number {
+        let res:number = 0;
+        let dirs:number[][] = [[-1,0],[1,0],[0,-1],[0,1]];
+        let tempArr:number[][] = [];
+        let memo:number[][] = [];
+        for(let i = 0; i < matrix.length; i++){
+            let a:number[] = new Array(matrix[0].length as number).fill(0);
+            memo.push(a);
+        }
+        if(matrix.length == 0) return res;
+        //建立出度表
+        for(let i = 0; i < matrix.length; i++){
+            for(let j = 0; j < matrix[0].length; j++){
+                for(let dir of dirs){
+                    let new_i:number = i + dir[0];
+                    let new_j:number = j + dir[1];
+                    if(new_i >= 0 && new_i < matrix.length && new_j >= 0 && new_j < matrix[0].length && matrix[i][j] < matrix[new_i][new_j]){
+                        memo[i][j]++;
+                    }
+                }
+            }
+        }
+        // console.log(memo);
+
+        for(let i = 0; i < matrix.length; i++){
+            for(let j = 0; j < matrix[0].length; j++){
+                if(memo[i][j] == 0){
+                    let arr1:number[] = [i,j]
+                    console.log(arr1)
+                    tempArr.push(arr1)
+                }
+            }
+        }
+
+        console.log(tempArr)
+
+        while (tempArr.length > 0){
+            res++;
+            for(let i = 0; i < tempArr.length; i++){
+                let firstNode:number[] = tempArr.shift() as number[];
+                let row:number = firstNode[0];
+                let column:number = firstNode[1];
+                for(let dir of dirs){
+                    let new_i:number = row + dir[0];
+                    let new_j:number = column + dir[1];
+                    if(new_i >= 0 && new_i < matrix.length && new_j >= 0 && new_j < matrix[0].length && matrix[row][column] < matrix[new_i][new_j]){
+                        memo[new_i][new_j]--;
+                        if(memo[new_i][new_j] == 0){
+                            tempArr.push([new_i,new_j])
+                        }
+                    }
+
+                }
+            }
+        }
+
+        return res;
+
+    }
+}
 
 
 // //leecode:Course Schedule II
