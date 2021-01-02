@@ -85,6 +85,7 @@ function TreeDemo(){
    //  scheduleDemo1()
    //  scheduleDemo2()
    //  longestPathDemo1()
+   //  countDemo2()
 
 
     return(
@@ -92,6 +93,71 @@ function TreeDemo(){
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Count of Smaller Numbers After Self
+function countDemo2() {
+   let nums = [5,2,6,1];
+    countSmaller(nums)
+
+    function countSmaller(nums: number[]): number[] {
+         let index:number[] = [];
+         let tempIndex:number[] = [];
+         let res:number[] = new Array(nums.length).fill(0);
+         let tempNums:number[] = [];
+         if(nums.length < 2) return res;
+         for(let i = 0; i < nums.length; i++){
+             index[i] = i;
+         }
+         divide(nums,0,nums.length-1);
+         console.log(res);
+         return res;
+
+         function divide(nums:number[],left:number,right:number) {
+            if(left >= right) return;
+            let mid:number = (left + right) >> 1;
+            divide(nums,left,mid);
+            divide(nums,mid+1,right);
+            conbine(nums,left,mid,right)
+
+         }
+
+         function conbine(nums:number[],left:number,mid:number,right:number) {
+             let i:number = left,j:number = mid + 1,p:number = left;
+             while (i <= mid && j <= right){
+                 if(nums[i] <= nums[j]){
+                     tempNums[p] = nums[i];
+                     tempIndex[p] = index[i];
+                     res[index[i]] += (j-mid-1);
+                     i++;
+                     p++;
+                 }else{
+                     tempNums[p] = nums[j];
+                     tempIndex[p] = index[j];
+                     j++;
+                     p++;
+                 }
+             }
+             while (i <= mid){
+                 tempNums[p] = nums[i];
+                 tempIndex[p] = index[i];
+                 res[index[i]] += (j-mid-1);
+                 i++;
+                 p++;
+             }
+             while (j <= right){
+                 tempNums[p] = nums[j];
+                 tempIndex[p] = index[j];
+                 j++;
+                 p++;
+             }
+             for (let k = left; k <= right; k++){
+                 index[k] = tempIndex[k];
+                 nums[k] = tempNums[k];
+             }
+         }
+
+    };
 }
 
 
