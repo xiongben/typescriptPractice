@@ -86,13 +86,48 @@ function TreeDemo(){
    //  scheduleDemo2()
    //  longestPathDemo1()
    //  countDemo2()
-
+   // wordbreskDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Word Break II
+function wordbreskDemo2() {
+    let s = "pineapplepenapple",
+    wordDict = ["apple", "pen", "applepen", "pine", "pineapple"];
+    console.log(wordBreak(s,wordDict));
+
+    function wordBreak(s: string, wordDict: string[]): string[] {
+
+    };
+
+}
+
+//leecode:Word Break
+function wordbreskDemo1() {
+   let s = "applepenapple", wordDict = ["apple", "pen"];
+   console.log(wordBreak(s,wordDict));
+
+    function wordBreak(s: string, wordDict: string[]): boolean {
+       let len:number = s.length;
+       let wordDictSet:Set<string> = new Set(wordDict);
+       let temp:Array<boolean> = new Array(len+1).fill(false);
+       temp[0] = true;  //表示空串
+       for(let i = 1; i <= len; i++){
+           for(let j = 0; j < i; j++){
+               if(temp[j] && wordDictSet.has(s.substr(j,i-j))){
+                   temp[i] = true;
+                   break; //注意这里直接跳出
+               }
+           }
+       }
+       return temp[len]
+    };
+
 }
 
 //leecode:Count of Smaller Numbers After Self
