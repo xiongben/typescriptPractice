@@ -89,6 +89,8 @@ function TreeDemo(){
    // wordbreskDemo1()
    //  wordbreskDemo2()
     perfectSquares()
+
+
     return(
         <div>
             <h2>tree demo</h2>
@@ -100,9 +102,9 @@ function TreeDemo(){
 function perfectSquares(){
     let n = 12;
 
-    console.log(numSquares2(n));
+    console.log(numSquares3(n));
 
-
+    //动态规划
     function numSquares1(n: number): number {
         let squareNums:number[] = [];
         let square_n = Math.floor(Math.sqrt(n));
@@ -119,7 +121,7 @@ function perfectSquares(){
         }
         return dp[n];
     };
-
+    //贪心算法
     function numSquares2(n: number): number {
         let squareNums:number[] = [];
         let square_n = Math.floor(Math.sqrt(n));
@@ -146,6 +148,40 @@ function perfectSquares(){
         }
 
     };
+    //贪心+bfs
+    function numSquares3(n: number): number {
+        let squareNums:number[] = [];
+        let square_n = Math.floor(Math.sqrt(n));
+        for(let i = 1; i <= square_n; i++){
+            squareNums.push(i*i);
+        }
+        let setQueue:Set<number> = new Set<number>();
+        setQueue.add(n);
+        let level:number = 0;
+        while (setQueue.size > 0){
+            // console.log(setQueue)
+            level++;
+            let newSetQueue:Set<number> = new Set<number>();
+            setQueue.forEach(queueVal => {
+                for(let val of squareNums){
+                    if(queueVal == val){
+                        console.log("-====")
+                        return level;
+                    }else if(queueVal < val){
+                        break;
+                    }else{
+                        newSetQueue.add(queueVal-val)
+                    }
+
+                }
+            })
+            console.log(newSetQueue)
+            setQueue = newSetQueue;
+            }
+        return level;
+    }
+
+
 }
 
 //leecode:Word Break II
