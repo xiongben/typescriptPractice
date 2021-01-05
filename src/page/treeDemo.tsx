@@ -158,6 +158,7 @@ function perfectSquares(){
         let setQueue:Set<number> = new Set<number>();
         setQueue.add(n);
         let level:number = 0;
+        let flag = false;
         while (setQueue.size > 0){
             // console.log(setQueue)
             level++;
@@ -165,7 +166,7 @@ function perfectSquares(){
             setQueue.forEach(queueVal => {
                 for(let val of squareNums){
                     if(queueVal == val){
-                        console.log("-====")
+                        flag = true;
                         return level;
                     }else if(queueVal < val){
                         break;
@@ -175,9 +176,9 @@ function perfectSquares(){
 
                 }
             })
-            console.log(newSetQueue)
+            if(flag) return level;
             setQueue = newSetQueue;
-            }
+        }
         return level;
     }
 
