@@ -87,7 +87,8 @@ function TreeDemo(){
    //  longestPathDemo1()
    //  countDemo2()
    // wordbreskDemo1()
-
+   //  wordbreskDemo2()
+    perfectSquares()
     return(
         <div>
             <h2>tree demo</h2>
@@ -95,14 +96,88 @@ function TreeDemo(){
     )
 }
 
+//leecode:Perfect Squares
+function perfectSquares(){
+    let n = 12;
+
+    console.log(numSquares2(n));
+
+
+    function numSquares1(n: number): number {
+        let squareNums:number[] = [];
+        let square_n = Math.floor(Math.sqrt(n));
+        let dp:number[] = new Array(n+1).fill(Number.MAX_SAFE_INTEGER);
+        for(let i = 0; i <= square_n+1; i++){
+            squareNums.push(i*i);
+        }
+        dp[0] = 0;
+        for(let i = 1; i <= n; i++){
+            for(let j = 0; j < square_n+1; j++){
+                if(i < squareNums[j]) break;
+                dp[i] = Math.min(dp[i], dp[i-squareNums[j]]+1);
+            }
+        }
+        return dp[n];
+    };
+
+    function numSquares2(n: number): number {
+        let squareNums:number[] = [];
+        let square_n = Math.floor(Math.sqrt(n));
+        for(let i = 0; i <= square_n+1; i++){
+            squareNums.push(i*i);
+        }
+
+        let count:number = 1;
+        for(;count <= n;count++){
+            if(canBeDivided(n,count)){
+                return count;
+            }
+        }
+        return count;
+
+        function canBeDivided(n:number,count:number){
+            if(count === 1) return squareNums.indexOf(n) != -1;
+            for(let val of squareNums){
+                if(canBeDivided(n-val,count-1)){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    };
+}
+
 //leecode:Word Break II
 function wordbreskDemo2() {
     let s = "pineapplepenapple",
     wordDict = ["apple", "pen", "applepen", "pine", "pineapple"];
+
     console.log(wordBreak(s,wordDict));
 
     function wordBreak(s: string, wordDict: string[]): string[] {
+        var wordMap:any = {};
+        return helper(s,wordDict);
 
+        function helper(s: string, wordDict: string[]): string[]{
+            var res:string[] = [];
+            if(s.length == 0 || wordDict.length == 0) return res;
+            if(wordMap.hasOwnProperty(s)) return wordMap[s];
+            if(wordDict.indexOf(s) > -1) res.push(s);
+            for(var i = 0; i < s.length; i++){
+                var t = s.substring(i+1);
+                if(wordDict.indexOf(t) > -1){
+                    var tempres:string[] = helper(s.substring(0,i+1),wordDict);
+                    if(tempres.length > 0){
+                        for(var j = 0; j < tempres.length; j++){
+                            res.push(tempres[j] + " " + t);
+                        }
+                    }
+                }
+            }
+            wordMap[s] = res;
+            return res;
+        }
     };
 
 }
