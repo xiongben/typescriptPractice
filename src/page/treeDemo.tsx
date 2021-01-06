@@ -88,14 +88,38 @@ function TreeDemo(){
    //  countDemo2()
    // wordbreskDemo1()
    //  wordbreskDemo2()
-    perfectSquares()
-
+   //  perfectSquares()
+   // decodeWayDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Decode Ways
+function decodeWayDemo1(){
+    let s = "226";
+    console.log(numDecodings(s))
+
+    function numDecodings(s: string): number {
+        if(s == null || s.length == 0) return 0;
+        let dep:number[] = new Array(s.length+1).fill(0);
+        dep[0] = 1;
+        dep[1] = s.charAt(0) == "0"?0:1;
+        for(let i = 2; i < dep.length; i++){
+            let first:number = parseInt(s.substr(i-1,1));
+            let second:number = parseInt(s.substr(i-2,2));
+            if(first >= 1 && first <= 9){
+                dep[i]+= dep[i-1]
+            }
+            if(second >= 10 && second <= 26){
+                dep[i]+= dep[i-2]
+            }
+        }
+        return dep[s.length];
+    };
 }
 
 //leecode:Perfect Squares
@@ -410,70 +434,70 @@ function countDemo2() {
 // }
 
 
-// //leecode:Course Schedule II
-// function scheduleDemo2() {
-//     let numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
-//     console.log(findOrder(numCourses,prerequisites));
-//
-//     function findOrder(numCourses: number, prerequisites: number[][]): number[] {
-//         let adjacencyList:number[][] = [];
-//         let indegrees:number[] = new Array(numCourses).fill(0);
-//         let tempArr:number[] = [];
-//         let res:number[] = [];
-//         for(var i = 0; i < numCourses; i++){
-//             adjacencyList.push(new Array());
-//         }
-//         for(let val of prerequisites){
-//             adjacencyList[val[1]].push(val[0]);
-//             indegrees[val[0]]++;
-//         }
-//         for(let i = 0; i < numCourses; i++){
-//             if(indegrees[i] == 0) tempArr.push(i);
-//         }
-//         while (tempArr.length > 0){
-//             let firstNode:number = tempArr.shift() as number;
-//             numCourses--;
-//             res.push(firstNode);
-//             for(let val of adjacencyList[firstNode]){
-//                 indegrees[val]--;
-//                 if(indegrees[val] == 0) tempArr.push(val);
-//             }
-//         }
-//
-//         return numCourses == 0?res:[];
-//     };
-// }
+//leecode:Course Schedule II
+function scheduleDemo2() {
+    let numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+    console.log(findOrder(numCourses,prerequisites));
 
-// //leecode:Course Schedule
-// function scheduleDemo1() {
-//    let numCourses = 2, prerequisites = [[1,0]];
-//     console.log(canFinish(numCourses,prerequisites));
-//
-//     function canFinish(numCourses: number, prerequisites: number[][]): boolean {
-//         let adjacencyList:number[][] = [];
-//         let indegrees:number[] = new Array(numCourses).fill(0); //入度表
-//         let tempArr:number[] = [];  //放置所有入度为0的节点
-//         for(let i = 0; i < numCourses; i++){
-//             adjacencyList.push(new Array());
-//         }
-//         for(let val of prerequisites){
-//             indegrees[val[0]] ++;
-//             adjacencyList[val[1]].push(val[0]);
-//         }
-//         for(let i = 0; i < numCourses; i++){
-//             if(indegrees[i] == 0) tempArr.push(i);
-//         }
-//         while (tempArr.length > 0){
-//             let firstNode:number = tempArr.shift() as number;
-//             numCourses--;
-//             for(let val of adjacencyList[firstNode]){
-//                 indegrees[val]--;
-//                 if(indegrees[val] == 0) tempArr.push(val);
-//             }
-//         }
-//         return numCourses == 0;
-//     };
-// }
+    function findOrder(numCourses: number, prerequisites: number[][]): number[] {
+        let adjacencyList:number[][] = [];
+        let indegrees:number[] = new Array(numCourses).fill(0);
+        let tempArr:number[] = [];
+        let res:number[] = [];
+        for(var i = 0; i < numCourses; i++){
+            adjacencyList.push(new Array());
+        }
+        for(let val of prerequisites){
+            adjacencyList[val[1]].push(val[0]);
+            indegrees[val[0]]++;
+        }
+        for(let i = 0; i < numCourses; i++){
+            if(indegrees[i] == 0) tempArr.push(i);
+        }
+        while (tempArr.length > 0){
+            let firstNode:number = tempArr.shift() as number;
+            numCourses--;
+            res.push(firstNode);
+            for(let val of adjacencyList[firstNode]){
+                indegrees[val]--;
+                if(indegrees[val] == 0) tempArr.push(val);
+            }
+        }
+
+        return numCourses == 0?res:[];
+    };
+}
+
+//leecode:Course Schedule
+function scheduleDemo1() {
+   let numCourses = 2, prerequisites = [[1,0]];
+    console.log(canFinish(numCourses,prerequisites));
+
+    function canFinish(numCourses: number, prerequisites: number[][]): boolean {
+        let adjacencyList:number[][] = [];
+        let indegrees:number[] = new Array(numCourses).fill(0); //入度表
+        let tempArr:number[] = [];  //放置所有入度为0的节点
+        for(let i = 0; i < numCourses; i++){
+            adjacencyList.push(new Array());
+        }
+        for(let val of prerequisites){
+            indegrees[val[0]] ++;
+            adjacencyList[val[1]].push(val[0]);
+        }
+        for(let i = 0; i < numCourses; i++){
+            if(indegrees[i] == 0) tempArr.push(i);
+        }
+        while (tempArr.length > 0){
+            let firstNode:number = tempArr.shift() as number;
+            numCourses--;
+            for(let val of adjacencyList[firstNode]){
+                indegrees[val]--;
+                if(indegrees[val] == 0) tempArr.push(val);
+            }
+        }
+        return numCourses == 0;
+    };
+}
 
 // //leecode:Friend Circles
 // function friendCircleDemo(){
