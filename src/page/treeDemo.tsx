@@ -90,12 +90,40 @@ function TreeDemo(){
    //  wordbreskDemo2()
    //  perfectSquares()
    // decodeWayDemo1()
+    maxProfitDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//Best Time to Buy and Sell Stock with Cooldown
+function maxProfitDemo1(){
+    let arr1 = [1,2,3,0,2];
+    console.log(maxProfit(arr1));
+
+    function maxProfit(prices: number[]): number {
+        if(prices.length == 0) return 0;
+        // f[i][0]: 手上持有股票的最大收益
+        // f[i][1]: 手上不持有股票，并且处于冷冻期中的累计最大收益
+        // f[i][2]: 手上不持有股票，并且不在冷冻期中的累计最大收益
+        let len:number = prices.length;
+        let f:number[][] = new Array(len);
+        for(let i = 0; i < len; i++){
+            f[i] = new Array(3);
+        }
+        f[0][0] = -prices[0];
+        f[0][1] = 0;
+        f[0][2] = 0;
+        for(let i = 1; i < len; i++){
+            f[i][0] = Math.max(f[i-1][0],f[i-1][2]-prices[i]);
+            f[i][1] = f[i-1][0]+prices[i];
+            f[i][2] = Math.max(f[i-1][1],f[i-1][2]);
+        }
+        return Math.max(f[len-1][1],f[len-1][2]);
+    };
 }
 
 //leecode: Decode Ways
