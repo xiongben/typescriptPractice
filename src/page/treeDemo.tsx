@@ -90,13 +90,41 @@ function TreeDemo(){
    //  wordbreskDemo2()
    //  perfectSquares()
    // decodeWayDemo1()
-    maxProfitDemo1()
+   //  maxProfitDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//Best Time to Buy and Sell Stock III
+function maxProfitDemo2(){
+    let prices = [3,3,5,0,0,3,1,4];
+    console.log(maxProfit(prices));
+
+    function maxProfit(prices: number[]): number {
+        if(prices.length < 2) return 0;
+        let dp:number[][][] = new Array(prices.length);
+        for(let i = 0; i < dp.length; i++){
+            dp[i] = new Array(3);
+            for(let j = 0; j < dp[i].length; j++){
+                dp[i][j] = new Array(2).fill(0);
+            }
+        }
+        dp[0][1][1] = -prices[0];
+        dp[0][2][1] = Number.MIN_SAFE_INTEGER;
+        for(let i = 1; i < prices.length; i++){
+
+            dp[i][1][1] = Math.max(dp[i-1][1][1],-prices[i]);
+            dp[i][1][0] = Math.max(dp[i-1][1][0],dp[i-1][1][1] + prices[i]);
+            dp[i][2][0] = Math.max(dp[i-1][2][0],dp[i-1][2][1] + prices[i]);
+            dp[i][2][1] = Math.max(dp[i-1][2][1],dp[i-1][1][0] - prices[i]);
+        }
+
+        return Math.max(dp[prices.length-1][1][0],dp[prices.length-1][2][0]);
+    };
 }
 
 //Best Time to Buy and Sell Stock with Cooldown
