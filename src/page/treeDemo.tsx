@@ -91,12 +91,85 @@ function TreeDemo(){
    //  perfectSquares()
    // decodeWayDemo1()
    //  maxProfitDemo2()
+   //  surroundedDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Surrounded Regions
+function surroundedDemo1(){
+    let board:string[][] = [["X","O","X"],["O","X","O"],["X","O","X"]]
+    let a = JSON.parse(JSON.stringify(board));
+    console.log(a)
+    solve(board);
+
+    function solve(board: string[][]): void {
+        for(let i = 0; i < board.length; i++){
+            for(let j = 0; j < board[0].length; j++){
+                if((i == 0 || j == 0 || i == board.length - 1 || j == board[0].length-1)&& board[i][j] == "O"){
+                    dfs2(board,i,j);
+                }
+            }
+        }
+
+        // console.log(board)
+        for(let i = 0; i < board.length; i++){
+            for(let j = 0; j < board[0].length; j++){
+                if(board[i][j] == "O"){
+                    board[i][j] = "X"
+                }
+                if(board[i][j] == "#"){
+                    board[i][j] = "O"
+                }
+            }
+        }
+
+        function dfs2(board: string[][],i:number,j:number){
+            let stuck:number[][] = [];
+            let point:number[] = [i,j];
+            board[i][j] = "#";
+            stuck.push(point);
+            while (stuck.length > 0){
+                let currentPoint:number[] = stuck[0];
+                if(currentPoint[0] - 1 >= 0 && board[currentPoint[0]-1][currentPoint[1]] == "O"){
+                    stuck.push([currentPoint[0]-1,currentPoint[1]]);
+                    board[currentPoint[0]-1][currentPoint[1]] = "#";
+                    continue;
+                }
+                if(currentPoint[0] + 1 < board.length && board[currentPoint[0]+1][currentPoint[1]] == "O"){
+                    stuck.push([currentPoint[0]+1,currentPoint[1]]);
+                    board[currentPoint[0]+1][currentPoint[1]] = "#";
+                    continue;
+                }
+                if(currentPoint[1] - 1 >= 0 && board[currentPoint[0]][currentPoint[1]-1] == "O"){
+                    stuck.push([currentPoint[0],currentPoint[1]-1]);
+                    board[currentPoint[0]][currentPoint[1]-1] = "#";
+                    continue;
+                }
+                if(currentPoint[1] + 1 < board[0].length && board[currentPoint[0]][currentPoint[1]+1] == "O"){
+                    stuck.push([currentPoint[0],currentPoint[1]+1]);
+                    board[currentPoint[0]][currentPoint[1]+1] = "#";
+                    continue;
+                }
+                stuck.shift();
+            }
+        }
+
+
+        function dfs(board: string[][],i:number,j:number){
+            if(i < 0 || i >board.length-1 || j < 0 || j > board[0].length-1) return;
+            if(board[i][j] != "O") return;
+            board[i][j] = "#";
+            dfs(board,i-1,j);
+            dfs(board,i+1,j);
+            dfs(board,i,j-1);
+            dfs(board,i,j+1);
+        }
+    };
 }
 
 //Best Time to Buy and Sell Stock III

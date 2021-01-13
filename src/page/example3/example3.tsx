@@ -1,8 +1,9 @@
-import React, {useReducer, useState} from "react";
+import React, {useReducer, useState, useEffect} from "react";
 import ShowArea from "./showArea";
 import Buttons from "./buttom";
 import {Color} from "./color";
 import UserInfo from "../userInfo";
+import axios from "axios";
 
 import "./example.css"
 
@@ -16,6 +17,12 @@ function Example3(){
            num: 55
        })
     }
+
+    // useEffect(()=>{
+    //     axios.get("https://suggest.taobao.com/sug?code=utf-8&q=maoyi").then(res => {
+    //         console.log(res.data);
+    //     })
+    // },[])
 
     return (
        <div>
