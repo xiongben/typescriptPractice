@@ -92,12 +92,60 @@ function TreeDemo(){
    // decodeWayDemo1()
    //  maxProfitDemo2()
    //  surroundedDemo1()
+   //  maxNumberPairsDemo1()
+
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Max Number of K-Sum Pairs
+function maxNumberPairsDemo1(){
+    let nums:number[] = [3,1,3,4,3];
+    let k:number = 6;
+    console.log(maxOperations(nums,k));
+
+    function maxOperations(nums: number[], k: number): number {
+        nums.sort((a,b)=>a-b);
+        let min:number = 0;
+        let max:number = nums.length-1;
+        let res:number = 0;
+        while(min < max){
+            if(nums[min] + nums[max] == k){
+                res++;
+                min++;
+                max--;
+            }else if(nums[min] + nums[max] < k){
+                min++;
+            }else{
+                max--;
+            }
+        }
+        return res;
+    };
+
+    function maxOperations2(nums: number[], k: number): number {
+         nums.sort((a,b)=>a-b);
+         let min:number = 0;
+         let max:number = nums.length-1;
+         let res:number = 0;
+         while(min < max){
+             if(nums[min] + nums[max] == k){
+                 res++;
+                 min++;
+                 max--;
+             }else if(nums[min] + nums[max] < k){
+                 min++;
+             }else{
+                 max--;
+             }
+         }
+         return res;
+    };
+
 }
 
 //leecode:Surrounded Regions
