@@ -93,13 +93,67 @@ function TreeDemo(){
    //  maxProfitDemo2()
    //  surroundedDemo1()
    //  maxNumberPairsDemo1()
-
+   longestStrDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Longest Palindromic Substring
+function longestStrDemo1(){
+    let s = "cbbd";
+    console.log(longestPalindrome2(s));
+
+    function longestPalindrome2(s: string): string {
+        if(s.length == 0) return "";
+        let res:string = s.charAt(0);
+        for(let i = 0 ; i < s.length; i++){
+            let str1:string = expand(s,i,i);
+            let str2:string = expand(s,i,i+1);
+            let temp:string = str1.length > str2.length?str1 : str2;
+            if(temp.length > res.length){
+                res = temp;
+            }
+        }
+        return res;
+
+        function expand(s:string, left:number, right:number):string{
+            while(left >= 0 && right < s.length && s.charAt(left) == s.charAt(right)){
+                left--;
+                right++;
+            }
+            return s.slice(left+1,right);
+        }
+    };
+
+    function longestPalindrome(s: string): string {
+        let len:number = s.length;
+        let dp:boolean[][] = new Array(len);
+        if(s.length == 0) return "";
+        let res:string = s.charAt(0);
+        for(let i = 0; i < dp.length; i++){
+            dp[i] = new Array(len).fill(false);
+        }
+        for(let l = 0; l < len; l++){
+            for(let i = 0; i + l < len; i++){
+                let j = i + l;
+                if(l == 0){
+                    dp[i][j] = true;
+                }else if(l == 1){
+                    dp[i][j] = (s.charAt(i) == s.charAt(j));
+                }else{
+                    dp[i][j] = dp[i+1][j-1] && (s.charAt(i) == s.charAt(j));
+                }
+                if(l+1 > res.length && dp[i][j]){
+                    res = s.slice(i,j+1);
+                }
+            }
+        }
+        return res;
+    };
 }
 
 //leecode:Max Number of K-Sum Pairs
