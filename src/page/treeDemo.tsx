@@ -93,13 +93,39 @@ function TreeDemo(){
    //  maxProfitDemo2()
    //  surroundedDemo1()
    //  maxNumberPairsDemo1()
-   longestStrDemo1()
+   // longestStrDemo1()
+   //  competiveDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Find the Most Competitive Subsequence
+function competiveDemo1(){
+    let nums = [2,4,3,3,5,4,9,6], k = 4;
+    console.log(mostCompetitive(nums,k));
+
+    function mostCompetitive(nums: number[], k: number): number[] {
+        let stack:number[] = [];
+        stack[0] = -1;
+        let res:number[] = new Array(k);
+        for (let i = 0; i < nums.length; i++){
+            while (nums[i] < stack[stack.length-1] && k-stack.length+1 < nums.length-i){
+                stack.pop();
+            }
+            if(stack.length-1 < k){
+                stack.push(nums[i])
+            }
+        }
+        stack.shift()
+        for(let i = 0; i < k; i++){
+            res[i] = stack.shift() as number;
+        }
+        return res;
+    };
 }
 
 //leecode: Longest Palindromic Substring
@@ -1679,27 +1705,27 @@ function scheduleDemo1() {
 //     };
 // }
 
-// //leecode：Valid Parentheses
-// function validParenthessDemo() {
-//     var s = "()[]{}(";
-//     console.log(isValid(s))
-//     function isValid(s: string): boolean {
-//         var stack1:string[] = [];
-//         for(var i = 0; i < s.length; i++){
-//             console.log(stack1)
-//             if(s.charAt(i) === "("){
-//                 stack1.push(")")
-//             }else if(s.charAt(i) === "["){
-//                 stack1.push("]")
-//             }else if(s.charAt(i) === "{"){
-//                 stack1.push("}")
-//             }else if(stack1.length === 0 || stack1.pop() !== s.charAt(i)){
-//                 return false;
-//             }
-//         }
-//         return stack1.length === 0;
-//     };
-// }
+//leecode：Valid Parentheses
+function validParenthessDemo() {
+    var s = "()[]{}(";
+    console.log(isValid(s))
+    function isValid(s: string): boolean {
+        var stack1:string[] = [];
+        for(var i = 0; i < s.length; i++){
+            console.log(stack1)
+            if(s.charAt(i) === "("){
+                stack1.push(")")
+            }else if(s.charAt(i) === "["){
+                stack1.push("]")
+            }else if(s.charAt(i) === "{"){
+                stack1.push("}")
+            }else if(stack1.length === 0 || stack1.pop() !== s.charAt(i)){
+                return false;
+            }
+        }
+        return stack1.length === 0;
+    };
+}
 
 // //leecode:Pascal's Triangle
 // function  pasDemo1(){
