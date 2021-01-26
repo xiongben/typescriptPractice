@@ -95,12 +95,36 @@ function TreeDemo(){
    //  maxNumberPairsDemo1()
    // longestStrDemo1()
    //  competiveDemo1()
+   //  removeDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Remove Duplicates from Sorted Array II
+function removeDemo1(){
+    let nums = [0,0,1,1,1,1,2,3,3];
+    console.log(removeDuplicates(nums));
+
+    function removeDuplicates(nums: number[]): number {
+        let j = 1;
+        let count = 1;
+        for(let i = 1; i < nums.length; i++){
+            if(nums[i] == nums[i-1]){
+                count++;
+            }else {
+                count = 1;
+            }
+            if(count <= 2){
+                nums[j] = nums[i];
+                j++;
+            }
+        }
+        return j;
+    };
 }
 
 //leecode:Find the Most Competitive Subsequence
