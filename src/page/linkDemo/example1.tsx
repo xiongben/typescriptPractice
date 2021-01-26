@@ -22,6 +22,35 @@ function testDemo() {
     // console.log(removeNthFromEnd(node4,1));
     // mergeLinkDemo1()
     // sortLinkDemo1()
+    // removeDemo2()
+}
+
+function removeDemo2(){
+    var list = [1,1,2,3,3];
+    var head:ListNode = buildLink(list);
+    var newHead = deleteDuplicates2(head);
+    printLink(newHead);
+
+    function deleteDuplicates(head: ListNode | null): ListNode | null {
+        let point: ListNode | null = new ListNode();
+        let cur: ListNode | null = head;
+        let res:ListNode | null = new ListNode();
+        res.next = point;
+        while (cur != null){
+            while(cur.next != null && cur.val == cur.next.val){
+                cur = cur?.next;
+            }
+            (point as ListNode).next = cur;
+            point = (point as ListNode).next;
+            cur = cur.next;
+        }
+        return res.next.next;
+    };
+    function deleteDuplicates2(head: ListNode | null): ListNode | null {
+        if(head == null || head.next == null) return head;
+        head.next = deleteDuplicates2(head.next);
+        return head.next?.val == head.val? head.next:head;
+    };
 }
 
 function sortLinkDemo1() {
