@@ -96,12 +96,51 @@ function TreeDemo(){
    // longestStrDemo1()
    //  competiveDemo1()
    //  removeDemo1()
+   //  spiralDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Spiral Matrix II
+function spiralDemo2(){
+    let n = 3;
+    console.log(generateMatrix(n));
+
+    function generateMatrix(n: number): number[][] {
+        let total:number = n * n;
+        let l = 0;
+        let r = n-1;
+        let t = 0;
+        let b = n-1;
+        let res:number[][] = new Array(n);
+        let num:number = 1;
+        for(let i = 0; i < res.length; i++){
+            res[i] = new Array(n);
+        }
+        while (num <= total){
+            for(let j = l; j <= r; j++){
+                res[t][j] = num++;
+            }
+            t++;
+            for(let j = t; j <= b; j++){
+                res[j][r] = num++;
+            }
+            r--;
+            for(let j = r; j >= l; j--){
+                res[b][j] = num++;
+            }
+            b--;
+            for(let j = b; j >= t; j--){
+                res[j][l] = num++;
+            }
+            l++;
+        }
+        return res;
+    };
 }
 
 //leecode:Remove Duplicates from Sorted Array II
