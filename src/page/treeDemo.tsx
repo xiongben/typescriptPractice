@@ -97,12 +97,39 @@ function TreeDemo(){
    //  competiveDemo1()
    //  removeDemo1()
    //  spiralDemo2()
+   //  searchDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Search a 2D Matrix
+function searchDemo3(){
+    let matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3;
+    console.log(searchMatrix(matrix,target));
+
+    function searchMatrix(matrix: number[][], target: number): boolean {
+       let totalNum:number = matrix.length * matrix[0].length;
+       let start:number = 0;
+       let end:number = totalNum - 1;
+       let res:boolean = false;
+       while(start <= end){
+           let mid:number = (start + end) >> 1;
+           let rowNum:number = Math.floor(mid/matrix[0].length);
+           let columNum:number = mid % matrix[0].length;
+           if(matrix[rowNum][columNum] == target){
+               return true;
+           }else if(matrix[rowNum][columNum] < target){
+               start = mid + 1;
+           }else{
+               end = mid - 1;
+           }
+       }
+       return false;
+    };
 }
 
 //leecode:Spiral Matrix II
