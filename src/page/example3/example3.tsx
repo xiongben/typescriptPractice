@@ -9,7 +9,9 @@ import "./example.css"
 
 function Example3(){
     const [userInfo, setUserInfo] = useState({name:"xb",num:23})
+    const [list1, setList1] = useState([0,1,2,3,4,5,6,7,8,9,10])
     // const params = {name:"xb",num:23}
+    const ref:any = React.createRef();
 
     function changeUserInfo(){
        setUserInfo({
@@ -24,6 +26,14 @@ function Example3(){
     //     })
     // },[])
 
+    function handleOnScroll(e:any){
+        // console.log(ref.current)
+        let dom = ref.current;
+       if(dom != null){
+           console.log(dom.scrollTop);
+       }
+    }
+
     return (
        <div>
            <Color>
@@ -37,6 +47,15 @@ function Example3(){
                    <div className="l-box"></div>
                    <div className="r-box"></div>
                </div>
+           </div>
+           <div className="scrollbox1" onScrollCapture={(e) => handleOnScroll(e)} ref={ref}>
+               {list1.map((item)=>{
+                   return (
+                       <div className="itemBox" key={item}>
+                           item
+                       </div>
+                   )
+               })}
            </div>
        </div>
     )
