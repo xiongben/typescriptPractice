@@ -98,12 +98,68 @@ function TreeDemo(){
    //  removeDemo1()
    //  spiralDemo2()
    //  searchDemo3()
+   // findindexDemo1()
+   sumcloestDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:3Sum Closest
+function sumcloestDemo1(){
+    let nums = [-1,2,1,-4], target = 1;
+    console.log(threeSumClosest(nums,target));
+
+    function threeSumClosest(nums: number[], target: number): number {
+        let res:number = nums[0] + nums[1] + nums[2];
+        nums.sort((a,b)=> a-b);
+        for(let i = 0; i < nums.length - 2; i++){
+            let start = i + 1;
+            let end = nums.length - 1;
+            let sumRes = 0;
+            while (start < end){
+                sumRes = nums[i] + nums[start] + nums[end];
+                if(sumRes == target){
+                    return sumRes;
+                }else if(sumRes < target){
+                    start++;
+                } else {
+                    end--;
+                }
+                if(Math.abs(sumRes-target) < Math.abs(res-target)){
+                    res = sumRes;
+                }
+            }
+        }
+        return res;
+    };
+}
+
+//leecode:Search Insert Position
+function findindexDemo1(){
+    let nums = [1,3,5,6], target = 2;
+    console.log(searchInsert(nums, target));
+
+    function searchInsert(nums: number[], target: number): number {
+        let start:number = 0;
+        let end:number = nums.length - 1;
+        if(target > nums[end]) return nums.length;
+        if(target < nums[0]) return 0;
+        while(start < end){
+            let mid = (start + end) >> 1;
+            if(nums[mid] == target){
+                return mid;
+            }else if(nums[mid] < target){
+                start = mid + 1;
+            }else{
+                end = end - 1;
+            }
+        }
+        return start;
+    };
 }
 
 //leecode: Search a 2D Matrix
