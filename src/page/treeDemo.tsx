@@ -99,7 +99,7 @@ function TreeDemo(){
    //  spiralDemo2()
    //  searchDemo3()
    // findindexDemo1()
-   sumcloestDemo1()
+   // sumcloestDemo1()
 
     return(
         <div>

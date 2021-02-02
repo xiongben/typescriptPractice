@@ -23,6 +23,22 @@ function testDemo() {
     // mergeLinkDemo1()
     // sortLinkDemo1()
     // removeDemo2()
+    // swapNodeDemo1()
+}
+
+function swapNodeDemo1(){
+    let list = [1,2,3,4];
+    var head:ListNode = buildLink(list);
+    let newHead = swapPairs(head);
+    printLink(newHead)
+
+    function swapPairs(head: ListNode | null): ListNode | null {
+       if(head == null || head.next == null) return head;
+       let next:ListNode | null = head.next;
+       head.next = swapPairs(next.next);
+       next.next = head;
+       return next;
+    };
 }
 
 function removeDemo2(){
