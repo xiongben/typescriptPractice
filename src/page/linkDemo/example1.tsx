@@ -24,6 +24,37 @@ function testDemo() {
     // sortLinkDemo1()
     // removeDemo2()
     // swapNodeDemo1()
+    // combinationSumDemo1()
+}
+
+function combinationSumDemo1(){
+    let candidates = [2,3,5], target = 8;
+    console.log(combinationSum(candidates,target));
+
+    function combinationSum(candidates: number[], target: number): number[][] {
+        let res:number[][] = new Array();
+        if(candidates.length == 0) return res;
+        candidates.sort((a,b)=>a-b);
+        let candidate:number[] = new Array();
+        dfs(candidates,target,0,res,candidate);
+        return res;
+
+        function dfs(candidates: number[], target: number, start: number, res: number[][],candidate:number[]){
+            if(target == 0){
+                res.push([...candidate]);
+                return
+            }
+            for(let i = start; i < candidates.length; i++){
+                if(target - candidates[i] < 0){
+                    break;
+                }
+                if(candidate[candidate.length-1] < candidates[i]) break;
+                candidate.push(candidates[i])
+                dfs(candidates,target-candidates[i],start,res,candidate);
+                candidate.pop();
+            }
+        }
+    };
 }
 
 function swapNodeDemo1(){
