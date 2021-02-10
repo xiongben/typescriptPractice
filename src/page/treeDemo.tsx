@@ -100,12 +100,70 @@ function TreeDemo(){
    //  searchDemo3()
    // findindexDemo1()
    // sumcloestDemo1()
+    queenDemo1()
+
+
+
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:N-Queens
+function queenDemo1(){
+    let n = 4;
+    console.log(solveNQueens(n));
+
+    function solveNQueens(n: number): string[][] {
+        let res:string[][] = [];
+        let columns:Set<number> = new Set();
+        let diagonals1:Set<number> = new Set();
+        let diagonals2:Set<number> = new Set();
+        let queens = new Array(n).fill(-1);
+        backTrack(res,queens,n,0,columns,diagonals1,diagonals2);
+        return res;
+
+
+        function backTrack(res:string[][],queens:number[],n:number,row:number,
+                           columns:Set<number>,diagonals1:Set<number>,
+                           diagonals2:Set<number>){
+            if(row == n){
+                let strItemRes:string[] = getStringItemRes(queens);
+                res.push(strItemRes);
+            }else{
+                for(let i = 0; i < n; i++){
+                    if(columns.has(i)) continue;
+                    let diagonal1:number = row - i;
+                    let diagonal2:number = row + i;
+                    if(diagonals1.has(diagonal1)) continue;
+                    if(diagonals2.has(diagonal2)) continue;
+                    queens[row] = i;
+                    columns.add(i);
+                    diagonals1.add(diagonal1);
+                    diagonals2.add(diagonal2);
+                    backTrack(res,queens,n,row+1,columns,diagonals1,diagonals2);
+                    queens[row] = -1;
+                    columns.delete(i);
+                    diagonals1.delete(diagonal1);
+                    diagonals2.delete(diagonal2);
+                }
+            }
+        }
+
+        function getStringItemRes(arr:number[]):string[]{
+            let len:number = arr.length;
+            let res:string[] = new Array();
+            for(let i = 0; i < len; i++){
+                let strArr1:string[] = new Array(len).fill(".");
+                strArr1[arr[i]] = "Q";
+                res.push(strArr1.join(""));
+            }
+            return res;
+        }
+    };
 }
 
 //leecode:3Sum Closest
