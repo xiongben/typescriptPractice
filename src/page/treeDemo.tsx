@@ -101,6 +101,8 @@ function TreeDemo(){
    // findindexDemo1()
    // sumcloestDemo1()
    //  queenDemo2()
+   // lengthWordDemo1()
+    combinationDemo1()
 
 
 
@@ -110,6 +112,47 @@ function TreeDemo(){
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Combinations ???????
+function combinationDemo1(){
+    let n = 4, k = 2;
+    console.log(combine(n, k));
+
+    function combine(n: number, k: number): number[][] {
+       let res:number[][] = new Array();
+       let tempArr:number[] = new Array();
+       helper(res,[],1,n,k);
+       return res;
+    };
+
+    function helper(res:number[][],tempArr:number[],start:number,n:number,k:number){
+        console.log(start,k)
+        if(k == 0){
+            res.push([...tempArr]);
+            return;
+        }
+        for (let i = start; i <= n; i++){
+            tempArr.push(i);
+            helper(res,tempArr,start+1,n,k-1);
+            tempArr.pop();
+        }
+    }
+}
+
+//leecode:Length of Last Word
+function lengthWordDemo1(){
+    let s = "Hello World";
+    console.log(lengthOfLastWord(s));
+
+    function lengthOfLastWord(s: string): number {
+        let end:number = s.length - 1;
+        while (end >= 0 && s.charAt(end) == " ") end--;
+        if(end < 0) return 0;
+        let start:number = end;
+        while (start >= 0 && s.charAt(start) != " ") start--;
+        return end - start;
+    };
 }
 
 //leecode:N-Queens II
