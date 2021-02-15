@@ -25,6 +25,34 @@ function testDemo() {
     // removeDemo2()
     // swapNodeDemo1()
     // combinationSumDemo1()
+    reverseDemo3()
+}
+
+function reverseDemo3(){
+    let list = [1,2,3,4,5];
+    var head:ListNode = buildLink(list);
+    let m = 2, n = 4;
+    let newHead = reverseBetween(head,m,n);
+    printLink(newHead);
+
+    function reverseBetween(head: ListNode | null, m: number, n: number): ListNode | null {
+        if(head == null || head.next == null) return head;
+        let res:ListNode = new ListNode(0);
+        res.next = head;
+        let pre:ListNode | null = res;
+        for(let i = 0; i < m-1; i++){
+            pre = (pre as ListNode).next;
+        }
+        let start: ListNode | null = (pre as ListNode).next;
+        let then : ListNode | null = (start as ListNode).next;
+        for(let i = 0; i < n-m; i++){
+            (start as ListNode).next = (then as ListNode).next;
+            (then as ListNode).next = (pre as ListNode).next;
+            (pre as ListNode).next = then;
+            then = (start as ListNode).next;
+        }
+        return res.next;
+    };
 }
 
 function combinationSumDemo1(){
