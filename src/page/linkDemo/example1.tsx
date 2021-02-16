@@ -25,7 +25,34 @@ function testDemo() {
     // removeDemo2()
     // swapNodeDemo1()
     // combinationSumDemo1()
-    reverseDemo3()
+    // reverseDemo3()
+    // reverseDemo4()
+}
+
+function reverseDemo4(){
+    let list = [1,2,3,4,5,6,7];
+    var head:ListNode = buildLink(list);
+    reorderList(head);
+    printLink(head);
+
+    function reorderList(head: ListNode | null): void {
+       if(head == null || head.next == null) return;
+       let nodeList:ListNode[] = [];
+       while (head != null){
+           nodeList.push(head);
+           head = head.next;
+       }
+       let start:number = 0;
+       let end:number = nodeList.length - 1;
+       while (start < end){
+           nodeList[start].next = nodeList[end];
+           start++;
+           if(start == end) break;
+           nodeList[end].next = nodeList[start];
+           end--;
+       }
+       nodeList[start].next = null;
+    };
 }
 
 function reverseDemo3(){

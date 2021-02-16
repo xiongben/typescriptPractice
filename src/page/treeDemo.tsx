@@ -102,7 +102,7 @@ function TreeDemo(){
    // sumcloestDemo1()
    //  queenDemo2()
    // lengthWordDemo1()
-    combinationDemo1()
+   //  combinationDemo1()
 
 
 
@@ -134,7 +134,7 @@ function combinationDemo1(){
         }
         for (let i = start; i <= n; i++){
             tempArr.push(i);
-            helper(res,tempArr,start+1,n,k-1);
+            helper(res,tempArr,i+1,n,k-1);
             tempArr.pop();
         }
     }
