@@ -103,7 +103,7 @@ function TreeDemo(){
    //  queenDemo2()
    // lengthWordDemo1()
    //  combinationDemo1()
-
+   // removeElementDemo2()
 
 
 
@@ -114,7 +114,29 @@ function TreeDemo(){
     )
 }
 
-//leecode: Combinations ???????
+//leecode:Remove Element
+function removeElementDemo2(){
+    let nums = [3,2,2,3], val = 3;
+
+    console.log(removeElement(nums,val));
+
+    function removeElement(nums: number[], val: number): number {
+        nums.sort((a,b)=>a-b);
+        let len = nums.length;
+        let point = 0;
+        for(let i = 0; i < len; i++){
+            if(nums[i] == val){
+                continue;
+            }else{
+                nums[point] = nums[i];
+                point++;
+            }
+        }
+        return point;
+    };
+}
+
+//leecode: Combinations
 function combinationDemo1(){
     let n = 4, k = 2;
     console.log(combine(n, k));
