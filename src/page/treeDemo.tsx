@@ -104,7 +104,7 @@ function TreeDemo(){
    // lengthWordDemo1()
    //  combinationDemo1()
    // removeElementDemo2()
-
+   // rainWaterDemo1()
 
 
     return(
@@ -112,6 +112,53 @@ function TreeDemo(){
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Trapping Rain Water
+function rainWaterDemo1(){
+    let height = [0,1,0,2,1,0,1,3,2,1,2,1];
+    console.log(trap2(height));
+
+    function trap(height: number[]): number {
+        let leftHeight:number[] = new Array(height.length).fill(0);
+        let rightHeight:number[] = new Array(height.length).fill(0);
+        let res:number = 0;
+
+        for(let i = 1; i < height.length-1; i++){
+            leftHeight[i] = Math.max(leftHeight[i-1],height[i-1]);
+        }
+
+        for(let i = height.length - 2; i >= 0; i--){
+            rightHeight[i] = Math.max(rightHeight[i+1],height[i+1]);
+        }
+
+        for(let i = 1; i < height.length-1; i++){
+            let min = Math.min(leftHeight[i],rightHeight[i]);
+            if(min > height[i]){
+                res = res + (min - height[i]);
+            }
+        }
+        return res;
+    };
+
+    function trap2(height: number[]): number {
+        let stack:number[] = [];
+        let res = 0;
+        let current = 0;
+        while (current < height.length){
+            while (stack.length > 0 && height[current] > height[stack[stack.length-1]]){
+                let h = height[stack[stack.length-1]];
+                stack.pop();
+                if(stack.length <= 0) break;
+                let distance = current - stack[stack.length-1] - 1;
+                let min = Math.min(height[stack[stack.length-1]], height[current]);
+                res = res + (min-h)*distance;
+            }
+            stack.push(current);
+            current++;
+        }
+        return res;
+    }
 }
 
 //leecode:Remove Element
