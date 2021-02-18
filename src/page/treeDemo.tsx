@@ -105,13 +105,38 @@ function TreeDemo(){
    //  combinationDemo1()
    // removeElementDemo2()
    // rainWaterDemo1()
-
+   // subsetsDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Subsets II
+function subsetsDemo2(){
+    let nums = [1,2,2];
+    console.log(subsetsWithDup(nums));
+
+    function subsetsWithDup(nums: number[]): number[][] {
+       let res:number[][] = [];
+       nums.sort((a,b)=>a-b);
+       helper(nums,0,[],res);
+       return res
+    };
+
+    function helper(nums: number[],start:number,temp:number[],res:number[][]){
+        res.push([...temp]);
+        for(let i = start; i < nums.length; i++){
+            if(i > start && nums[i] == nums[i-1]){
+                continue;
+            }
+            temp.push(nums[i]);
+            helper(nums,i+1,temp,res);
+            temp.pop();
+        }
+    }
 }
 
 //leecode: Trapping Rain Water
