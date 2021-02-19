@@ -106,12 +106,63 @@ function TreeDemo(){
    // removeElementDemo2()
    // rainWaterDemo1()
    // subsetsDemo2()
+   //  triangleDemo1()
+   //  uglyNumberDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Ugly Number II
+function uglyNumberDemo1(){
+    let n = 10;
+    console.log(nthUglyNumber(n));
+
+    function nthUglyNumber(n: number): number {
+       let numArr:number[] = new Array(1690);
+       let ugly:number;
+       let point1 = 0,point2 = 0,point3 = 0;
+       numArr[0] = 1;
+       for(let i = 1; i <= 1690; i++){
+           ugly = Math.min(Math.min(numArr[point1]*2, numArr[point2]*3),numArr[point3]*5);
+           numArr[i] = ugly;
+           if(ugly == numArr[point1]*2) point1++;
+           if(ugly == numArr[point2]*3) point2++;
+           if(ugly == numArr[point3]*5) point3++;
+       }
+       return numArr[n-1];
+    };
+}
+
+//leecode: Triangle
+function triangleDemo1(){
+    let triangle = [[2],[3,4],[6,5,7],[4,1,8,3]];
+    console.log(minimumTotal(triangle));
+
+    function minimumTotal(triangle: number[][]): number {
+        let n:number = triangle.length;
+       let f:number[][] = new Array(n);
+       let res:number;
+       for(let i = 0; i < n; i++){
+           f[i] = new Array(n);
+       }
+       f[0][0] = triangle[0][0];
+       for(let i = 1; i < n; i++){
+           f[i][0] = f[i-1][0] + triangle[i][0];
+           for(let j = 1; j < i; j++){
+               f[i][j] = Math.min(f[i-1][j-1],f[i-1][j]) + triangle[i][j];
+           }
+           f[i][i] = f[i-1][i-1] + triangle[i][i];
+       }
+       res = f[n-1][0];
+       for(let i = 1; i < n; i++){
+           res = Math.min(res, f[n-1][i]);
+       }
+       return res;
+    };
 }
 
 //leecode: Subsets II
