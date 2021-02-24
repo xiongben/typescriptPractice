@@ -59,7 +59,7 @@ function TreeDemo(){
    //  countsayDemo()
    //  maxsubDemo1()
    //  hammingDemo1()
-   // pasDemo1()
+   //  pasDemo1()
    //  validParenthessDemo()
    //  missNumberDemo()
    //  sumdemo2()
@@ -109,12 +109,53 @@ function TreeDemo(){
    //  triangleDemo1()
    //  uglyNumberDemo1()
    //  summaryDemo1()
+   //  pascalTriangleDemo2()
+   //  rotatedArrDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Find Minimum in Rotated Sorted Array II
+function rotatedArrDemo2(){
+    let arr = [2,2,2,0,1]
+    console.log(findMin(arr));
+
+    function findMin(nums: number[]): number {
+        let start = 0;
+        let end = nums.length-1;
+        while (start < end){
+            let pivot = (start + end) >> 1;
+            if(nums[pivot] < nums[end]){
+                end = pivot;
+            }else if(nums[pivot] > nums[end]){
+                start = pivot + 1;
+            }else {
+                end--;
+            }
+        }
+        return nums[start];
+    };
+}
+
+//leecode: Pascal's Triangle II
+function pascalTriangleDemo2(){
+    let rowIndex = 3;
+    console.log(getRow(rowIndex));
+
+    function getRow(rowIndex: number): number[] {
+        let temp:number[] = [];
+        for(let i = 0; i <= rowIndex; i++){
+            temp.unshift(1);
+            for(let j = 1; j < temp.length-1; j++){
+                temp[j] = temp[j] + temp[j+1];
+            }
+        }
+        return temp;
+    };
 }
 
 //leecode:Summary Ranges
@@ -2189,23 +2230,23 @@ function validParenthessDemo() {
 }
 
 // //leecode:Pascal's Triangle
-// function  pasDemo1(){
-//     var n:number = 5
-//     console.log(generate(n));
-//
-//     function generate(numRows: number): number[][] {
-//         var res:number[][] = [];
-//         var temp:number[] = []
-//         for(var i = 0; i < numRows; i++){
-//             temp.unshift(1);
-//             for(var j = 1; j < temp.length-1; j++){
-//                 temp[j] = temp[j] + temp[j+1];
-//             }
-//             res.push([...temp]);
-//         }
-//         return res;
-//     };
-// }
+function  pasDemo1(){
+    var n:number = 5
+    console.log(generate(n));
+
+    function generate(numRows: number): number[][] {
+        var res:number[][] = [];
+        var temp:number[] = []
+        for(var i = 0; i < numRows; i++){
+            temp.unshift(1);
+            for(var j = 1; j < temp.length-1; j++){
+                temp[j] = temp[j] + temp[j+1];
+            }
+            res.push([...temp]);
+        }
+        return res;
+    };
+}
 
 // //leecode:Reverse Bits
 // function reverseBitDemo(){
