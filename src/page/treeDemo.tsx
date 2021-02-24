@@ -108,12 +108,40 @@ function TreeDemo(){
    // subsetsDemo2()
    //  triangleDemo1()
    //  uglyNumberDemo1()
+   //  summaryDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Summary Ranges
+function summaryDemo1(){
+    let nums = [0,1,2,4,5,7];
+    console.log(summaryRanges(nums));
+
+    function summaryRanges(nums: number[]): string[] {
+       let res:string[] = [];
+       let start = 0;
+       let end = nums.length;
+       while (start < end){
+           let low = start;
+           start++;
+           while (start < end && nums[start] == nums[start-1]+1){
+               start++;
+           }
+           let height = start-1;
+           let temp = [""+nums[low]];
+           if(low < height){
+               temp.push("->");
+               temp.push(""+nums[height]);
+           }
+           res.push(temp.join(""));
+       }
+       return res;
+    };
 }
 
 //leecode: Ugly Number II
