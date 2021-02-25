@@ -111,12 +111,63 @@ function TreeDemo(){
    //  summaryDemo1()
    //  pascalTriangleDemo2()
    //  rotatedArrDemo2()
+   //  twoSumDemo3()
+   //  combinationDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Combination Sum III
+function combinationDemo3(){
+    let k = 3, n = 9;
+    console.log(combinationSum3(k,n));
+
+    function combinationSum3(k: number, n: number): number[][] {
+        let res:number[][] = [];
+        let temp:number[] = [];
+        let start = 0, sum = 0;
+        helper(res,temp,start,0);
+        return res;
+
+
+        function helper(res:number[][],temp:number[],start:number,sum:number){
+            if(temp.length > k || sum > n || start > 9) return;
+            if(temp.length == k && sum == n){
+                res.push([...temp]);
+            }
+            for(let i = start+1; i < 10; i++){
+                temp.push(i);
+                sum+=i;
+                helper(res,temp,i,sum);
+                temp.pop();
+                sum-=i;
+            }
+        }
+    };
+}
+
+//leecode: Two Sum II - Input array is sorted
+function twoSumDemo3(){
+    let numbers = [2,7,11,15], target = 9;
+    console.log(twoSum(numbers,target));
+
+    function twoSum(numbers: number[], target: number): number[] {
+        let res:number[] = [];
+        let map:any = {};
+        for(let i = 0; i < numbers.length; i++){
+            if(map.hasOwnProperty(numbers[i])){
+                res = [map[numbers[i]]+1,i+1];
+            }else{
+                let key = target - numbers[i];
+                map[key] = i;
+            }
+        }
+        return res;
+    };
 }
 
 //leecode: Find Minimum in Rotated Sorted Array II
