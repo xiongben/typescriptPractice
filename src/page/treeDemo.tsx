@@ -113,12 +113,37 @@ function TreeDemo(){
    //  rotatedArrDemo2()
    //  twoSumDemo3()
    //  combinationDemo3()
+   //  minimumDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Minimum Size Subarray Sum
+function minimumDemo3(){
+    let target = 213, nums = [12,28,83,4,25,26,25,2,25,25,25,12];
+    console.log(minSubArrayLen(target,nums));
+
+    function minSubArrayLen(target: number, nums: number[]): number {
+        let len = nums.length;
+        if(len == 0) return 0;
+        let res = Number.MAX_SAFE_INTEGER;
+        let start = 0,end = 0;
+        let sum = 0;
+        while (end < len){
+            sum += nums[end];
+            while (sum >= target){
+                res = Math.min(res,end-start+1);
+                sum -= nums[start];
+                start++;
+            }
+            end++;
+        }
+        return res == Number.MAX_SAFE_INTEGER?0:res;
+    };
 }
 
 //leecode: Combination Sum III
