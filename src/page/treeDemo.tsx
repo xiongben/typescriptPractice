@@ -114,12 +114,33 @@ function TreeDemo(){
    //  twoSumDemo3()
    //  combinationDemo3()
    //  minimumDemo3()
+   //  arrayFindDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Find All Numbers Disappeared in an Array
+function arrayFindDemo1(){
+    let arr = [4,3,2,7,8,2,3,1]
+    console.log(findDisappearedNumbers(arr));
+
+    function findDisappearedNumbers(nums: number[]): number[] {
+        let res:number[] = [];
+        for(let i = 0; i < nums.length; i++){
+            let index = (nums[i] - 1)%(nums.length);
+            nums[index] += nums.length;
+        }
+        for(let i = 0; i < nums.length; i++){
+            if(nums[i] <= nums.length){
+                res.push(i+1);
+            }
+        }
+        return res;
+    };
 }
 
 //leecode: Minimum Size Subarray Sum
