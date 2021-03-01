@@ -115,13 +115,32 @@ function TreeDemo(){
    //  combinationDemo3()
    //  minimumDemo3()
    //  arrayFindDemo1()
-    duplicateDemo1()
+   //  duplicateDemo1()
+    findDuplicateDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Find All Duplicates in an Array
+function findDuplicateDemo3(){
+    let arr = [4,3,2,7,8,2,3,1];
+    console.log(findDuplicates(arr));
+
+    function findDuplicates(nums: number[]): number[] {
+        let res:number[] = [];
+        for(let i = 0; i < nums.length; i++){
+            let index = Math.abs(nums[i]) - 1;
+            if(nums[index] < 0){
+                res.push(Math.abs(nums[i]))
+            }
+            nums[index] = -nums[index];
+        }
+        return res;
+    };
 }
 
 //leecode: Contains Duplicate II
