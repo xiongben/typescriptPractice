@@ -115,12 +115,31 @@ function TreeDemo(){
    //  combinationDemo3()
    //  minimumDemo3()
    //  arrayFindDemo1()
+    duplicateDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Contains Duplicate II
+function duplicateDemo1(){
+    let nums = [1,2,3,1], k = 3;
+    console.log(containsNearbyDuplicate(nums,k));
+
+    function containsNearbyDuplicate(nums: number[], k: number): boolean {
+        let numset = new Set();
+        for(let i = 0; i < nums.length; i++){
+            if(numset.has(nums[i])) return true;
+            numset.add(nums[i]);
+            if(numset.size > k){
+                numset.delete(nums[i-k]);
+            }
+        }
+        return false;
+    };
 }
 
 //leecode: Find All Numbers Disappeared in an Array
