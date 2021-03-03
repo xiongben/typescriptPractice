@@ -118,7 +118,7 @@ function TreeDemo(){
    //  duplicateDemo1()
    //  findDuplicateDemo3()
    //  arrayPartitionDemo3()
-    subarraySumDemo2()
+   //  subarraySumDemo2()
 
     return(
         <div>
@@ -127,30 +127,28 @@ function TreeDemo(){
     )
 }
 
-//leecode:Subarray Sum Equals K  ???
+//leecode:Subarray Sum Equals K
 function subarraySumDemo2(){
-    let nums = [1,2,3], k = 3;
+    let nums = [1,1,1], k = 2;
     console.log(subarraySum(nums,k));
 
     function subarraySum(nums: number[], k: number): number {
-       let res = 0;
-       let start = 0,end = 0;
-       let temp = 0;
-       while (end < nums.length){
-           while(temp > k){
-               temp = temp - nums[start];
-               start++;
-           }
-           if(temp == k){
-               res++;
-               temp = temp - nums[start];
-               start++;
-           }
-           temp = temp + nums[end];
-           end++;
-
-       }
-       return res;
+        let mapobj:any = {};
+        let count = 0;
+        let temp = 0;
+        mapobj[0] = 1;
+        for(let i = 0; i < nums.length; i++){
+            temp += nums[i];
+            if(mapobj.hasOwnProperty(temp-k)){
+                count += mapobj[temp-k];
+            }
+            if(mapobj.hasOwnProperty(temp)){
+                mapobj[temp] += 1;
+            }else{
+                mapobj[temp] = 1;
+            }
+        }
+        return count;
     };
 }
 
