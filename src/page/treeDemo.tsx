@@ -119,12 +119,67 @@ function TreeDemo(){
    //  findDuplicateDemo3()
    //  arrayPartitionDemo3()
    //  subarraySumDemo2()
+   //  setMismatchDemo1()
+   //  arrayNestDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Array Nesting
+function arrayNestDemo1(){
+    let A = [5,4,0,3,1,6,2];
+    console.log(arrayNesting(A));
+
+    function arrayNesting(nums: number[]): number {
+        let visited:boolean[] = new Array(nums.length).fill(false);
+        let res = 0;
+        for(let i = 0; i < nums.length; i++){
+            if(!visited[i]){
+                let start = nums[i];
+                let count = 0;
+                start = nums[start];
+                count++;
+                visited[start] = true;
+                while (start != nums[i]){
+                    start = nums[start];
+                    count++;
+                    visited[start] = true;
+                }
+                res = Math.max(res,count);
+            }
+        }
+        return res;
+    };
+}
+
+//leecode:Set Mismatch
+function setMismatchDemo1(){
+    let nums = [1,2,2,4];
+    console.log(findErrorNums(nums));
+
+    function findErrorNums(nums: number[]): number[] {
+        nums.sort((a,b)=>a-b);
+        let repeatNum = 0;
+        let missNum = 0;
+        for(let i = 0; i < nums.length; i++){
+            if(nums[i] == nums[i-1]){
+                  repeatNum = nums[i];
+            }else if(nums[i] > nums[i-1] + 1){
+                 missNum = nums[i-1] + 1;
+            }
+        }
+        if(nums[nums.length-1] != nums.length){
+            missNum = nums.length;
+        }
+        if (nums[0] != 1){
+            missNum = 1;
+        }
+        return [repeatNum,missNum];
+    };
 }
 
 //leecode:Subarray Sum Equals K
