@@ -121,12 +121,64 @@ function TreeDemo(){
    //  subarraySumDemo2()
    //  setMismatchDemo1()
    //  arrayNestDemo1()
+   //  majorityElementDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Majority Element II
+function majorityElementDemo1(){
+    let nums = [3,2,3];
+    console.log(majorityElement(nums));
+
+    function majorityElement(nums: number[]): number[] {
+        let res:number[] = [];
+       if(nums.length == 0) return res;
+       let num1 = nums[0],count1 = 0;
+       let num2 = nums[0],count2 = 0;
+       for(let num of nums){
+           if(num == num1){
+               count1++;
+               continue;
+           }
+           if(num == num2){
+               count2++;
+               continue;
+           }
+           if(count1 == 0){
+               num1 = num;
+               count1++;
+               continue;
+           }
+           if(count2 == 0){
+               num2 = num;
+               count2++;
+               continue;
+           }
+           count1--;
+           count2--;
+       }
+       count1 = 0;
+       count2 = 0;
+       for(let num of nums){
+           if(num == num1){
+               count1++;
+           }else if(num == num2){
+               count2++;
+           }
+       }
+       if(count1 > Math.floor(nums.length/3)){
+           res.push(num1);
+       }
+        if(count2 > Math.floor(nums.length/3)){
+            res.push(num2);
+        }
+        return res;
+    };
 }
 
 //leecode: Array Nesting
