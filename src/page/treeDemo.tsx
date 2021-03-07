@@ -122,12 +122,53 @@ function TreeDemo(){
    //  setMismatchDemo1()
    //  arrayNestDemo1()
    //  majorityElementDemo1()
+   //  maxConsecutiveOnesDemo1()
+   //  reshapeTheMatrixDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Reshape the Matrix
+function reshapeTheMatrixDemo1() {
+   let  nums =[[1,2], [3,4]];
+   let r = 1,c = 4;
+   console.log(matrixReshape(nums, r, c));
+
+    function matrixReshape(nums: number[][], r: number, c: number): number[][] {
+        let m = nums.length;
+        let n = nums[0].length;
+        if(m*n != r*c) return nums;
+        let res = new Array(r).fill(0).map(()=> new Array(c).fill(0));
+        for(let i = 0; i < m*n; i++){
+            res[Math.floor(i/c)][i%c] = nums[Math.floor(i/n)][i%n]
+        }
+        return res;
+    };
+}
+
+//leecode: Max Consecutive Ones
+function maxConsecutiveOnesDemo1() {
+   let nums = [1,1,0,1,1,1];
+   console.log(findMaxConsecutiveOnes(nums));
+
+    function findMaxConsecutiveOnes(nums: number[]): number {
+       let res = 0;
+       let temp = 0;
+
+       for(let i = 0; i < nums.length; i++){
+           if(nums[i] == 1){
+               temp++;
+           }else {
+               res = Math.max(res, temp);
+               temp = 0;
+           }
+       }
+       return Math.max(res, temp);
+    };
 }
 
 //leecode:Majority Element II
