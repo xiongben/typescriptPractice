@@ -122,12 +122,44 @@ function TreeDemo(){
    //  setMismatchDemo1()
    //  arrayNestDemo1()
    //  majorityElementDemo1()
+   //  insertIntervalDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Insert Interval
+function insertIntervalDemo1(){
+    let intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8];
+    console.log(insert(intervals,newInterval));
+
+    function insert(intervals: number[][], newInterval: number[]): number[][] {
+        let left = newInterval[0];
+        let right = newInterval[1];
+        let isSert = false;
+        let res:number[][] = [];
+        for(let interval of intervals){
+            if(interval[0] > right){
+                if(!isSert){
+                    res.push([left,right]);
+                    isSert = true;
+                }
+                res.push(interval);
+            }else if(interval[1] < left){
+                res.push(interval);
+            }else {
+                left = Math.min(interval[0],left);
+                right = Math.max(interval[1], right);
+            }
+        }
+        if(!isSert){
+            res.push([left,right]);
+        }
+        return res;
+    };
 }
 
 //leecode:Majority Element II
