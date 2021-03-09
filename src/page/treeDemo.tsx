@@ -124,12 +124,41 @@ function TreeDemo(){
    //  majorityElementDemo1()
    //  maxConsecutiveOnesDemo1()
    //  reshapeTheMatrixDemo1()
+   //  largestRectangleDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Largest Rectangle in Histogram
+function largestRectangleDemo1(){
+    let heights = [2,1,5,6,2,3];
+    console.log(largestRectangleArea(heights));
+
+    function largestRectangleArea(heights: number[]): number {
+        let n = heights.length;
+        let left:number[] = new Array(n);
+        let right:number[] = new Array(n).fill(n);
+        let stack:number[] = [];
+        let res = 0;
+        stack[0] = -1;
+        for(let i = 0; i < n; i++){
+            while (stack.length > 0 && heights[stack[0]] >= heights[i]){
+                right[stack[0]] = i;
+                stack.shift();
+            }
+            left[i] = stack[0];
+            stack.unshift(i);
+        }
+        console.log(left,right)
+        for(let i = 0; i < n; i++){
+            res = Math.max(res, (right[i]-left[i]-1) * heights[i]);
+        }
+        return res;
+    };
 }
 
 //leecode:Insert Interval
@@ -699,7 +728,6 @@ function combinationDemo1(){
     };
 
     function helper(res:number[][],tempArr:number[],start:number,n:number,k:number){
-        console.log(start,k)
         if(k == 0){
             res.push([...tempArr]);
             return;
