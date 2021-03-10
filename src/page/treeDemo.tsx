@@ -125,12 +125,62 @@ function TreeDemo(){
    //  maxConsecutiveOnesDemo1()
    //  reshapeTheMatrixDemo1()
    //  largestRectangleDemo1()
+   //  nextGreaterElementDemo1()
+   //  maximumAverageSubarrayDemo1()
+
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Maximum Average Subarray I
+function maximumAverageSubarrayDemo1(){
+    let arr = [1,12,-5,-6,50,3], k = 1;
+    console.log(findMaxAverage(arr,k));
+
+    function findMaxAverage(nums: number[], k: number): number {
+        let res:number = 0;
+        for(let i = 0; i < k; i++){
+            res += nums[i];
+        }
+        let temp =res;
+        for(let i = 0; i < nums.length - k; i++){
+            temp = temp - nums[i] + nums[k+i];
+            res = Math.max(res, temp);
+        }
+        return res/k
+    };
+}
+
+//leecode: Next Greater Element I
+function nextGreaterElementDemo1(){
+    let nums1 = [4,1,2], nums2 = [1,3,4,2];
+    console.log(nextGreaterElement(nums1,nums2));
+
+    function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
+       let res:number[] = [];
+       let map:any = {};
+       let stack:number[] = [];
+       stack[0] = -1;
+       for(let i = 0; i < nums2.length; i++){
+           while (stack.length > 0 && nums2[i] > stack[0]){
+               map[stack[0]] = nums2[i];
+               stack.shift();
+           }
+           stack.unshift(nums2[i]);
+       }
+        while (stack.length > 0){
+            map[stack[0]] = -1;
+            stack.shift();
+        }
+        for(let i = 0; i < nums1.length; i++){
+            res[i] = map[nums1[i]]?map[nums1[i]]:-1;
+        }
+        return res;
+    };
 }
 
 //leecode: Largest Rectangle in Histogram
