@@ -127,13 +127,45 @@ function TreeDemo(){
    //  largestRectangleDemo1()
    //  nextGreaterElementDemo1()
    //  maximumAverageSubarrayDemo1()
-
+   // validTriangleNumberDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Valid Triangle Number
+function validTriangleNumberDemo1(){
+    let arr = [2,2,3,4]
+    console.log(triangleNumber(arr));
+
+
+    function triangleNumber(nums: number[]): number {
+       let res:number = 0;
+       nums.sort((a,b)=>a-b);
+       for(let i = 0; i < nums.length - 2; i++){
+           let k = i + 2;
+           for(let j = i + 1; j < nums.length - 1 && nums[i] != 0; j++){
+               k = binarySearch(nums,k,nums.length-1,nums[i]+nums[j]);
+               res += k - j -1;
+           }
+       }
+       return res;
+    };
+
+    function binarySearch(arr:number[],l:number,r:number, target:number){
+        while ( r >= l && r < arr.length){
+            let mid = (l + r) >> 1;
+            if(arr[mid] >= target){
+                r = mid - 1;
+            }else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
 }
 
 //leecode: Maximum Average Subarray I
