@@ -128,12 +128,66 @@ function TreeDemo(){
    //  nextGreaterElementDemo1()
    //  maximumAverageSubarrayDemo1()
    // validTriangleNumberDemo1()
+   //  runningSumDemo1()
+   //  kidsDemo1()
+   //  shuffleArrayDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Shuffle the Array
+function shuffleArrayDemo1(){
+    let nums = [2,5,1,3,4,7], n = 3;
+    console.log(shuffle(nums, n));
+
+    function shuffle(nums: number[], n: number): number[] {
+        let res = [];
+        for(let i = 0; i < n; i++){
+            res.push(nums[i]);
+            res.push(nums[i+n]);
+        }
+        return res;
+    };
+}
+
+//Leecode：Kids With the Greatest Number of Candies
+function kidsDemo1(){
+    let candies = [2,3,5,1,3], extraCandies = 3;
+    console.log(kidsWithCandies(candies, extraCandies));
+
+    function kidsWithCandies(candies: number[], extraCandies: number): boolean[] {
+       let res:boolean[] = new Array(candies.length).fill(false);
+       let max = 0;
+       for(let i = 0; i < candies.length; i++){
+           max = Math.max(max, candies[i]);
+       }
+        for(let i = 0; i < candies.length; i++){
+            if(candies[i] + extraCandies >= max){
+                res[i] = true;
+            }
+        }
+        return res;
+    };
+}
+
+//leecode: Running Sum of 1d Array
+function runningSumDemo1(){
+    let nums = [1,2,3,4];
+    console.log(runningSum(nums));
+
+    function runningSum(nums: number[]): number[] {
+       let res:number[] = new Array();
+       let temp = 0;
+       for(let i = 0; i < nums.length; i++){
+           temp += nums[i];
+           res.push(temp);
+       }
+       return res;
+    };
 }
 
 //leecode: Valid Triangle Number
