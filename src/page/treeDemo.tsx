@@ -131,12 +131,63 @@ function TreeDemo(){
    //  runningSumDemo1()
    //  kidsDemo1()
    //  shuffleArrayDemo1()
+   //  sortArrayDemo5()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Sort Array By Parity II
+function sortArrayDemo5(){
+    let nums = [4,2,5,7];
+    console.log(sortArrayByParityII(nums));
+
+    function sortArrayByParityII(nums: number[]): number[] {
+        let i = 0, j = 1;
+        let n = nums.length;
+        while (i < n && j < n){
+            while (i < n && nums[i]%2 == 0){
+                i += 2;
+            }
+            while (j < n && nums[j]%2 == 1){
+                j += 2;
+            }
+            if(i < n && j < n){
+                swap(nums,i,j);
+            }
+        }
+        return nums;
+    };
+
+    function swap(arr:number[],i:number,j:number){
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+
+    }
+}
+
+//leecode: Divisor Game
+function divisorGameDemo1(){
+    let num = 3;
+
+    function divisorGame(N: number): boolean {
+       let f:boolean[] = new Array(N + 5).fill(false);
+       f[1] = false;
+       f[2] = true;
+       for(let i = 3; i <= N; i++){
+           for(let j = 1; j < i; j++){
+               if((i % j) == 0 && !f[i-j]){
+                   f[i] = true;
+                   break;
+               }
+           }
+       }
+       return f[N];
+    };
 }
 
 //leecode: Shuffle the Array
