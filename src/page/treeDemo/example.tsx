@@ -28,6 +28,24 @@ class TreeNode {
  }
 
 
+ //leecode: Path Sum III
+function pathSumDemo1(){
+     let arr = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8;
+    var root:TreeNode = buildTree2(arr);
+    console.log(pathSum(root, sum));
+
+    function pathSum(root: TreeNode | null, sum: number): number {
+        let prefixMap:any = {};
+        let target:number = sum;
+        prefixMap[]
+
+        function recur(node: TreeNode, curSum: number){
+
+        }
+
+    };
+}
+
 
  //leecode:Binary Tree Maximum Path Sum
 function maxmumDemo1(){
