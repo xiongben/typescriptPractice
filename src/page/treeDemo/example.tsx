@@ -25,6 +25,7 @@ class TreeNode {
      //  smallestDemo1()
      // testDemo1()
      // maxmumDemo1()
+     pathSumDemo1()
  }
 
 
@@ -37,10 +38,20 @@ function pathSumDemo1(){
     function pathSum(root: TreeNode | null, sum: number): number {
         let prefixMap:any = {};
         let target:number = sum;
-        prefixMap[]
+        prefixMap[0] = 1;
+        return recur(root, 0);
 
-        function recur(node: TreeNode, curSum: number){
-
+        function recur(node: TreeNode | null, curSum: number):number{
+            if(node == null) return 0;
+            let res = 0;
+            curSum += node.val;
+            res = res + (prefixMap.hasOwnProperty(curSum - target)?prefixMap[curSum-target]:0);
+            prefixMap[curSum] = prefixMap.hasOwnProperty(curSum)?prefixMap[curSum]+1:1;
+            let left = recur(node.left, curSum);
+            let right = recur(node.right, curSum);
+            res = res + left + right;
+            prefixMap[curSum] = prefixMap[curSum] - 1;
+            return res;
         }
 
     };
