@@ -132,12 +132,48 @@ function TreeDemo(){
    //  kidsDemo1()
    //  shuffleArrayDemo1()
    //  sortArrayDemo5()
+    degreeArrayDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Degree of an Array
+function degreeArrayDemo1(){
+    let nums = [1,2,2,3,1,4,2];
+    console.log(findShortestSubArray(nums));
+
+    function findShortestSubArray(nums: number[]): number {
+       let valmap:any = {};
+       let maxNum:number = 0;
+       let minLen:number = 0;
+       for (let i = 0; i < nums.length; i++){
+           let val = nums[i];
+           if(valmap.hasOwnProperty(val)){
+               valmap[val][0]++;
+               valmap[val][2] = i;
+           }else{
+               valmap[val] = [];
+               valmap[val][0] = 1;
+               valmap[val][1] = i;
+               valmap[val][2] = i;
+           }
+       }
+       for(let k of Object.keys(valmap)){
+           if(valmap[k][0] > maxNum){
+               maxNum = valmap[k][0];
+               minLen = valmap[k][2] - valmap[k][1] + 1;
+           }else if(valmap[k][0] == maxNum){
+               if(valmap[k][2] - valmap[k][1] + 1 < minLen){
+                   minLen = valmap[k][2] - valmap[k][1] + 1;
+               }
+           }
+       }
+       return minLen;
+    };
 }
 
 //leecode: Sort Array By Parity II
