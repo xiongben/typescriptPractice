@@ -132,7 +132,7 @@ function TreeDemo(){
    //  kidsDemo1()
    //  shuffleArrayDemo1()
    //  sortArrayDemo5()
-    degreeArrayDemo1()
+   //  degreeArrayDemo1()
 
     return(
         <div>

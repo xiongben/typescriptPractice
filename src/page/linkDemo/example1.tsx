@@ -27,6 +27,36 @@ function testDemo() {
     // combinationSumDemo1()
     // reverseDemo3()
     // reverseDemo4()
+    partitionLinkDemo1()
+}
+
+//leecode: Partition List
+function partitionLinkDemo1(){
+    let list = [1,4,3,2,5,2], x = 3;
+    var head:ListNode = buildLink(list);
+    partition(head, x);
+    printLink(head);
+
+    function partition(head: ListNode | null, x: number): ListNode | null {
+        if(head == null || head.next == null) return null;
+        let minTemp: ListNode = new ListNode(0);
+        let maxTemp: ListNode = new ListNode(0);
+        let pointMax: ListNode = maxTemp;
+        let pointMin: ListNode = minTemp;
+        while (head != null){
+            if(head.val < x){
+                pointMin.next = head;
+                pointMin = pointMin.next;
+            }else{
+                pointMax.next = head;
+                pointMax = pointMax.next;
+            }
+           head = head.next;
+        }
+        pointMax.next = null;
+        pointMin.next = maxTemp.next;
+        return minTemp.next;
+    };
 }
 
 function reverseDemo4(){
