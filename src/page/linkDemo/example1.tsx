@@ -27,7 +27,15 @@ function testDemo() {
     // combinationSumDemo1()
     // reverseDemo3()
     // reverseDemo4()
-    partitionLinkDemo1()
+    // partitionLinkDemo1()
+}
+
+//leecode: Remove Duplicates from Sorted List II
+function removeDuplicatesDemo1(){
+    let list = [1,2,3,3,4,4,5];
+    var head:ListNode = buildLink(list);
+
+
 }
 
 //leecode: Partition List
@@ -38,7 +46,7 @@ function partitionLinkDemo1(){
     printLink(head);
 
     function partition(head: ListNode | null, x: number): ListNode | null {
-        if(head == null || head.next == null) return null;
+
         let minTemp: ListNode = new ListNode(0);
         let maxTemp: ListNode = new ListNode(0);
         let pointMax: ListNode = maxTemp;
