@@ -25,9 +25,34 @@ class TreeNode {
      //  smallestDemo1()
      // testDemo1()
      // maxmumDemo1()
-     pathSumDemo1()
+     // pathSumDemo1()
+     // sumRootDemo1()
  }
 
+
+ //leecode: Sum Root to Leaf Numbers
+function sumRootDemo1(){
+     let arr = [4,9,0,5,1];
+     var root:TreeNode = buildTree2(arr);
+     console.log(sumNumbers(root));
+
+    function sumNumbers(root: TreeNode | null): number {
+        let sum:number = 0;
+        if(root == null) return sum;
+        return helper(root,0);
+
+
+        function helper(root: TreeNode | null, temp: number):number{
+            if(root == null) return 0;
+            let tempSum:number = temp*10 + root.val;
+            if(root.left == null && root.right == null){
+                return tempSum
+            }else{
+                return helper(root.left, tempSum) + helper(root.right, tempSum);
+            }
+        }
+    };
+}
 
  //leecode: Path Sum III
 function pathSumDemo1(){
