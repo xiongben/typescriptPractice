@@ -28,14 +28,37 @@ function testDemo() {
     // reverseDemo3()
     // reverseDemo4()
     // partitionLinkDemo1()
+    // removeDuplicatesDemo1()
 }
 
 //leecode: Remove Duplicates from Sorted List II
 function removeDuplicatesDemo1(){
     let list = [1,2,3,3,4,4,5];
     var head:ListNode = buildLink(list);
+    deleteDuplicates(head);
+    printLink(head);
 
 
+    function deleteDuplicates(head: ListNode | null): ListNode | null {
+        if(head == null || head.next == null) return head;
+        let dummy: ListNode = new ListNode(-1);
+        dummy.next = head;
+        let a: ListNode  = dummy;
+        let b: ListNode | null = head.next;
+        while (b != null) {
+            if((a.next as ListNode).val != b.val){
+                a = a.next as ListNode;
+                b = b.next;
+            }else {
+                while ( b != null && (a.next as ListNode).val == b.val){
+                    b = b.next;
+                }
+                a.next = b;
+                b = b == null? null : b.next;
+            }
+        }
+        return dummy.next;
+    };
 }
 
 //leecode: Partition List
