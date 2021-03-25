@@ -27,7 +27,66 @@ class TreeNode {
      // maxmumDemo1()
      // pathSumDemo1()
      // sumRootDemo1()
+     // pathSumDemo2()
  }
+
+
+
+ //leecode:Path Sum II
+function pathSumDemo2(){
+    let arr = [5,4,8,11,null,13,4,7,2,null,null,null,1],targetSum = 22;
+    var root:TreeNode = buildTree2(arr);
+    console.log(pathSum(root,targetSum));
+
+    function pathSum(root: TreeNode | null, targetSum: number): number[][] {
+        let res:number[][] = [];
+        if(root?.val == targetSum) return res;
+        helper(root,targetSum,0,[]);
+        return res
+
+        function helper(root: TreeNode | null, targetSum: number,tempSum: number,tempArr: number[]){
+            if(root == null) return;
+            console.log(tempArr)
+            tempSum += root.val;
+            tempArr.push(root.val);
+            if(tempSum == targetSum && root.left == null && root.right == null){
+                res.push([...tempArr]);
+                tempArr.pop();
+                return;
+            }else{
+                helper(root.left,targetSum,tempSum,tempArr);
+                helper(root.right,targetSum,tempSum,tempArr);
+                tempArr.pop();
+            }
+        }
+    };
+}
+
+//leecode: Binary Tree Paths
+function bimaryPathDemo1(){
+    let arr = [1,2,3,null,5];
+    var root:TreeNode = buildTree2(arr);
+    console.log(binaryTreePaths(root))
+
+    function binaryTreePaths(root: TreeNode | null): string[] {
+
+        let res:string[] = [];
+        helper(root,"");
+        return res;
+
+        function helper(root: TreeNode | null,str: string){
+            if(root == null) return;
+            str += root.val
+            if(root.left == null && root.right == null){
+                res.push(str);
+            }else {
+                str += "->";
+                helper(root.left,str);
+                helper(root.right,str);
+            }
+        }
+    };
+}
 
 
  //leecode: Sum Root to Leaf Numbers

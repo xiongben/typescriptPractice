@@ -133,12 +133,33 @@ function TreeDemo(){
    //  shuffleArrayDemo1()
    //  sortArrayDemo5()
    //  degreeArrayDemo1()
+   //  singleNumberDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Single Number II
+function singleNumberDemo2(){
+    let nums = [0,1,0,1,0,1,99]
+    console.log(singleNumber(nums));
+
+    function singleNumber(nums: number[]): number {
+       let numset:Set<number> = new Set();
+       let sum:number = 0;
+       let wholeSum = 0;
+       for(let num of nums){
+           numset.add(num);
+           wholeSum += num;
+       }
+       numset.forEach(el => {
+           sum += el;
+       })
+       return (sum*3 - wholeSum)/2
+    };
 }
 
 //leecode: Degree of an Array
