@@ -134,12 +134,33 @@ function TreeDemo(){
    //  sortArrayDemo5()
    //  degreeArrayDemo1()
    //  singleNumberDemo2()
+   //  largestNumberDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Largest Number
+function largestNumberDemo3() {
+  let nums = [3,30,34,5,9];
+    console.log(largestNumber(nums));
+
+    function largestNumber(nums: number[]): string {
+       let res:string = "";
+       nums.sort((a,b)=>{
+           let str1 = String(a) + String(b);
+           let str2 = String(b) + String(a);
+           return parseInt(str2) - parseInt(str1);
+       })
+        if(nums[0] == 0) return "0"
+        for(let i = 0; i < nums.length; i++){
+            res += String(nums[i]);
+        }
+       return res;
+    };
 }
 
 //leecode: Single Number II
