@@ -28,9 +28,34 @@ class TreeNode {
      // pathSumDemo1()
      // sumRootDemo1()
      // pathSumDemo2()
+     // pathSumDemo3()
  }
 
 
+ // leecode: Path Sum
+function pathSumDemo3() {
+    let arr = [1,2],targetSum = 1;
+    var root:TreeNode = buildTree2(arr);
+    console.log(hasPathSum(root,targetSum));
+
+    function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
+        let res:boolean = false;
+        helper(root,targetSum,0);
+        return res
+
+        function helper(root: TreeNode | null, targetSum: number,tempSum: number){
+            if(root == null) return;
+            tempSum += root.val;
+            if(tempSum == targetSum && root.left == null && root.right == null){
+                res = true;
+                return;
+            }else{
+                helper(root.left,targetSum,tempSum);
+                helper(root.right,targetSum,tempSum);
+            }
+        }
+    };
+}
 
  //leecode:Path Sum II
 function pathSumDemo2(){
