@@ -29,8 +29,35 @@ class TreeNode {
      // sumRootDemo1()
      // pathSumDemo2()
      // pathSumDemo3()
+     // flattenBinaryTreeDemo1()
  }
 
+
+ //leecode: Flatten Binary Tree to Linked List
+function flattenBinaryTreeDemo1() {
+  let arr =  [1,2,5,3,4,null,6];
+    var root:TreeNode = buildTree2(arr);
+  flatten(root);
+
+    function flatten(root: TreeNode | null): void {
+       let parentNode: TreeNode = new TreeNode();
+       helper(root);
+
+       function helper(root: TreeNode | null) {
+          if(root == null) return;
+          let leftNode: TreeNode | null = root.left;
+          let rightNode: TreeNode | null = root.right;
+           parentNode.right = root;
+           parentNode.left = null;
+          parentNode = root;
+          helper(leftNode);
+          helper(rightNode);
+       }
+    };
+
+
+
+}
 
  // leecode: Path Sum
 function pathSumDemo3() {
