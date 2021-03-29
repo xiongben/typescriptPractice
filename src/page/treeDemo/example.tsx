@@ -32,6 +32,44 @@ class TreeNode {
      // flattenBinaryTreeDemo1()
  }
 
+ //leecode: Unique Binary Search Trees II
+function uniqueSearchTreeDemo1(){
+     let n = 3;
+
+
+    function generateTrees(n: number): Array<TreeNode | null> {
+         let res: Array<TreeNode | null> = [];
+         if(n == 0) return res;
+         return helper(1, n);
+    };
+
+    function helper(start: number, end: number): Array<TreeNode | null> {
+        let res: Array<TreeNode | null> = [];
+        if(start > end){
+            res.push(null);
+            return res;
+        }
+        if(start == end){
+            let newNode = new TreeNode(start);
+            res.push(newNode);
+            return res;
+        }
+        for(let i = start; i <= end; i++){
+            let leftNodes = helper(start, i-1);
+            let rightNodes = helper(i+1,end);
+            for(let leftNode of leftNodes){
+                for(let rightNode of rightNodes){
+                    let root = new TreeNode(i);
+                    root.left = leftNode;
+                    root.right = rightNode;
+                    res.push(root);
+                }
+            }
+        }
+        return res;
+    }
+}
+
 
  //leecode: Flatten Binary Tree to Linked List
 function flattenBinaryTreeDemo1() {
