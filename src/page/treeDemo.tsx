@@ -135,12 +135,35 @@ function TreeDemo(){
    //  degreeArrayDemo1()
    //  singleNumberDemo2()
    //  largestNumberDemo3()
+   //  pairsArrayDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: K-diff Pairs in an Array
+function pairsArrayDemo1(){
+    let arr = [3,1,4,1,5], k = 2;
+    console.log(findPairs(arr, k));
+
+    function findPairs(nums: number[], k: number): number {
+        if(k < 0) return 0;
+        let saw = new Set();
+        let diff = new Set();
+        for(let num of nums){
+            if(saw.has(num+k)){
+                diff.add(num);
+            }
+            if(saw.has(num-k)){
+                diff.add(num-k);
+            }
+            saw.add(num);
+        }
+        return diff.size;
+    };
 }
 
 //leecode: Largest Number
