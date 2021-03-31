@@ -136,6 +136,7 @@ function TreeDemo(){
    //  singleNumberDemo2()
    //  largestNumberDemo3()
    //  pairsArrayDemo1()
+   //  teemoDemo1()
 
     return(
         <div>
@@ -144,7 +145,20 @@ function TreeDemo(){
     )
 }
 
+//leecode: Teemo Attacking
+function teemoDemo1(){
+    let timeSeries = [1,2], duration = 2;
+    console.log(findPoisonedDuration(timeSeries, duration));
 
+    function findPoisonedDuration(timeSeries: number[], duration: number): number {
+       if(timeSeries.length == 0) return 0;
+       let total = 0;
+       for(let i = 0; i < timeSeries.length-1; i++){
+           total += Math.min(duration, timeSeries[i+1] - timeSeries[i]);
+       }
+       return total + duration;
+    };
+}
 
 //leecode: K-diff Pairs in an Array
 function pairsArrayDemo1(){
