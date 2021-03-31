@@ -32,6 +32,34 @@ class TreeNode {
      // flattenBinaryTreeDemo1()
  }
 
+
+
+//leecode: Construct Binary Tree from Inorder and Postorder Traversal
+function constructBinaryTreeDemo1(){
+    let inorder = [9,3,15,20,7], postorder = [9,15,7,20,3];
+
+
+    function buildTree(inorder: number[], postorder: number[]): TreeNode | null {
+        let postIdx = postorder.length - 1;
+        let inOrderMap:any = {};
+        for(let i = 0; i < inorder.length; i++){
+            let val = inorder[i];
+            inOrderMap[val] = i;
+        }
+        return helper(0, inorder.length-1);
+        function helper(leftIdx:number, rightIdx:number): TreeNode | null {
+            if(leftIdx > rightIdx) return null;
+            let rootVal = postorder[postIdx];
+            let root = new TreeNode(rootVal);
+            let inorderIdx = inOrderMap[rootVal];
+            postIdx--;
+            root.right = helper(inorderIdx+1, rightIdx);
+            root.left = helper(leftIdx, inorderIdx-1);
+            return root;
+        }
+    };
+}
+
  //leecode: Unique Binary Search Trees II
 function uniqueSearchTreeDemo1(){
      let n = 3;
