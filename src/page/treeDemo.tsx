@@ -138,12 +138,43 @@ function TreeDemo(){
    //  pairsArrayDemo1()
    //  teemoDemo1()
    //  housrRobberDemo2()
+   //  maximalSquareDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Maximal Square
+function maximalSquareDemo1(){
+    let matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]];
+    console.log(maximalSquare(matrix));
+
+    function maximalSquare(matrix: string[][]): number {
+       if(matrix.length == 0 || matrix[0].length == 0) return 0;
+       let maxLong = 0;
+       let rows = matrix.length;
+       let columns = matrix[0].length;
+       let dpArr = new Array(rows);
+       for(let i = 0; i < rows; i++){
+           dpArr[i] = new Array(columns).fill(0);
+       }
+       for(let i = 0; i < rows; i++){
+           for(let j = 0; j < columns; j++){
+               if(matrix[i][j] == "1"){
+                   if(i == 0 || j == 0){
+                       dpArr[i][j] = 1;
+                   }else {
+                       dpArr[i][j] = Math.min(dpArr[i-1][j-1],dpArr[i-1][j],dpArr[i][j-1]) + 1;
+                   }
+                   maxLong = Math.max(maxLong, dpArr[i][j]);
+               }
+           }
+       }
+       return maxLong * maxLong;
+    };
 }
 
 //leecode: House Robber II
