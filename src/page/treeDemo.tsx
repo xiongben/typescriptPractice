@@ -137,12 +137,35 @@ function TreeDemo(){
    //  largestNumberDemo3()
    //  pairsArrayDemo1()
    //  teemoDemo1()
+   //  housrRobberDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: House Robber II
+function housrRobberDemo2(){
+    let nums = [1,2,3,1];
+    console.log(rob(nums));
+
+    function rob(nums: number[]): number {
+       if(nums.length == 0) return 0;
+       if(nums.length == 1) return nums[0];
+       return Math.max(helper(nums.slice(0, nums.length-1)),helper(nums.slice(1,nums.length)));
+
+       function helper(nums: number[]){
+           let pre = 0,curr = 0,temp = 0;
+           for(let num of nums){
+               temp = curr;
+               curr = Math.max(curr, pre + num);
+               pre = temp;
+           }
+           return curr;
+       }
+    };
 }
 
 //leecode: Teemo Attacking
