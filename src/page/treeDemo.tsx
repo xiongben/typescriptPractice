@@ -139,12 +139,138 @@ function TreeDemo(){
    //  teemoDemo1()
    //  housrRobberDemo2()
    //  maximalSquareDemo1()
+   //  removeKDigitsDemo1()
+   //  removeDuplicateLettersDemo1()
+
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode： Create Maximum Number
+function createMaximumNumberDemo1(){
+    let nums1 = [3,4,6,5], nums2 = [9,1,2,5,8,3], k = 5;
+    console.log(maxNumber(nums1,nums2,k));
+
+    function maxNumber(nums1: number[], nums2: number[], k: number): number[] {
+        let res:number[] = new Array(k).fill(0);
+        let start = Math.max(0, k-nums2.length);
+        let end = Math.min(k, nums1.length);
+        for(let i = start; i <= end; i++){
+            let arr1 = getMaxSonArr(nums1, i);
+            let arr2 = getMaxSonArr(nums2, k-i);
+            let tempArr = mergeArr(arr1, arr2);
+            if(compareArr(tempArr,0,res,0) > 0){
+                res = [...tempArr];
+            }
+        }
+        return res;
+    };
+
+    function getMaxSonArr(arr: number[], k:number):number[]{
+
+    }
+
+    function mergeArr(arr1:number[], arr2:number[]):number[]{
+        if(arr1.length == 0) return arr2;
+        if(arr2.length == 0) return arr1;
+        let resLen = arr1.length + arr2.length;
+        let res:number[] = new Array(resLen).fill(0);
+        let start1 = 0,start2 = 0;
+        for(let i = 0 ; i < resLen; i++){
+            if(compareArr(arr1,start1,arr2,start2) > 0){
+                res[i] = arr1[start1++];
+            }else{
+                res[i] = arr2[start2++];
+            }
+        }
+        return res;
+    }
+
+    function compareArr(arr1:number[],index1:number,arr2:number[],index2:number):number{
+        let len1 = arr1.length;
+        let len2 = arr2.length;
+        while (index1 < len1 && index2 < len2){
+            const dif = arr1[index1] - arr2[index2];
+            if(dif != 0) return dif;
+            index1++;
+            index2++
+        }
+        return (len1-index1) - (len2-index2);
+    }
+}
+
+//leecode: Remove Duplicate Letters
+function removeDuplicateLettersDemo1(){
+    let s = "cbacdcbc";
+    console.log(removeDuplicateLetters(s))
+
+    function removeDuplicateLetters(s: string): string {
+       let num:any = {};
+       let haveUse: boolean[] = new Array(26).fill(false);
+       for(let i = 0; i < s.length; i++){
+           let index = s.charAt(i);
+           if(num.hasOwnProperty(index)){
+               num[index]++
+           }else{
+               num[index] = 1;
+           }
+       }
+       let stack:string[] = [];
+       for(let i = 0; i < s.length; i++){
+           let ch = s.charAt(i);
+           if(!haveUse[ch.charCodeAt(0) - "a".charCodeAt(0)]){
+               while (stack.length > 0 && ch < stack[stack.length-1]){
+                   if(num[stack[stack.length-1]] > 0){
+                       haveUse[stack[stack.length-1].charCodeAt(0) - "a".charCodeAt(0)] = false;
+                       stack.pop();
+                   }else {
+                       break;
+                   }
+               }
+               haveUse[ch.charCodeAt(0) - "a".charCodeAt(0)] = true;
+               stack.push(ch);
+           }
+
+           num[ch]--;
+       }
+       return stack.join("");
+    };
+}
+
+//leecode: Remove K Digits
+function removeKDigitsDemo1(){
+    let num = "112", k = 1;
+    console.log(removeKdigits(num, k));
+
+    function removeKdigits(num: string, k: number): string {
+        if(num.length == k) return "0";
+       let stack:string[] = [];
+       for(let i = 0; i < num.length; i++){
+           while(stack.length > 0 && k && num[i] < stack[stack.length-1]){
+               stack.pop()
+               k--;
+           }
+           stack.push(num[i]);
+       }
+       while (k > 0){
+           stack.pop();
+           k--;
+       }
+       let res = "";
+       let firstCharIsZero = true;
+       for(let i = 0; i < stack.length; i++){
+           if(stack[i] == "0" && firstCharIsZero){
+               continue
+           }
+           firstCharIsZero = false;
+           res += stack[i];
+       }
+       return res == ""?"0":res;
+    };
 }
 
 //leecode: Maximal Square
