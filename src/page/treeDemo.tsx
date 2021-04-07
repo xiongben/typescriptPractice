@@ -141,6 +141,7 @@ function TreeDemo(){
    //  maximalSquareDemo1()
    //  removeKDigitsDemo1()
    //  removeDuplicateLettersDemo1()
+   //  createMaximumNumberDemo1()
 
 
     return(
@@ -171,7 +172,23 @@ function createMaximumNumberDemo1(){
     };
 
     function getMaxSonArr(arr: number[], k:number):number[]{
-
+        let len = arr.length;
+        let stack = new Array(k).fill(0);
+        let remain = len - k;
+        let top = -1;
+        for(let i = 0; i < arr.length; i++){
+            let num = arr[i];
+            while (top >= 0 && remain > 0 && num > stack[top]){
+                top--;
+                remain--;
+            }
+            if(top < k-1){
+                stack[++top] = num;
+            }else {
+                remain--;
+            }
+        }
+        return stack;
     }
 
     function mergeArr(arr1:number[], arr2:number[]):number[]{
