@@ -143,12 +143,34 @@ function TreeDemo(){
    //  removeDuplicateLettersDemo1()
    //  createMaximumNumberDemo1()
    //  wiggleSubsequenceDemo1()
+   //  hIndexDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: H-Index II
+function hIndexDemo2(){
+    let citations = [0,1,3,5,6];
+    console.log(hIndex(citations));
+
+    function hIndex(citations: number[]): number {
+        let pivot = 0,left = 0, right = citations.length - 1;
+        while (left <= right){
+            pivot = (left + right) >> 1;
+            if(citations[pivot] == citations.length - pivot){
+                return citations.length - pivot;
+            }else if(citations[pivot] > citations.length - pivot){
+                right = pivot - 1;
+            }else{
+                left = pivot + 1;
+            }
+        }
+        return citations.length - left;
+    };
 }
 
 //leecode: Wiggle Subsequence
