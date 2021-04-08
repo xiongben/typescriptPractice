@@ -142,13 +142,33 @@ function TreeDemo(){
    //  removeKDigitsDemo1()
    //  removeDuplicateLettersDemo1()
    //  createMaximumNumberDemo1()
-
+   //  wiggleSubsequenceDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Wiggle Subsequence
+function wiggleSubsequenceDemo1(){
+    let nums = [1,17,5,10,13,15,10,5,16,8];
+    console.log(wiggleMaxLength(nums));
+
+
+    function wiggleMaxLength(nums: number[]): number {
+       let up = 1;
+       let dowm = 1;
+       for(let i = 1; i < nums.length; i++){
+           if(nums[i] > nums[i-1]){
+               up = dowm + 1;
+           }else if(nums[i] < nums[i-1]){
+               dowm = up + 1;
+           }
+       }
+       return nums.length == 0? 0 : Math.max(up,dowm);
+    };
 }
 
 //leecode： Create Maximum Number
