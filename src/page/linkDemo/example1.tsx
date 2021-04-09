@@ -29,9 +29,41 @@ function testDemo() {
     // reverseDemo4()
     // partitionLinkDemo1()
     // removeDuplicatesDemo1()
+    // insertionSortListDemo1()
 }
 
+//leecode: Insertion Sort List
+function insertionSortListDemo1(){
+    let list = [4,2,1,3];
+    var head:ListNode = buildLink(list);
+    let res = insertionSortList(head);
+    printLink(res);
 
+
+    function insertionSortList(head: ListNode | null): ListNode | null {
+        if(head == null) return head;
+       let dummyNode:  ListNode = new ListNode(0);
+       dummyNode.next = head;
+       let lastNode: any = head;
+       let currNode: any = head.next;
+       while (currNode != null){
+           if(currNode.val >= lastNode.val){
+               lastNode = lastNode.next;
+           }else{
+               let prev:any = dummyNode;
+               while(currNode.val >= prev.next.val){
+                   prev = prev.next;
+               }
+
+               lastNode.next = currNode.next;
+               currNode.next = prev.next;
+               prev.next = currNode;
+           }
+           currNode = lastNode.next;
+       }
+       return dummyNode.next;
+    };
+}
 
 //leecode: Remove Duplicates from Sorted List II
 function removeDuplicatesDemo1(){
