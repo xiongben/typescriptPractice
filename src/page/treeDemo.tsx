@@ -144,12 +144,50 @@ function TreeDemo(){
    //  createMaximumNumberDemo1()
    //  wiggleSubsequenceDemo1()
    //  hIndexDemo2()
+   //  intersectionTwoArraysDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Intersection of Two Arrays
+function intersectionTwoArraysDemo1(){
+    let nums1 = [4,9,5], nums2 = [9,4,9,8,4];
+    console.log(intersection(nums1, nums2));
+
+    function intersection(nums1: number[], nums2: number[]): number[] {
+        nums1.sort((a,b)=>a-b);
+        nums2.sort((a,b)=>a-b);
+        let idx1 = 0, idx2 = 0;
+        let res = [];
+        while (idx1 < nums1.length && idx2 < nums2.length){
+            if(nums1[idx1] == nums2[idx2] && (nums1[idx1] != res[res.length-1] || res.length == 0)){
+                res.push(nums1[idx1]);
+                idx1++;
+                idx2++;
+            }else if(nums1[idx1] > nums2[idx2]){
+                idx2++;
+            }else{
+                idx1++;
+            }
+        }
+        while(idx1 < nums1.length){
+            if(nums1[idx1] == nums2[idx2]){
+                res.push(nums1[idx1]);
+            }
+            idx1++;
+        }
+        while(idx2 < nums2.length){
+            if(nums1[idx1] == nums2[idx2]){
+                res.push(nums2[idx2]);
+            }
+            idx2++;
+        }
+        return res;
+    };
 }
 
 //leecode: H-Index II
