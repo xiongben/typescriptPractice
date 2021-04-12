@@ -145,12 +145,40 @@ function TreeDemo(){
    //  wiggleSubsequenceDemo1()
    //  hIndexDemo2()
    //  intersectionTwoArraysDemo1()
+   //  largestPerimeterDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Reorganize String
+function reorganizeStringDemo1(){
+    let s= "aaab"
+    console.log(reorganizeString(s));
+
+    function reorganizeString(S: string): string {
+
+    };
+}
+
+//leecode: Largest Perimeter Triangle
+function largestPerimeterDemo1(){
+    let nums = [3,6,2,3];
+    console.log(largestPerimeter(nums));
+
+    function largestPerimeter(nums: number[]): number {
+       let res = 0;
+       nums.sort((a,b)=>a-b);
+       for(let i = nums.length - 1; i > 1; i--){
+           if(nums[i-1] + nums[i-2] > nums[i]){
+               return nums[i-2] + nums[i-1] + nums[i];
+           }
+       }
+       return res;
+    };
 }
 
 //leecode: Intersection of Two Arrays
