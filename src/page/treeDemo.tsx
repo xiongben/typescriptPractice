@@ -147,6 +147,7 @@ function TreeDemo(){
    //  intersectionTwoArraysDemo1()
    //  largestPerimeterDemo1()
    //  reorganizeStringDemo1()
+   //  relativeSortArrayDemo1()
 
 
     return(
@@ -154,6 +155,36 @@ function TreeDemo(){
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Relative Sort Array
+function relativeSortArrayDemo1(){
+    let arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6];
+    console.log(relativeSortArray(arr1,arr2));
+
+    function relativeSortArray(arr1: number[], arr2: number[]): number[] {
+       let count:number[] = new Array(1001).fill(0);
+       for(let i = 0; i < arr1.length; i++){
+           count[arr1[i]]++;
+       }
+       //先排arr2
+        let start = 0;
+        for(let i = 0; i < arr2.length; i++){
+            while (count[arr2[i]] > 0){
+                arr1[start] = arr2[i];
+                start++;
+                count[arr2[i]]--;
+            }
+        }
+        for(let i = 0; i < count.length; i++){
+            while (count[i] > 0){
+                arr1[start] = i;
+                start++;
+                count[i]--;
+            }
+        }
+        return arr1;
+    };
 }
 
 //leecode: Reorganize String
