@@ -146,6 +146,8 @@ function TreeDemo(){
    //  hIndexDemo2()
    //  intersectionTwoArraysDemo1()
    //  largestPerimeterDemo1()
+   //  reorganizeStringDemo1()
+
 
     return(
         <div>
@@ -156,11 +158,45 @@ function TreeDemo(){
 
 //leecode: Reorganize String
 function reorganizeStringDemo1(){
-    let s= "aaab"
+    let s= "nlmxhnpifuaxinxpxlcttjnlggmkjioewbecnofqpvcikiazmn"
     console.log(reorganizeString(s));
 
     function reorganizeString(S: string): string {
+       let count:number[] = new Array(26).fill(0);
+       for(let i = 0; i < S.length; i++){
+           let index = S.charAt(i).charCodeAt(0) - "a".charCodeAt(0);
+           count[index]++
+       }
+       let maxIndex = 0;
+       for(let i = 0; i < count.length; i++){
+           if(count[i] > count[maxIndex]){
+               maxIndex = i;
+           }
+       }
+       console.log(count)
+       if(count[maxIndex] > (S.length+1)/2){
+           return ""
+       }
+       let res:string[] = new Array(S.length);
+       let start = 0;
+       while (count[maxIndex] > 0){
+           res[start] = String.fromCharCode(maxIndex + "a".charCodeAt(0));
+           start += 2;
+           count[maxIndex]--;
+       }
 
+       for(let i = 0; i < count.length; i++){
+           while (count[i] > 0){
+               if(start > S.length-1){
+                   start = 1;
+               }
+               res[start] = String.fromCharCode(i + "a".charCodeAt(0));
+               start += 2;
+               count[i]--;
+           }
+
+       }
+       return res.join("");
     };
 }
 
