@@ -32,6 +32,19 @@ function testDemo() {
     // insertionSortListDemo1()
 }
 
+//leecode: Add Two Numbers II
+function addTwoNumberDemo2() {
+  let l1 = [7,2,4,3], l2 = [5,6,4];
+  var head1:ListNode = buildLink(l1);
+    var head2:ListNode = buildLink(l2);
+    let res = addTwoNumbers(head1, head2);
+    printLink(res);
+
+    function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+
+    };
+}
+
 //leecode: Insertion Sort List
 function insertionSortListDemo1(){
     let list = [4,2,1,3];
