@@ -30,18 +30,45 @@ function testDemo() {
     // partitionLinkDemo1()
     // removeDuplicatesDemo1()
     // insertionSortListDemo1()
+    addTwoNumberDemo2()
 }
 
 //leecode: Add Two Numbers II
 function addTwoNumberDemo2() {
-  let l1 = [7,2,4,3], l2 = [5,6,4];
+  let l1 = [2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,9],
+      l2 = [5,6,4,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,2,4,3,9,9,9,9];
   var head1:ListNode = buildLink(l1);
     var head2:ListNode = buildLink(l2);
     let res = addTwoNumbers(head1, head2);
     printLink(res);
 
     function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+        let arr1 = [],arr2 = [];
+        let num1:number = 0,num2:number = 0;
+        while (l1 != null){
+            num1 = num1*10 + l1.val;
+            l1 = l1.next;
+        }
+        while (l2 != null){
+            num2 = num2*10 + l2.val;
+            l2 = l2.next;
+        }
+        let resNum = num1 + num2;
+        console.log(num1,num2,resNum)
+        let res:ListNode = new ListNode();
+        let header = res;
+        if(resNum == 0){
+            return new ListNode(0);
+        }
+        while(resNum > 0){
+            let singleNum = resNum%10;
+            resNum = (resNum - singleNum)/10;
+            let newNode = new ListNode(singleNum);
+            newNode.next = header.next;
+            header.next = newNode
 
+        }
+        return header.next;
     };
 }
 
