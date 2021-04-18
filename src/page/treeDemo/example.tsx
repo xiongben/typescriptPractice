@@ -30,8 +30,33 @@ class TreeNode {
      // pathSumDemo2()
      // pathSumDemo3()
      // flattenBinaryTreeDemo1()
+     // balanceBinaryTreeDemo1()
  }
 
+
+ //leecode: Balanced Binary Tree
+function balanceBinaryTreeDemo1() {
+  let arr = [1,2,2,3,3,null,null,4,4];
+    var root:TreeNode = buildTree2(arr);
+    console.log(isBalanced(root));
+
+    function isBalanced(root: TreeNode | null): boolean {
+        return helper(root) >= 0;
+    };
+
+    function helper(root:TreeNode | null):number {
+        if(root == null) return 0;
+        let leftNode = helper(root.left);
+        let rightNode = helper(root.right);
+        if(leftNode == -1 || rightNode == -1 || Math.abs(rightNode-leftNode) > 1){
+            return -1;
+        }else{
+            return Math.max(leftNode,rightNode) + 1;
+        }
+
+    }
+
+}
 
 
 //leecode: Construct Binary Tree from Inorder and Postorder Traversal
