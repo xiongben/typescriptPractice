@@ -30,7 +30,7 @@ function testDemo() {
     // partitionLinkDemo1()
     // removeDuplicatesDemo1()
     // insertionSortListDemo1()
-    addTwoNumberDemo2()
+    // addTwoNumberDemo2()
 }
 
 //leecode: Add Two Numbers II
@@ -46,29 +46,31 @@ function addTwoNumberDemo2() {
         let arr1 = [],arr2 = [];
         let num1:number = 0,num2:number = 0;
         while (l1 != null){
-            num1 = num1*10 + l1.val;
+            arr1.push(l1.val)
             l1 = l1.next;
         }
         while (l2 != null){
-            num2 = num2*10 + l2.val;
+            arr2.push(l2.val)
             l2 = l2.next;
         }
-        let resNum = num1 + num2;
-        console.log(num1,num2,resNum)
-        let res:ListNode = new ListNode();
-        let header = res;
-        if(resNum == 0){
-            return new ListNode(0);
+        let carry = 0;
+        let res = 0;
+        let head = new ListNode();
+        while (arr1.length > 0 || arr2.length > 0 || carry > 0){
+            let num1:number = arr1.length > 0? arr1.pop() as number : 0;
+            let num2:number = arr2.length > 0? arr2.pop() as number : 0;
+            let temp = num1 + num2 + carry;
+            if(temp > 9){
+                carry = 1;
+                temp = temp - 10;
+            }else{
+                carry = 0;
+            }
+            let newnode = new ListNode(temp);
+            newnode.next = head.next;
+            head.next = newnode;
         }
-        while(resNum > 0){
-            let singleNum = resNum%10;
-            resNum = (resNum - singleNum)/10;
-            let newNode = new ListNode(singleNum);
-            newNode.next = header.next;
-            header.next = newNode
-
-        }
-        return header.next;
+        return head.next;
     };
 }
 
