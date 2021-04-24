@@ -31,8 +31,58 @@ class TreeNode {
      // pathSumDemo3()
      // flattenBinaryTreeDemo1()
      // balanceBinaryTreeDemo1()
+     // houseRobberDemo3()
  }
 
+
+
+
+//  //leecode: Convert Sorted List to Binary Search Tree
+// function convertSortedListDemo1() {
+//    let arr = [-10, -3, 0, 5, 9];
+//
+//     function sortedListToBST(arr:number[]): TreeNode | null {
+//        let start = 0,end = arr.length-1;
+//        let count = 1;
+//
+//        while ()
+//     };
+//
+//     function getNode(arr:number[],start:number,end:number):number | null {
+//        if(start > end) return null;
+//        let mid = (start + end) >> 1;
+//        return arr[mid];
+//     }
+//
+//     function getMedian(left:) {
+//
+//     }
+// }
+
+
+//leecode: House Robber III
+function houseRobberDemo3() {
+    let arr = [3,2,3,null,3,null,1];
+    var root:TreeNode = buildTree2(arr);
+    let res = rob(root);
+    console.log(res);
+
+    function rob(root: TreeNode | null): number {
+        let f = new Map(),g = new Map();
+        dfs(root)
+        return Math.max(f.get(root)||0, g.get(root)||0);
+
+        function dfs(node: TreeNode|null) {
+            if(node == null) return;
+            dfs(node.left)
+            dfs(node.right)
+            f.set(node, node.val + (g.get(node.left) || 0) + (g.get(node.right) || 0));
+            g.set(node, Math.max(f.get(node.left)||0,g.get(node.left)||0)+Math.max(f.get(node.right)||0,g.get(node.right)||0));
+
+        }
+
+    };
+}
 
  //leecode: Balanced Binary Tree
 function balanceBinaryTreeDemo1() {
