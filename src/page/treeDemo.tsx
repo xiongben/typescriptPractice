@@ -148,6 +148,7 @@ function TreeDemo(){
    //  largestPerimeterDemo1()
    //  reorganizeStringDemo1()
    //  relativeSortArrayDemo1()
+   //  targetSumDemo3()
 
 
     return(
@@ -158,6 +159,31 @@ function TreeDemo(){
 }
 
 
+//leecode: Target Sum
+function targetSumDemo3(){
+    let nums = [1,1,1,1,1], target = 3;
+    console.log(findTargetSumWays(nums,target));
+
+    function findTargetSumWays(nums: number[], target: number): number {
+       let resArr:number[][] = new Array(nums.length);
+       for(let i = 0; i < resArr.length; i++){
+           resArr[i] = new Array(2002).fill(0);
+       }
+
+       resArr[0][nums[0]+1000] = 1;
+       resArr[0][-nums[0]+1000] += 1;
+       for(let i = 1; i < nums.length; i++){
+           for(let sum = -1000; sum <= 1000; sum++){
+               if(resArr[i-1][sum+1000] > 0){
+                   resArr[i][sum+nums[i]+1000] += resArr[i-1][sum+1000];
+                   resArr[i][sum-nums[i]+1000] += resArr[i-1][sum+1000];
+               }
+           }
+        }
+       return target > 1000? 0 : resArr[nums.length-1][target+1000];
+    };
+
+}
 
 //leecode: Relative Sort Array
 function relativeSortArrayDemo1(){
