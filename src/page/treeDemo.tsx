@@ -149,7 +149,7 @@ function TreeDemo(){
    //  reorganizeStringDemo1()
    //  relativeSortArrayDemo1()
    //  targetSumDemo3()
-
+   // decodeStringDemo1()
 
     return(
         <div>
@@ -158,6 +158,36 @@ function TreeDemo(){
     )
 }
 
+
+//leecode: Decode String
+function decodeStringDemo1(){
+    let s = "3[a2[c]]";
+    console.log(decodeString(s));
+
+    function decodeString(s: string): string {
+       let stack = [],str = "", num = 0;
+       for(let i = 0; i < s.length; i++){
+           if(s[i] == "["){
+               stack.push([str,num]);
+               str = "";
+               num = 0;
+           }else if(s[i] == "]"){
+               let temp = stack.pop() as any;
+               let tempStr = "";
+               while(temp[1] > 0){
+                   tempStr += str;
+                   temp[1]--;
+               }
+               str = temp[0] + tempStr;
+           }else if(s[i] <= "9" && s[i] >= "0"){
+               num = num * 10 + Number(s[i]);
+           }else{
+               str += s[i];
+           }
+       }
+       return str;
+    };
+}
 
 //leecode: Target Sum
 function targetSumDemo3(){
