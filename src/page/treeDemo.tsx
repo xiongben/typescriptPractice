@@ -150,6 +150,7 @@ function TreeDemo(){
    //  relativeSortArrayDemo1()
    //  targetSumDemo3()
    // decodeStringDemo1()
+   // increasingSubsequenceDemo1()
 
     return(
         <div>
@@ -158,6 +159,36 @@ function TreeDemo(){
     )
 }
 
+
+//leecode: Increasing Subsequences
+function increasingSubsequenceDemo1(){
+    let nums = [4,6,7,7];
+    console.log(findSubsequences(nums));
+
+    function findSubsequences(nums: number[]): number[][] {
+       let res:number[][] = [];
+       let temp:number[] = [];
+       helper(0, Number.MIN_SAFE_INTEGER,nums);
+       return res;
+
+       function helper(cur:number,last:number,nums:number[]){
+           if(cur == nums.length){
+               if(temp.length >= 2){
+                   res.push([...temp]);
+               }
+               return;
+           }
+           if(nums[cur] >= last){
+               temp.push(nums[cur]);
+               helper(cur+1, nums[cur], nums);
+               temp.pop();
+           }
+           if(nums[cur] != last){
+               helper(cur+1, last, nums);
+           }
+       }
+    };
+}
 
 //leecode: Decode String
 function decodeStringDemo1(){
