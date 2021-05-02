@@ -32,9 +32,27 @@ class TreeNode {
      // flattenBinaryTreeDemo1()
      // balanceBinaryTreeDemo1()
      // houseRobberDemo3()
+     // invertBinaryTreeDemo1()
  }
 
 
+ //leecode: Invert Binary Tree
+function invertBinaryTreeDemo1(){
+     let arr1 = [4,2,7,1,3,6,9];
+    var root:TreeNode = buildTree2(arr1);
+    let newRoot: TreeNode | null = invertTree(root);
+    printTree(newRoot);
+
+
+    function invertTree(root: TreeNode | null): TreeNode | null {
+       if(root == null) return null;
+       let left = invertTree(root.left);
+       let right = invertTree(root.right);
+       root.left = right;
+       root.right = left;
+       return root;
+    };
+}
 
 
 //  //leecode: Convert Sorted List to Binary Search Tree
