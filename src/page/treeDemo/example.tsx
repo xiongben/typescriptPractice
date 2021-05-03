@@ -1,4 +1,5 @@
 import React from "react";
+import {createGunzip} from "zlib";
 
 
 class TreeNode {
@@ -33,8 +34,48 @@ class TreeNode {
      // balanceBinaryTreeDemo1()
      // houseRobberDemo3()
      // invertBinaryTreeDemo1()
+     binaryTreeRightSideDemo1()
  }
 
+
+ //leecode: Binary Tree Right Side View
+function binaryTreeRightSideDemo1(){
+     let arr1 = [1,2,3,null,5,null,4];
+    var root:TreeNode = buildTree2(arr1);
+    let res = rightSideView(root);
+    console.log(res);
+
+    function rightSideView(root: TreeNode | null): number[] {
+        if(root == null) return [];
+        let res:number[] = [];
+        let queue:TreeNode[] = [];
+        queue.push(root);
+        while (queue.length > 0){
+            var size = queue.length;
+            for(let i = 0; i < size; i++){
+                queue.forEach((val,index)=>{
+                    console.log("==>",val.val);
+                })
+
+                let node: TreeNode = queue.shift() as TreeNode;
+                console.log(node,i,size)
+                if(node.left?.val != null){
+                    queue.push(node.left);
+                }
+                if(node.right?.val != null){
+                    queue.push(node.right);
+                }
+                // console.log(queue)
+
+                if(i == size-1){
+                    // console.log("========",node.val)
+                    res.push(node.val);
+                }
+            }
+        }
+        return res;
+    };
+}
 
  //leecode: Invert Binary Tree
 function invertBinaryTreeDemo1(){
