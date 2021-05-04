@@ -35,7 +35,51 @@ class TreeNode {
      // houseRobberDemo3()
      // invertBinaryTreeDemo1()
      // binaryTreeRightSideDemo1()
+     // countCompleteTreeNodesDemo1()
  }
+
+
+ //leecode:Count Complete Tree Nodes
+function countCompleteTreeNodesDemo1(){
+     let arr1 = [1,2,3,4,5,6];
+    var root:TreeNode = buildTree2(arr1);
+    console.log(countNodes2(root));
+
+    function countNodes(root: TreeNode | null): number {
+        if(root == null) return 0;
+        let left = countNodes(root.left);
+        let right = countNodes(root.right);
+        return left + right + 1;
+    };
+
+    function countNodes2(root: TreeNode | null): number {
+        if(root == null) return 0;
+        let res = 0;
+        let leftDep = getDep(root.left);
+        while (root != null){
+            let rightDep = getDep(root.right);
+            if(leftDep == rightDep){
+                res += Math.pow(2,leftDep);
+                root = root.right;
+            }else{
+                res += Math.pow(2, rightDep);
+                root = root.left;
+            }
+            leftDep--;
+        }
+        return res;
+
+        function getDep(root: TreeNode | null): number {
+            if(root == null) return 0;
+            let res = 0;
+            while (root != null){
+                res++;
+                root = root.left;
+            }
+            return res;
+        }
+    };
+}
 
 
  //leecode: Binary Tree Right Side View
@@ -53,22 +97,15 @@ function binaryTreeRightSideDemo1(){
         while (queue.length > 0){
             var size = queue.length;
             for(let i = 0; i < size; i++){
-                // queue.forEach((val,index)=>{
-                //     console.log("==>",val.val);
-                // })
-
                 let node: TreeNode = queue.shift() as TreeNode;
-                console.log(node,i,size)
                 if(node.left?.val != null){
                     queue.push(node.left);
                 }
                 if(node.right?.val != null){
                     queue.push(node.right);
                 }
-                // console.log(queue)
 
                 if(i == size-1){
-                    // console.log("========",node.val)
                     res.push(node.val);
                 }
             }

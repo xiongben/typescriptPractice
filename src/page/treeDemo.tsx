@@ -151,12 +151,35 @@ function TreeDemo(){
    //  targetSumDemo3()
    // decodeStringDemo1()
    // increasingSubsequenceDemo1()
+   //  validPerfectSquareDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:  Valid Perfect Square
+function validPerfectSquareDemo1(){
+    let num = 18;
+    console.log(isPerfectSquare(num));
+
+    function isPerfectSquare(num: number): boolean {
+        if(num == 1) return true;
+       let start = 1, end = num;
+       while (start < end){
+           let mid = (start + end) >> 1;
+           if(mid * mid == num){
+               return true;
+           }else if(mid * mid > num){
+               end = mid - 1;
+           }else {
+               start = mid + 1;
+           }
+       }
+       return false;
+    };
 }
 
 
