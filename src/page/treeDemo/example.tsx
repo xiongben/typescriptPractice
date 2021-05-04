@@ -34,7 +34,7 @@ class TreeNode {
      // balanceBinaryTreeDemo1()
      // houseRobberDemo3()
      // invertBinaryTreeDemo1()
-     binaryTreeRightSideDemo1()
+     // binaryTreeRightSideDemo1()
  }
 
 
@@ -42,7 +42,7 @@ class TreeNode {
 function binaryTreeRightSideDemo1(){
      let arr1 = [1,2,3,null,5,null,4];
     var root:TreeNode = buildTree2(arr1);
-    let res = rightSideView(root);
+    let res = rightSideView2(root);
     console.log(res);
 
     function rightSideView(root: TreeNode | null): number[] {
@@ -53,9 +53,9 @@ function binaryTreeRightSideDemo1(){
         while (queue.length > 0){
             var size = queue.length;
             for(let i = 0; i < size; i++){
-                queue.forEach((val,index)=>{
-                    console.log("==>",val.val);
-                })
+                // queue.forEach((val,index)=>{
+                //     console.log("==>",val.val);
+                // })
 
                 let node: TreeNode = queue.shift() as TreeNode;
                 console.log(node,i,size)
@@ -75,6 +75,22 @@ function binaryTreeRightSideDemo1(){
         }
         return res;
     };
+
+    function rightSideView2(root: TreeNode | null): number[] {
+        let res:number[] = [];
+        helper(root, 0);
+        return res;
+
+        function helper(root: TreeNode | null, depth: number){
+            if(root == null) return;
+            if(depth == res.length){
+                res.push(root.val);
+            }
+            depth++;
+            helper(root.right, depth);
+            helper(root.left, depth);
+        }
+    }
 }
 
  //leecode: Invert Binary Tree
