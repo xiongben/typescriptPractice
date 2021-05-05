@@ -36,8 +36,22 @@ class TreeNode {
      // invertBinaryTreeDemo1()
      // binaryTreeRightSideDemo1()
      // countCompleteTreeNodesDemo1()
+     // sumOfLeftLeavesDemo1()
  }
 
+
+ //leecode: Sum of Left Leaves
+function sumOfLeftLeavesDemo1(){
+     let arr1 = [3,9,20,null,null,15,7];
+    var root:TreeNode = buildTree2(arr1);
+    console.log(sumOfLeftLeaves(root));
+
+    function sumOfLeftLeaves(root: TreeNode | null): number {
+         if(root == null) return 0;
+         return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right) +
+             (root.left != null && root.left.left == null && root.left.right == null?root.left.val : 0);
+    };
+}
 
  //leecode:Count Complete Tree Nodes
 function countCompleteTreeNodesDemo1(){

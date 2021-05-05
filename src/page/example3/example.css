@@ -1,21 +1,17 @@
 
 
-.box{
-    width: 300px;
-    height: 100px;
-    background: #61dafb;
-    position: relative;
+.moveArea{
+    width: 100%;
+    height: 200px;
+    background: aliceblue;
 }
-.l-box{
+.sbox{
     width: 50px;
-    height: 100px;
-    background: #282c34;
-    position: absolute;
+    height: 50px;
+    background: red;
 }
-.r-box{
-    margin-left: 50px;
-    background: bisque;
-    height: 100px;
+.move{
+    transform: translateX(200px);
 }
 .scrollbox1{
     width: 180px;

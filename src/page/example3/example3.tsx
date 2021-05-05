@@ -42,11 +42,8 @@ function Example3(){
            </Color>
            <UserInfo data={userInfo}/>
            <button onClick={changeUserInfo}>change user info</button>
-           <div>
-               <div className="box">
-                   <div className="l-box"></div>
-                   <div className="r-box"></div>
-               </div>
+           <div className="moveArea">
+              <div className={["sbox","move"].join(' ')}></div>
            </div>
            <div className="scrollbox1" onScrollCapture={(e) => handleOnScroll(e)} ref={ref}>
                {list1.map((item)=>{
