@@ -37,8 +37,31 @@ class TreeNode {
      // binaryTreeRightSideDemo1()
      // countCompleteTreeNodesDemo1()
      // sumOfLeftLeavesDemo1()
+     // lowestCommonAncestorDemo1()
  }
 
+ // Lowest Common Ancestor of a Binary Search Tree
+function lowestCommonAncestorDemo1(){
+     let arr1 =  [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8;
+    var root:TreeNode = buildTree2(arr1);
+    let pnode = new TreeNode(p);
+    let qnode = new TreeNode(q);
+    console.log(lowestCommonAncestor(root, pnode, qnode));
+
+    function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+        let res:any = root;
+        while (true){
+            if(p?.val as number > res?.val && q?.val as number > res?.val){
+                res = res.right;
+            }else if((p?.val as number) < res?.val && (q?.val as number) < res?.val){
+                res = res.left;
+            }else{
+                break;
+            }
+        }
+        return res;
+    };
+}
 
  //leecode: Sum of Left Leaves
 function sumOfLeftLeavesDemo1(){
