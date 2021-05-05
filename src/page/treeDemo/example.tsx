@@ -38,7 +38,28 @@ class TreeNode {
      // countCompleteTreeNodesDemo1()
      // sumOfLeftLeavesDemo1()
      // lowestCommonAncestorDemo1()
+     // miniumDepthDemo1()
  }
+
+ //leecode: Minimum Depth of Binary Tree
+function miniumDepthDemo1(){
+     let arr1 = [2,null,3,null,4,null,5,null,6];
+    var root:TreeNode = buildTree2(arr1);
+    console.log(minDepth(root));
+
+    function minDepth(root: TreeNode | null): number {
+        if(root == null) return 0;
+        if(root.left == null && root.right == null) return 1;
+        let minPath = Number.MAX_SAFE_INTEGER;
+        if(root.left != null){
+            minPath = Math.min(minPath, minDepth(root.left));
+        }
+        if(root.right != null){
+            minPath = Math.min(minPath, minDepth(root.right));
+        }
+        return minPath + 1;
+    };
+}
 
  // Lowest Common Ancestor of a Binary Search Tree
 function lowestCommonAncestorDemo1(){
