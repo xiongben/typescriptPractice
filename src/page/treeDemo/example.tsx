@@ -39,7 +39,53 @@ class TreeNode {
      // sumOfLeftLeavesDemo1()
      // lowestCommonAncestorDemo1()
      // miniumDepthDemo1()
+     // deleteNodeInBSTDemo1()
  }
+
+
+ //leecode： Delete Node in a BST
+function deleteNodeInBSTDemo1(){
+     let arr1 = [5,3,6,2,4,null,7], key = 3;
+    var root:TreeNode = buildTree2(arr1);
+    let newnode = deleteNode(root, key);
+    printTree(newnode);
+
+    function deleteNode(root: TreeNode | null, key: number): TreeNode | null {
+        if(root == null) return null;
+        if(key > root.val){
+            root.right = deleteNode(root.right, key);
+        }else if(key < root.val){
+            root.left = deleteNode(root.left, key);
+        }else{
+            if(root.left == null && root.right == null){
+                root = null;
+            }else if(root.right != null){
+                let chooseNode = getRightMin(root) as TreeNode;
+                root.val = chooseNode.val;
+                root.right = deleteNode(root.right, root.val);
+            }else{
+                let chooseNode = getLeftMax(root) as TreeNode;
+                root.val = chooseNode.val;
+                root.left = deleteNode(root.left, root.val);
+            }
+        }
+        return root;
+    };
+
+    function getLeftMax(root: TreeNode | null): TreeNode | null{
+        if(root == null) return null;
+        root = root.left;
+        while (root?.right != null) root = root.right;
+        return root;
+    }
+
+    function getRightMin(root: TreeNode | null): TreeNode | null{
+        if(root == null) return null;
+        root = root.right;
+        while (root?.left != null) root = root.left;
+        return root;
+    }
+}
 
  //leecode: Minimum Depth of Binary Tree
 function miniumDepthDemo1(){
