@@ -40,7 +40,46 @@ class TreeNode {
      // lowestCommonAncestorDemo1()
      // miniumDepthDemo1()
      // deleteNodeInBSTDemo1()
+     // findModeInTreeDemo1()
  }
+
+
+ //leecode： Find Mode in Binary Search Tree
+function findModeInTreeDemo1(){
+     let arr1 = [1,null,2,2];
+    var root:TreeNode = buildTree2(arr1);
+    console.log(findMode(root))
+
+    function findMode(root: TreeNode | null): number[] {
+        let base = 0, count = 0, maxCount = 0, res:number[] = [];
+        dfs(root);
+        return res;
+
+        function helper(num: number){
+            if(base == num){
+                count++;
+            }else{
+                count = 1;
+                base = num;
+            }
+            if(count == maxCount){
+                res.push(num);
+            }
+            if(count > maxCount){
+                maxCount = count;
+                res = [num];
+            }
+        }
+
+        function dfs(root: TreeNode | null){
+            if(root == null) return;
+            dfs(root.left);
+            helper(root.val);
+            dfs(root.right);
+        }
+
+    };
+}
 
 
  //leecode： Delete Node in a BST
