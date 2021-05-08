@@ -40,7 +40,7 @@ class TreeNode {
      // lowestCommonAncestorDemo1()
      // miniumDepthDemo1()
      // deleteNodeInBSTDemo1()
-     // findModeInTreeDemo1()
+     findModeInTreeDemo1()
  }
 
 
@@ -48,7 +48,8 @@ class TreeNode {
 function findModeInTreeDemo1(){
      let arr1 = [1,null,2,2];
     var root:TreeNode = buildTree2(arr1);
-    console.log(findMode(root))
+    printTree(root)
+    // console.log(findMode(root))
 
     function findMode(root: TreeNode | null): number[] {
         let base = 0, count = 0, maxCount = 0, res:number[] = [];
@@ -784,6 +785,7 @@ function smallestDemo1() {
          var node: TreeNode = new TreeNode(numArr[i] as any,null,null);
          list.push(node);
      }
+     console.log(Math.floor(numArr.length/2)-1)
      if(list.length > 0){
          for(var i = 0; i < Math.floor(numArr.length/2)-1; i++){
              if(list[2*i+1].val != null){
@@ -823,7 +825,7 @@ function smallestDemo1() {
 
  function printTree(root:TreeNode | null) {
      if(root === null) return;
-     console.log(root.val);
+     console.log("====>",root.val);
      printTree(root.left);
 
      printTree(root.right);

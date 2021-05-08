@@ -152,12 +152,31 @@ function TreeDemo(){
    // decodeStringDemo1()
    // increasingSubsequenceDemo1()
    //  validPerfectSquareDemo1()
+   //  isSubDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+//leecode:Is Subsequence
+function isSubDemo2(){
+    let s = "abc", t = "ahbgdc";
+    console.log(isSubsequence(s, t));
+
+    function isSubsequence(s: string, t: string): boolean {
+        if(s == t) return true;
+        let curT = 0, curS = 0;
+        while (curT < t.length && curS <= s.length){
+            if(s.charAt(curS) == t.charAt(curT)){
+                curS++;
+            }
+            if(curS >= s.length) return true;
+            curT++;
+        }
+        return false;
+    };
 }
 
 //leecode:  Valid Perfect Square
