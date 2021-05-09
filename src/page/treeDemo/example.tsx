@@ -40,7 +40,7 @@ class TreeNode {
      // lowestCommonAncestorDemo1()
      // miniumDepthDemo1()
      // deleteNodeInBSTDemo1()
-     findModeInTreeDemo1()
+     // findModeInTreeDemo1()
  }
 
 

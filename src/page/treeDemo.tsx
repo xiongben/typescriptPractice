@@ -153,6 +153,7 @@ function TreeDemo(){
    // increasingSubsequenceDemo1()
    //  validPerfectSquareDemo1()
    //  isSubDemo2()
+   //  numberOfMatchSebsequencesDemo1()
 
     return(
         <div>
@@ -160,6 +161,49 @@ function TreeDemo(){
         </div>
     )
 }
+
+//leecode: Number of Matching Subsequences
+function numberOfMatchSebsequencesDemo1(){
+    let s = "abcde", words = ["a","bb","acd","ace"];
+    console.log(numMatchingSubseq(s, words));
+
+    function numMatchingSubseq(s: string, words: string[]): number {
+        let res = 0;
+        let mapArr:any[][] = new Array(26);
+        let sArr:string[] = s.split("");
+        for(let i = 0; i < mapArr.length; i++){
+            mapArr[i] = [];
+        }
+        for(let i = 0; i < words.length; i++){
+            let index = words[i].charAt(0).charCodeAt(0) - "a".charCodeAt(0);
+            mapArr[index].push(buildNode(words[i]));
+        }
+        for(let i = 0; i < sArr.length; i++){
+            let chooseIndex = sArr[i].charCodeAt(0) - "a".charCodeAt(0);
+            let tempArr = mapArr[chooseIndex];
+            mapArr[chooseIndex] = [];
+            for (let j = 0; j < tempArr.length; j++){
+                tempArr[j].index++;
+                if(tempArr[j].index == tempArr[j].val.length){
+                    res++;
+                }else{
+                    let newIndex = tempArr[j].val.charAt(tempArr[j].index).charCodeAt(0) - "a".charCodeAt(0);
+                    mapArr[newIndex].push(tempArr[j])
+                }
+            }
+            tempArr = [];
+        }
+        return res;
+
+        function buildNode(val:string):any{
+            return {
+                val: val,
+                index: 0
+            }
+        }
+    };
+}
+
 //leecode:Is Subsequence
 function isSubDemo2(){
     let s = "abc", t = "ahbgdc";
