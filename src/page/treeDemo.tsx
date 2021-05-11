@@ -154,12 +154,31 @@ function TreeDemo(){
    //  validPerfectSquareDemo1()
    //  isSubDemo2()
    //  numberOfMatchSebsequencesDemo1()
+   //  countNumbersDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Count Numbers with Unique Digits
+function countNumbersDemo3(){
+    let n = 2;
+    console.log(countNumbersWithUniqueDigits(n));
+
+    function countNumbersWithUniqueDigits(n: number): number {
+        if(n == 0) return 1;
+        let res = 10, temp = 9;
+        let range = Math.min(n,10);
+
+        for(let i = 1; i < range; i++){
+            temp = temp * (10 - i);
+            res += temp;
+        }
+        return res;
+    };
 }
 
 //leecode: Number of Matching Subsequences
