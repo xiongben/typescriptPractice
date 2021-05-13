@@ -155,12 +155,47 @@ function TreeDemo(){
    //  isSubDemo2()
    //  numberOfMatchSebsequencesDemo1()
    //  countNumbersDemo3()
+   //  combinationSumDemo3()
+   //  minCostDemo2()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Min Cost Climbing Stairs
+function minCostDemo2(){
+    let cost = [1,100,1,1,1,100,1,1,100,1];
+    console.log(minCostClimbingStairs(cost));
+
+    function minCostClimbingStairs(cost: number[]): number {
+        let dp:number[] = new Array(cost.length).fill(0);
+        for(let i = 2; i <= cost.length; i++){
+            dp[i] = Math.min(dp[i-1] + cost[i-1], dp[i-2] + cost[i-2]);
+        }
+        return dp[cost.length];
+    };
+}
+
+//leecode:Combination Sum IV
+function combinationSumDemo3(){
+    let nums = [1,2,3], target = 4;
+    console.log(combinationSum4(nums, target));
+
+    function combinationSum4(nums: number[], target: number): number {
+        let dp:number[] = new Array(target+1).fill(0);
+        dp[0] = 1;
+        for(let i = 1; i <= target; i++){
+            for (let num of nums){
+                if(num <= i){
+                    dp[i]+=dp[i-num]
+                }
+            }
+        }
+        return dp[target];
+    };
 }
 
 //leecode:Count Numbers with Unique Digits
