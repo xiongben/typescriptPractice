@@ -157,12 +157,31 @@ function TreeDemo(){
    //  countNumbersDemo3()
    //  combinationSumDemo3()
    //  minCostDemo2()
+   //  arithmeticSlicesDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Arithmetic Slices
+function arithmeticSlicesDemo1(){
+    let nums = [1,2,3,4];
+    console.log(numberOfArithmeticSlices(nums))
+
+    function numberOfArithmeticSlices(nums: number[]): number {
+        let res = 0;
+        let dpArr:number[] = new Array(nums.length).fill(0);
+        for(let i = 2; i < nums.length; i++){
+            if(nums[i]-nums[i-1] == nums[i-1]-nums[i-2]){
+                dpArr[i] = dpArr[i-1] + 1;
+                res += dpArr[i];
+            }
+        }
+        return res;
+    };
 }
 
 //leecode: Min Cost Climbing Stairs
