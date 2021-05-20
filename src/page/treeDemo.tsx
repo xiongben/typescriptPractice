@@ -159,12 +159,57 @@ function TreeDemo(){
    //  minCostDemo2()
    //  arithmeticSlicesDemo1()
    //  findPivotIndexDemo1()
+   //  maximumProductOfThreeNumbersDemo1()
+   //  longestContinuousDemo5()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+//leecode: Longest Continuous Increasing Subsequence
+function longestContinuousDemo5(){
+    let nums = [3,0,6,2,4,7,0,0];
+    console.log(findLengthOfLCIS(nums));
+
+    function findLengthOfLCIS(nums: number[]): number {
+        if(nums.length < 2) return nums.length;
+        let start = 0,end = 0,count = 1,res = 0;
+
+        while (end < nums.length-1){
+            if(nums[end] >= nums[end+1]){
+                // console.log(start,end)
+                res = Math.max(res, end-start+1);
+                // console.log(res)
+                start = end + 1;
+
+                count = 1;
+            }else{
+                count++;
+                res = Math.max(count, res);
+                console.log(res);
+            }
+            end++;
+
+        }
+        return res;
+    };
+
+}
+
+//leecode: Maximum Product of Three Numbers
+function maximumProductOfThreeNumbersDemo1(){
+    let nums = [1,2,3,4];
+    console.log(maximumProduct(nums));
+
+    function maximumProduct(nums: number[]): number {
+       nums.sort((a,b)=>a-b);
+       let len = nums.length;
+       return Math.max(nums[0] * nums[1] * nums[len-1],nums[len-1] * nums[len-2] * nums[len-3]);
+    };
 }
 
 //leecode:Find Pivot Index
