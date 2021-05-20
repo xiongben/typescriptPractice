@@ -158,12 +158,38 @@ function TreeDemo(){
    //  combinationSumDemo3()
    //  minCostDemo2()
    //  arithmeticSlicesDemo1()
+   //  findPivotIndexDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode:Find Pivot Index
+function findPivotIndexDemo1(){
+    let nums = [1,7,3,6,5,6];
+    console.log(pivotIndex(nums));
+
+    function pivotIndex(nums: number[]): number {
+        let leftDp:number[] = new Array(nums.length).fill(0);
+        let rightDp:number[] = new Array(nums.length).fill(0);
+
+        for(let i = 1; i < nums.length; i++){
+            leftDp[i] = leftDp[i-1] + nums[i-1];
+        }
+        for(let i = 1; i < nums.length; i++){
+            rightDp[i] = rightDp[i-1] + nums[nums.length-i];
+        }
+        console.log(leftDp,rightDp)
+        for(let i = 0; i < nums.length; i++){
+            if(leftDp[i] == rightDp[nums.length-i-1]){
+                return i;
+            }
+        }
+        return -1;
+    };
 }
 
 //leecode: Arithmetic Slices
