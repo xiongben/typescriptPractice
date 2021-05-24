@@ -161,12 +161,47 @@ function TreeDemo(){
    //  findPivotIndexDemo1()
    //  maximumProductOfThreeNumbersDemo1()
    //  longestContinuousDemo5()
+   //  maximumSwapDemo3()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+//leecode: Maximum Swap
+function maximumSwapDemo3(){
+    let num = 21;
+    console.log(maximumSwap(num));
+    
+    function maximumSwap(num: number): number {
+        let numArr = String(num).split("");
+        let lastArr:number[] = new Array(10).fill(-1);
+
+        for(let i = 0; i < numArr.length; i++){
+           let chIndex = numArr[i].charCodeAt(0) - "0".charCodeAt(0);
+           lastArr[chIndex] = i;
+        }
+
+        for(let i = 0; i < numArr.length-1; i++){
+            for(let j = 9; j > numArr[i].charCodeAt(0) - "0".charCodeAt(0); j--){
+                if(lastArr[j] > i){
+                    swap(numArr, i, lastArr[j]);
+                    return Number(numArr.join(""));
+                }
+            }
+        }
+
+        return num;
+    };
+
+    function swap(arr:string[],num1:number,num2:number){
+        let temp = arr[num1];
+        arr[num1] = arr[num2];
+        arr[num2] = temp;
+    }
 }
 
 
