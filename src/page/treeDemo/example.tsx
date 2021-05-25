@@ -44,6 +44,26 @@ class TreeNode {
  }
 
 
+ //leecode: Find Bottom Left Tree Value
+function findBottomLeftTreeValue(){
+
+
+    function findBottomLeftValue(root: TreeNode | null): number {
+        let resArr:number[] = [];
+        helper(root, 0, resArr);
+        return resArr[resArr.length-1];
+    };
+
+    function helper(root: TreeNode | null, level:number, resArr:number[]){
+        if(root == null) return;
+        if(level == resArr.length){
+            resArr.push(root.val);
+        }
+        helper(root.left, level + 1, resArr);
+        helper(root.right, level + 1, resArr);
+    }
+}
+
  //leecode： Find Mode in Binary Search Tree
 function findModeInTreeDemo1(){
      let arr1 = [1,null,2,2];
