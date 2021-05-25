@@ -162,6 +162,7 @@ function TreeDemo(){
    //  maximumProductOfThreeNumbersDemo1()
    //  longestContinuousDemo5()
    //  maximumSwapDemo3()
+   //  happyNumberDemo1()
 
     return(
         <div>
@@ -170,6 +171,38 @@ function TreeDemo(){
     )
 }
 
+//leecode: Happy Number
+function happyNumberDemo1(){
+    let n = 19;
+    console.log(isHappy(n));
+
+    function isHappy(n: number): boolean {
+       let fast = n,slow = n;
+        fast = helper(fast);
+        fast = helper(fast);
+        slow = helper(slow);
+        if(slow == 1) return true
+       while (fast != slow){
+           fast = helper(fast);
+           fast = helper(fast);
+           slow = helper(slow);
+           if(slow == 1) return true
+       }
+       return false;
+       
+    };
+
+    function helper(n: number): number {
+        let res = 0;
+        let num = 0;
+        while (n){
+            num = n%10;
+            res = res+num*num;
+            n = parseInt(String(n/10));
+        }
+        return res;
+    }
+}
 
 //leecode: Maximum Swap
 function maximumSwapDemo3(){
