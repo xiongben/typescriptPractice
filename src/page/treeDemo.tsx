@@ -163,12 +163,45 @@ function TreeDemo(){
    //  longestContinuousDemo5()
    //  maximumSwapDemo3()
    //  happyNumberDemo1()
+   //  toLowerCaseDemo1()
+   //  countBitsDemo1()
 
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Counting Bits
+function countBitsDemo1(){
+    let n = 5;
+    console.log(countBits(n));
+
+    function countBits(n: number): number[] {
+        let res:number[] = new Array(n+1).fill(0);
+        for(let i = 1; i <= n; i++){
+            let preIndex = i&(i-1);
+            res[i] = res[preIndex] + 1;
+        }
+        return res;
+    };
+}
+
+//leecode: To Lower Case
+function toLowerCaseDemo1(){
+    let s = "LOVELY";
+    console.log(toLowerCase(s))
+
+    function toLowerCase(s: string): string {
+        let sArr = s.split("");
+       for(let i = 0; i < sArr.length; i++){
+           if(sArr[i].charCodeAt(0) >= "A".charCodeAt(0) && sArr[i].charCodeAt(0) <= "Z".charCodeAt(0)){
+               sArr[i] = String.fromCharCode(sArr[i].charCodeAt(0) + 32)
+           }
+       }
+       return sArr.join("");
+    };
 }
 
 //leecode: Happy Number
