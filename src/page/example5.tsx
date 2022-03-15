@@ -21,7 +21,7 @@ function Example5(){
 
     return(
         <div>
-            <h3>example5:useRef===>count:{count}</h3>
+            <h3>example5:useRef count:{count}</h3>
             <button onClick={()=>setCount(count+10)}>add</button>
             {/*<Child name={name} onClickfn={(newNmae:string)=>{setName(name+newNmae)}}/>*/}
             <Child name={name}

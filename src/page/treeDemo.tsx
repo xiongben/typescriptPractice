@@ -165,12 +165,41 @@ function TreeDemo(){
    //  happyNumberDemo1()
    //  toLowerCaseDemo1()
    //  countBitsDemo1()
-
+   //  happyNumbeDemo1()
+    
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+//leecode: Happy Number
+function happyNumbeDemo1(){
+    let n = 19
+    console.log(isHappy(n))
+    function isHappy(n: number): boolean {
+        let fast:number = n
+        let slow:number = n
+        do {
+            slow = helpHandle(slow)
+            fast = helpHandle(fast)
+            fast = helpHandle(fast)
+            console.log(slow, fast)
+        } while (fast != slow)
+    
+        if(fast == 1) return true
+        return false
+
+        function helpHandle(n: number): number {
+            let res:number = 0
+            while(n > 0){
+                res += (n%10) * (n%10)
+                n = Math.floor(n/10) 
+            }
+            return res
+        }
+    };
 }
 
 //leecode: Counting Bits
@@ -222,7 +251,7 @@ function happyNumberDemo1(){
            if(slow == 1) return true
        }
        return false;
-       
+
     };
 
     function helper(n: number): number {
@@ -241,7 +270,7 @@ function happyNumberDemo1(){
 function maximumSwapDemo3(){
     let num = 21;
     console.log(maximumSwap(num));
-    
+
     function maximumSwap(num: number): number {
         let numArr = String(num).split("");
         let lastArr:number[] = new Array(10).fill(-1);
