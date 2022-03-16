@@ -166,7 +166,7 @@ function TreeDemo(){
    //  toLowerCaseDemo1()
    //  countBitsDemo1()
    //  happyNumbeDemo1()
-   binarySearchDemoNew()
+//    binarySearchDemoNew()
     
     return(
         <div>
