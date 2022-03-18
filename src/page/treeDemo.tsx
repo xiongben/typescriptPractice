@@ -168,12 +168,33 @@ function TreeDemo(){
    //  happyNumbeDemo1()
 //    binarySearchDemoNew()
     // insertPositionDemoNew()
+    // shellSortDemo3()
     
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+function shellSortDemo3() {
+    let arr = [5,88,34,21,32,56,89,23,45,1,4,87,30]
+    console.log(shellSort(arr))
+
+    function shellSort(arr: number[]){
+       let len = arr.length
+       for(let gap = len >> 1; gap > 0; gap = gap >> 1) {
+           for(let i = gap; i < len; i++){
+               let j = i, current = arr[i];
+               while(j-gap >= 0 && arr[j-gap] > current){
+                   arr[j] = arr[j-gap];
+                   j = j - gap;
+               }
+               arr[j] = current
+           }
+       }
+       return arr
+    }
 }
 
 //Search Insert Position
