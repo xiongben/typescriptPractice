@@ -170,6 +170,7 @@ function TreeDemo(){
     // insertPositionDemoNew()
     // shellSortDemo3()
     // mergeSortDemo3()
+    quickSortDemo3()
     
     return(
         <div>
@@ -178,6 +179,38 @@ function TreeDemo(){
     )
 }
 
+function quickSortDemo3(){
+    let arr = [5,88,34,21,32,56,89,23,45,1,4,87,30]
+    quickSort(arr,0,arr.length-1)
+    console.log(arr)
+
+    function quickSort(arrs:number[],start:number,end:number) {
+
+        if(start > end) return;
+        var i:number = start;
+        var j:number = end;
+        var pivot:number = arrs[start];
+        while(i != j){
+            while(arrs[j] >= pivot && j > i) j--;
+            while(arrs[i] <= pivot && i < j) i++;
+            if(i < j){
+                swaper(i,j,arrs);
+            }
+    
+        }
+        arrs[start] = arrs[i];
+        arrs[i] = pivot;
+        quickSort(arrs,start,i-1);
+        quickSort(arrs,i+1,end);
+        return;
+    }
+    
+    function swaper(i:number,j:number,arr:number[]) {
+        var temp:number = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
 
 function mergeSortDemo3() {
     let arr = [5,88,34,21,32,56,89,23,45,1,4,87,30]
