@@ -169,12 +169,46 @@ function TreeDemo(){
 //    binarySearchDemoNew()
     // insertPositionDemoNew()
     // shellSortDemo3()
+    // mergeSortDemo3()
     
     return(
         <div>
             <h2>tree demo</h2>
         </div>
     )
+}
+
+
+function mergeSortDemo3() {
+    let arr = [5,88,34,21,32,56,89,23,45,1,4,87,30]
+    console.log(mergeSort(arr))
+
+    function mergeSort(arr: number[]):number[] {
+      let len = arr.length
+      if (len < 2) return arr
+      let mid = len >> 1
+      let left = arr.slice(0, mid)
+      let right = arr.slice(mid)
+      return helpHandler(mergeSort(left), mergeSort(right))
+    }
+
+    function helpHandler(left:number[],right:number[]):number[] {
+      let res:number[] = []
+      while(left.length > 0 && right.length > 0) {
+          if(left[0] < right[0]) {
+              res.push(left.shift() as number)
+          }else{
+            res.push(right.shift() as number)
+          }
+      }
+      while(left.length > 0){
+        res.push(left.shift() as number)
+      }
+      while(right.length > 0){
+        res.push(right.shift() as number)
+      }
+      return res
+    }
 }
 
 function shellSortDemo3() {
